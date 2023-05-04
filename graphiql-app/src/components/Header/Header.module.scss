@@ -34,3 +34,9 @@
   background-image: url(/graphQL_logo.svg);
   background-size: 30px 30px;
 }
+
+.userBtns {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
