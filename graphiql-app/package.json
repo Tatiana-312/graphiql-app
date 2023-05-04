@@ -14,8 +14,10 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
+    "i18next": "^22.4.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.2",
     "sass": "^1.62.1"
   },
   "devDependencies": {
