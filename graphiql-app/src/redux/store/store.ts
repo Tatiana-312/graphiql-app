@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import requestSchemaReducer from './requestSchemaSlice';
+import requestVariablesReducer from './requestVariablesSlice';
 
 const store = configureStore({
   reducer: {
     requestSchema: requestSchemaReducer,
+    requestVariables: requestVariablesReducer,
   },
 });
 
