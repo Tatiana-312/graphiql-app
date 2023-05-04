@@ -1,17 +1,18 @@
 import React from 'react';
 import { Header } from '../../components/Header/Header';
+import styles from './WelcomePage.module.scss';
 
 export function WelcomePage() {
   const isAuthorized = true;
   return (
     <>
       <Header isAuthorized={isAuthorized} />
-      <main>
-        <div className="welcome">
-          <h1 className="greeting">Welcome to GraphQL</h1>
-          {isAuthorized && <button className="btn get-started-btn">Get Started</button>}
+      <main className="main">
+        <div className={styles.welcome}>
+          <h2 className={styles.greeting}>Welcome to GraphQL</h2>
+          {isAuthorized && <button className={'btn ' + styles.getStartedBtn}>Get Started</button>}
         </div>
-        <div className="about-us">About us</div>
+        <div className={styles.aboutUs}>About us</div>
       </main>
     </>
   );

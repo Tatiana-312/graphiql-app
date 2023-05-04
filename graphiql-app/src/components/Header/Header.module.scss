@@ -1,0 +1,36 @@
+@import '../../assets/styles/constants';
+
+.header {
+  background-color: $color-header;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  transition: 0.32s ease-in-out;
+}
+
+.scrolled {
+  padding: 0px 0;
+  padding-top: 8px;
+  background-color: $color-header-scrolled;
+}
+
+.headerWraper {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.graphqlHeader {
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
+  background-image: url(/graphQL_logo.svg);
+  background-size: 30px 30px;
+}
