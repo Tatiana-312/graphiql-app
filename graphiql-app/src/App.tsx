@@ -1,7 +1,12 @@
 import './App.css';
+import GraphRequestEditor from './components/GraphRequestEditor/GraphRequestEditor';
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <GraphRequestEditor />
+    </>
+  );
 }
 
 export default App;
