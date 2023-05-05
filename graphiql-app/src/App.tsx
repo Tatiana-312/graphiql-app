@@ -1,10 +1,10 @@
 import './App.css';
-import GraphRequestEditor from './components/GraphRequestEditor/GraphRequestEditor';
+import GraphRequestEditors from './components/GraphRequestEditors/GraphRequestEditors';
 
 function App() {
   return (
     <>
-      <GraphRequestEditor />
+      <GraphRequestEditors />
     </>
   );
 }
