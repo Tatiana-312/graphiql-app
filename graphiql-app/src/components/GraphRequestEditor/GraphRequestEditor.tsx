@@ -64,7 +64,7 @@ const GraphRequestEditor = () => {
       },
       body: JSON.stringify({
         query: query,
-        variables: JSON.parse(variables),
+        variables: variables ? JSON.parse(variables) : {},
       }),
     });
 
@@ -76,8 +76,11 @@ const GraphRequestEditor = () => {
     if (!element && !docSchema) return;
 
     const view = new EditorView({
-      doc: 'query',
+      doc: querySchema,
       extensions: [
+        EditorView.updateListener.of((e) => {
+          addSchema(e.state.doc.toString());
+        }),
         myTheme,
         bracketMatching(),
         closeBrackets(),
@@ -103,7 +106,6 @@ const GraphRequestEditor = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('schema state', docSchema);
     setState(JSON.stringify(await makeRequest(querySchema, queryVariables), null, 4));
   };
 
@@ -111,12 +113,6 @@ const GraphRequestEditor = () => {
     <div className={styles.container}>
       <form ref={myTextarea} onSubmit={handleSubmit}>
         <div className={styles.request_editor} ref={ref}></div>
-        {/* <textarea
-          // className={styles.editor}
-          value={querySchema}
-          onChange={(e) => addSchema(e.target.value)}
-          // ref={myTextarea}
-        /> */}
         <textarea value={queryVariables} onChange={(e) => addVariables(e.target.value)} />
         <button type="submit">Get</button>
       </form>
