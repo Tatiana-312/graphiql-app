@@ -2,8 +2,17 @@
     display: flex;
 }
 
-.editor {
-    height: 70vh;
-    min-width: 320px;
-    font-size: 18px;
+.params-buttons {
+    display: flex;
+}
+
+.params_button {
+    width: 50%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #727272;
+    color: #ddd;
+    font-size: 16px;
+    cursor: pointer;
 }
