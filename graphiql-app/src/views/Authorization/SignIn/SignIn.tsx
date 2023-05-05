@@ -1,36 +1,102 @@
-const SignIn = () => {
-  return <div>Sign In</div>;
+import styles from './SignIn.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { FC, useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { setUser } from '../../../store/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../hooks/redux-hooks';
 
-  //   return (
-  //     <section classNameName={`container ${styles.auth}`}>
-  //       <div classNameName={styles.img}>
-  //         <img src={loginImg} width="400" alt="Login" />
-  //       </div>
-  //       <Card>
-  //         <div classNameName={styles.form}>
-  //           <h2>Login</h2>
-  //           <form action="">
-  //             <input type="text" placeholder="Email" required />
-  //             <input type="password" placeholder="Password" required />
-  //             <button classNameName="--btn --btn-primary --btn-block">Login</button>
-  //             <div classNameName={styles.links}>
-  //               <Link to="/reset">Reset Password</Link>
-  //             </div>
-  //             <p>-- or --</p>
-  //           </form>
-  //           <button classNameName="--btn --btn-danger --btn-block">
-  //             <FaGoogle />
-  //             Login With Google
-  //           </button>
-  //           <span classNameName={styles.register}>
-  //             {' '}
-  //             <p>Don't have an account?{'  '}</p>&nbsp;
-  //             <Link to="/register">Register</Link>
-  //           </span>
-  //         </div>
-  //       </Card>
-  //     </section>
-  //   );
+const SignIn: FC = () => {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = (email: string, password: string) => {
+    const auth = getAuth();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.refreshToken,
+          })
+        );
+        console.log(user);
+        navigate('/');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log('errorCode: ', errorCode);
+        console.log('errorMessage: ', errorMessage);
+      });
+  };
+
+  return (
+    <>
+      <div className={styles.form_wrapper}>
+        <div className={styles.form_container}>
+          <div className={styles.title_container}>
+            <h2>Sign In</h2>
+          </div>
+          <div className={`${styles.row} ${styles.clearfix}`}>
+            <div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleLogin(email, pass);
+                }}
+              >
+                <div className={styles.input_field}>
+                  {' '}
+                  <span>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                  </span>
+                  <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <div className={styles.input_field}>
+                  {' '}
+                  <span>
+                    <FontAwesomeIcon icon={faLock} />
+                  </span>
+                  <input
+                    onChange={(e) => setPass(e.target.value)}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+
+                <input className={styles.button} type="submit" value="Sign In" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p className={styles.credit}>
+        Blablabla{' '}
+        <a href="#" target="_blank" rel="noreferrer">
+          some link
+        </a>
+      </p>
+    </>
+  );
 };
 
 export default SignIn;
