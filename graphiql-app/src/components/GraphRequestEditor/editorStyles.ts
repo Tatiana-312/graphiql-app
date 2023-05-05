@@ -5,15 +5,19 @@ import { tags } from '@lezer/highlight';
 export const myTheme = EditorView.theme(
   {
     '&': {
-      height: '90vh',
+      height: '80vh',
+      width: '600px',
       minWidth: '320px',
-      color: '#045',
-      backgroundColor: '#ddd',
+      color: '#ddd',
+      backgroundColor: '#3d3d3d',
       fontSize: '18px',
       borderRadius: '10px',
     },
+    '.variables-editor > &': {
+      height: '10vh',
+    },
     '.cm-content': {
-      caretColor: '#045',
+      caretColor: '#fc6',
     },
     '&.cm-focused .cm-cursor': {
       borderLeftColor: '#0e9',
@@ -25,16 +29,17 @@ export const myTheme = EditorView.theme(
       outline: 'none',
     },
     '.cm-gutters': {
-      backgroundColor: '#096',
+      backgroundColor: '#727272',
       color: '#ddd',
       border: 'none',
     },
     '.cm-scroller': { overflow: 'auto' },
-  }
+  },
+  {dark: true}
 );
 
 export const myHighlightStyle = HighlightStyle.define([
-  { tag: tags.keyword, color: '#04d' },
+  { tag: tags.keyword, color: '#fc6' },
   { tag: tags.name, color: '#096' },
   { tag: tags.comment, color: '#b28d', fontStyle: 'italic' },
 ]);
