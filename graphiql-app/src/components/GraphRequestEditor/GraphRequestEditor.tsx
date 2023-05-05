@@ -3,12 +3,13 @@ import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { addRequestSchema } from '../../redux/store/requestSchemaSlice';
 import styles from './GraphRequestEditor.module.scss';
 import { addRequestVariables } from '../../redux/store/requestVariablesSlice';
+import { myTheme } from './editorStyles';
+import { myHighlightStyle } from './editorStyles';
 
 import { EditorView, keymap, lineNumbers } from '@codemirror/view';
 import { defaultKeymap, history } from '@codemirror/commands';
 import { autocompletion, closeBrackets } from '@codemirror/autocomplete';
-import { HighlightStyle, bracketMatching, syntaxHighlighting } from '@codemirror/language';
-import {tags} from "@lezer/highlight"
+import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema, buildClientSchema, getIntrospectionQuery } from 'graphql';
 
@@ -43,9 +44,9 @@ const GraphRequestEditor = () => {
       setDocSchema(buildClientSchema(data));
       return buildClientSchema(data);
     }
-    remoteSchema(url)
+    remoteSchema(url);
     // console.log('get schema')
-  },[])
+  }, []);
 
   const ref = useCallback((node: HTMLElement | null) => {
     if (!node) return;
@@ -71,47 +72,8 @@ const GraphRequestEditor = () => {
     return data;
   };
 
-  // console.log(element);
-
   useEffect(() => {
     if (!element && !docSchema) return;
-
-    // console.log('doc', docSchema)
-
-    let myTheme = EditorView.theme({
-      "&": {
-        height: "90vh",
-        minWidth: "320px",
-        color: "#045",
-        backgroundColor: "#ddd",
-        fontSize: "18px",
-        borderRadius: "10px",
-      },
-      ".cm-content": {
-        caretColor: "#045"
-      },
-      "&.cm-focused .cm-cursor": {
-        borderLeftColor: "#0e9",
-      },
-      "&.cm-focused .cm-selectionBackground, ::selection": {
-        backgroundColor: "#fff",
-      },
-      "&.cm-focused": {
-        outline: "none",
-      },
-      ".cm-gutters": {
-        backgroundColor: "#096",
-        color: "#ddd",
-        border: "none"
-      },
-      ".cm-scroller": {overflow: "auto"}
-    }, {dark: false})
-
-    const myHighlightStyle = HighlightStyle.define([
-      {tag: tags.keyword, color: "#04d"},
-      {tag: tags.name, color: "#096"},
-      {tag: tags.comment, color: "#b28d", fontStyle: "italic"}
-    ])
 
     const view = new EditorView({
       doc: 'query',
