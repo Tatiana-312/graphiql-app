@@ -14,14 +14,13 @@ import { graphql } from 'cm6-graphql';
 import { GraphQLSchema, buildClientSchema, getIntrospectionQuery } from 'graphql';
 
 const GraphRequestEditor = () => {
-  const myTextarea = useRef(null);
   const dispatch = useAppDispatch();
-  const addSchema = (query: string) => dispatch(addRequestSchema(query));
+  const addQuerySchema = (query: string) => dispatch(addRequestSchema(query));
   const addVariables = (variables: string) => dispatch(addRequestVariables(variables));
   const querySchema = useAppSelector((state) => state.requestSchema);
   const queryVariables = useAppSelector((state) => state.requestVariables);
 
-  const [state, setState] = useState('');
+  const [responseData, setResponseData] = useState('');
   const [docSchema, setDocSchema] = useState<GraphQLSchema>();
   const [element, setElement] = useState<HTMLElement>();
 
@@ -79,7 +78,7 @@ const GraphRequestEditor = () => {
       doc: querySchema,
       extensions: [
         EditorView.updateListener.of((e) => {
-          addSchema(e.state.doc.toString());
+          addQuerySchema(e.state.doc.toString());
         }),
         myTheme,
         bracketMatching(),
@@ -106,18 +105,18 @@ const GraphRequestEditor = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setState(JSON.stringify(await makeRequest(querySchema, queryVariables), null, 4));
+    setResponseData(JSON.stringify(await makeRequest(querySchema, queryVariables), null, 4));
   };
 
   return (
     <div className={styles.container}>
-      <form ref={myTextarea} onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className={styles.request_editor} ref={ref}></div>
         <textarea value={queryVariables} onChange={(e) => addVariables(e.target.value)} />
         <button type="submit">Get</button>
       </form>
       <pre>
-        <code>{state}</code>
+        <code>{responseData}</code>
       </pre>
     </div>
   );
