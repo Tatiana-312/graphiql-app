@@ -39,15 +39,14 @@ const GraphRequestEditor = () => {
       <form onSubmit={handleSubmit}>
         <RequestSection />
         <div className={styles.params_buttons}>
-          <button type="button" className={styles.variables_button}>
+          <button type="button" className={styles.params_button}>
             Variables
           </button>
-          <button type="button" className={styles.variables_button}>
+          <button type="button" className={styles.params_button} disabled={true}>
             Headers
           </button>
         </div>
         <VariablesSection />
-        {/* <textarea value={queryVariables} onChange={(e) => addVariables(e.target.value)} /> */}
         <button type="submit">Get</button>
       </form>
       <pre>
