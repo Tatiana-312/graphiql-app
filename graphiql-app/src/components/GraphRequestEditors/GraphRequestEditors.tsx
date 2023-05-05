@@ -5,7 +5,7 @@ import styles from './GraphRequestEditor.module.scss';
 import RequestSection from './RequestSection/RequestSection';
 import VariablesSection from './ParamsSection/VariablesSection';
 
-const GraphRequestEditor = () => {
+const GraphRequestEditors = () => {
   const querySchema = useAppSelector((state) => state.requestSchema);
   const queryVariables = useAppSelector((state) => state.requestVariables);
 
@@ -56,4 +56,4 @@ const GraphRequestEditor = () => {
   );
 };
 
-export default GraphRequestEditor;
+export default GraphRequestEditors;
