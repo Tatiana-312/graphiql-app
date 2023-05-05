@@ -16,7 +16,6 @@ const SignUp: FC = () => {
 
   const handleSignUp = (email: string, password: string) => {
     const auth = getAuth();
-    console.log('here');
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         console.log(user);

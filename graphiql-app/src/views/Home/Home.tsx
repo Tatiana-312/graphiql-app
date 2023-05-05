@@ -11,7 +11,7 @@ const Home: FC = () => {
   return isAuth ? (
     <div>
       <h1>Welcome! You are LOGGED IN</h1>
-      <Link to="/main">Main</Link>
+      <Link to="/main">Go to Main</Link>
       <br />
       <button
         onClick={() => {
