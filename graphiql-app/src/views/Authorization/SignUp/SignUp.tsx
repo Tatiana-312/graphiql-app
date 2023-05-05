@@ -1,8 +1,37 @@
 import styles from './SignUp.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { useState, FC } from 'react';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { setUser } from '../../../store/userSlice';
+import { useAppDispatch } from '../../../hooks/redux-hooks';
 
-const SignUp = () => {
+const SignUp: FC = () => {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+
+  const handleSignUp = (email: string, password: string) => {
+    const auth = getAuth();
+    console.log('here');
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        console.log(user);
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.refreshToken,
+          })
+        );
+        navigate('/');
+      })
+      .catch(console.error);
+  };
+
   return (
     <>
       <div className={styles.form_wrapper}>
@@ -12,27 +41,44 @@ const SignUp = () => {
           </div>
           <div className={`${styles.row} ${styles.clearfix}`}>
             <div>
-              <form>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSignUp(email, pass);
+                }}
+              >
                 <div className={styles.input_field}>
                   {' '}
                   <span>
                     <FontAwesomeIcon icon={faEnvelope} />
                   </span>
-                  <input type="email" name="email" placeholder="Email" required />
+                  <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
                 </div>
                 <div className={styles.input_field}>
                   {' '}
                   <span>
                     <FontAwesomeIcon icon={faLock} />
                   </span>
-                  <input type="password" name="password" placeholder="Password" required />
+                  <input
+                    onChange={(e) => setPass(e.target.value)}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    required
+                  />
                 </div>
                 <div className={styles.input_field}>
                   {' '}
                   <span>
                     <FontAwesomeIcon icon={faLock} />
                   </span>
-                  <input type="password" name="password" placeholder="Re-type Password" required />
+                  <input type="password" name="password" placeholder="Re-type Password" />
                 </div>
                 <div className={`${styles.row} ${styles.clearfix}`}>
                   <div className={styles.col_half}>
@@ -50,7 +96,7 @@ const SignUp = () => {
                       <span>
                         <FontAwesomeIcon icon={faUser} />
                       </span>
-                      <input type="text" name="name" placeholder="Last Name" required />
+                      <input type="text" name="name" placeholder="Last Name" />
                     </div>
                   </div>
                 </div>
