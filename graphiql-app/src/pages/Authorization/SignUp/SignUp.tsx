@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useState, FC } from 'react';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { setUser } from '../../../redux/store/userSlice';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
-import { useAuth } from '../../../hooks/use-auth';
+import { useForm } from 'react-hook-form';
 
 const SignUp: FC = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +14,12 @@ const SignUp: FC = () => {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { isAuth } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  // "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
 
   const handleSignUp = (email: string, password: string) => {
     const auth = getAuth();
@@ -42,6 +47,7 @@ const SignUp: FC = () => {
           </div>
           <div className={`${styles.row} ${styles.clearfix}`}>
             <div>
+              {/* <form onSubmit={handleSubmit(handleSignUp)}> */}
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -67,13 +73,30 @@ const SignUp: FC = () => {
                     <FontAwesomeIcon icon={faLock} />
                   </span>
                   <input
-                    onChange={(e) => setPass(e.target.value)}
-                    type="password"
-                    name="password"
-                    placeholder="Password"
                     required
+                    name="password"
+                    onChange={(e) => setPass(e.target.value)}
+                    minLength={8}
+                    type="password"
+                    placeholder="Password"
+                    pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).+$"
+                    title="Password must have at least one letter, one digit, and one special character"
+                    // {...register('password', {
+                    //   required: true,
+                    //   minLength: 8,
+                    //   pattern: /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/,
+                    // })}
                   />
                 </div>
+                {errors.password?.type === 'required' && <p>This field is required</p>}
+                {errors.password?.type === 'minLength' && (
+                  <p>Password must have at least 8 characters</p>
+                )}
+                {errors.password?.type === 'pattern' && (
+                  <p>
+                    Password must have at least one letter, one digit, and one special character
+                  </p>
+                )}
                 <div className={styles.input_field}>
                   {' '}
                   <span>
