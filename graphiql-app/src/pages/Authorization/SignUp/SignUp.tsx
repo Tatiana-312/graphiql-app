@@ -33,9 +33,7 @@ const SignUp: FC = () => {
       .catch(console.error);
   };
 
-  return isAuth ? (
-    <Navigate to="/main" />
-  ) : (
+  return (
     <>
       <div className={styles.form_wrapper}>
         <div className={styles.form_container}>
