@@ -4,7 +4,7 @@ import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useState, FC } from 'react';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { setUser } from '../../../store/userSlice';
+import { setUser } from '../../../redux/store/userSlice';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
 import { useAuth } from '../../../hooks/use-auth';
 

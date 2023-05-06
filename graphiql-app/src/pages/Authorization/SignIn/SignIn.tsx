@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FC, useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { setUser } from '../../../store/userSlice';
+import { setUser } from '../../../redux/store/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
 
