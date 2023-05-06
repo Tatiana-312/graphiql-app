@@ -41,7 +41,7 @@ export const myTheme = EditorView.theme(
     },
     '.cm-scroller': { overflow: 'auto' },
   },
-  {dark: true}
+  { dark: true }
 );
 
 export const myHighlightStyle = HighlightStyle.define([

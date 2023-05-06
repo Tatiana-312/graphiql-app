@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-
 import { EditorView, keymap, lineNumbers } from '@codemirror/view';
 import { defaultKeymap, history } from '@codemirror/commands';
 import { autocompletion, closeBrackets } from '@codemirror/autocomplete';
