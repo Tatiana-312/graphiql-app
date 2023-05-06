@@ -4,6 +4,7 @@ const initialState = {
   email: null,
   token: null,
   id: null,
+  pending: null,
 };
 
 const userSlice = createSlice({
@@ -20,6 +21,9 @@ const userSlice = createSlice({
       state.email = null;
       state.token = null;
       state.id = null;
+    },
+    setPending(state, action) {
+      state.pending = action.payload;
     },
   },
 });

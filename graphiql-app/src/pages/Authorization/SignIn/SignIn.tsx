@@ -2,10 +2,11 @@ import styles from './SignIn.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FC, useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth';
 import { setUser } from '../../../redux/store/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
+import { useAuth } from '../../../hooks/use-auth';
 
 const SignIn: FC = () => {
   const [email, setEmail] = useState('');
@@ -13,9 +14,11 @@ const SignIn: FC = () => {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { isAuth } = useAuth();
 
   const handleLogin = (email: string, password: string) => {
     const auth = getAuth();
+    auth.setPersistence(browserSessionPersistence);
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
