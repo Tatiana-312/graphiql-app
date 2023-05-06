@@ -6,27 +6,40 @@ import PrivateRoute from './components/PrivateRoute';
 import { useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useAppDispatch } from './hooks/redux-hooks';
-import { setUser } from './redux/store/userSlice';
+import { setUser, setPending } from './redux/store/userSlice';
+import { useAuth } from './hooks/use-auth';
 
 function App() {
   const dispatch = useAppDispatch();
   const auth = getAuth();
+  const { pending } = useAuth();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      //   setCurrentUser(user);
-      //   setPending(false);
-      if (user) {
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.refreshToken,
-          })
-        );
-      }
-    });
+    const authChange = async () => {
+      await onAuthStateChanged(auth, (user) => {
+        console.log('Here1');
+
+        //   setCurrentUser(user);
+        //   setPending(false);
+        if (user) {
+          dispatch(
+            setUser({
+              email: user.email,
+              id: user.uid,
+              token: user.refreshToken,
+            })
+          );
+        }
+        dispatch(setPending(false));
+      });
+    };
+
+    authChange();
   }, []);
+
+  if (pending) {
+    return <>Loading...</>;
+  }
 
   return (
     <>
