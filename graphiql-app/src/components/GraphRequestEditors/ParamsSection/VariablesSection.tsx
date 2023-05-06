@@ -5,7 +5,7 @@ import { autocompletion, closeBrackets } from '@codemirror/autocomplete';
 import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { myTheme } from '../editorStyles';
 import { myHighlightStyle } from '../editorStyles';
-import { useAppDispatch, useAppSelector } from '../../../redux/hook';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestVariables } from '../../../redux/store/requestVariablesSlice';
 import { graphql } from 'cm6-graphql';
 import { GraphQLSchema } from 'graphql';
