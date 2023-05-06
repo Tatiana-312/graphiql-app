@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { EditorView, keymap, lineNumbers } from '@codemirror/view';
-import { defaultKeymap } from '@codemirror/commands';
-import { closeBrackets } from '@codemirror/autocomplete';
+import { EditorView } from '@codemirror/view';
 import { Compartment, EditorState } from '@codemirror/state';
-import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
+import { syntaxHighlighting } from '@codemirror/language';
 import { myHighlightStyle, myTheme } from '../GraphRequestEditors/editorStyles';
 import { useAppSelector } from '../../hooks/redux-hooks';
 import { json } from '@codemirror/lang-json';
@@ -22,17 +20,15 @@ const GraphResponse = () => {
       doc: '',
       extensions: [
         myTheme,
-        bracketMatching(),
-        closeBrackets(),
-        keymap.of(defaultKeymap),
         syntaxHighlighting(myHighlightStyle),
         json(),
         new Compartment().of(EditorState.readOnly.of(true)),
       ],
       parent: responseParent.current!,
     });
-    view.state.readOnly;
+
     setEditor(view);
+
     return () => view.destroy();
   }, []);
 
