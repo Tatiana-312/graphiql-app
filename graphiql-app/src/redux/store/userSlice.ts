@@ -4,7 +4,7 @@ const initialState = {
   email: null,
   token: null,
   id: null,
-  pending: null,
+  pending: true,
 };
 
 const userSlice = createSlice({
@@ -28,5 +28,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, setPending } = userSlice.actions;
 export default userSlice.reducer;
