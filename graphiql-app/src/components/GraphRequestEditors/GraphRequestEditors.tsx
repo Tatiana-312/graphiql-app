@@ -31,7 +31,7 @@ const GraphRequestEditors = () => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <RequestSection />
         <div className={styles.params_buttons}>
           <button type="button" className={styles.params_button}>
