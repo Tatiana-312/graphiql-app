@@ -5,22 +5,26 @@ import { tags } from '@lezer/highlight';
 export const myTheme = EditorView.theme(
   {
     '&': {
-      height: '80vh',
+      height: '90vh',
       width: '100%',
       minWidth: '320px',
       color: '#ddd',
       backgroundColor: '#3d3d3d',
       fontSize: '17px',
+      paddingRight: '25px',
+      paddingBottom: '25px',
     },
     '.variables-editor > &': {
       height: '10vh',
+      padding: '0px',
     },
     '.response &': {
       flexGrow: '1',
     },
     '.response > &': {
-      height: '93vh',
+      height: '100vh',
       backgroundColor: '#494949',
+      padding: '0px',
     },
     '.cm-content': {
       caretColor: '#fc6',
