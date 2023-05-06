@@ -33,16 +33,8 @@ const GraphRequestEditors = () => {
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <RequestSection />
-        <div className={styles.params_buttons}>
-          <button type="button" className={styles.params_button}>
-            Variables
-          </button>
-          <button type="button" className={styles.params_button} disabled={true}>
-            Headers
-          </button>
-        </div>
         <VariablesSection />
-        <button type="submit">Get</button>
+        {/* <button type="submit">Get</button> */}
       </form>
     </div>
   );

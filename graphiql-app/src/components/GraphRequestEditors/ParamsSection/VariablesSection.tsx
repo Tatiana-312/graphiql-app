@@ -7,6 +7,8 @@ import { myTheme } from '../editorStyles';
 import { myHighlightStyle } from '../editorStyles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestVariables } from '../../../redux/store/requestVariablesSlice';
+import Button from './Button';
+import styles from './VariablesSection.module.scss';
 
 const VariablesSection = () => {
   const variablesEditorParent = useRef(null);
@@ -36,7 +38,15 @@ const VariablesSection = () => {
     return () => view.destroy();
   }, []);
 
-  return <div className="variables-editor" ref={variablesEditorParent}></div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.params_buttons}>
+        <Button name={'Variables'} />
+        <Button name={'Headers'} />
+      </div>
+      <div className="variables-editor" ref={variablesEditorParent}></div>
+    </div>
+  );
 };
 
 export default VariablesSection;

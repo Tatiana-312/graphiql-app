@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { EditorView, keymap, lineNumbers } from '@codemirror/view';
 import { defaultKeymap, history } from '@codemirror/commands';
 import { autocompletion, closeBrackets } from '@codemirror/autocomplete';
@@ -9,8 +9,9 @@ import { myHighlightStyle } from '../editorStyles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestSchema } from '../../../redux/store/requestSchemaSlice';
 import { GraphQLSchema, buildClientSchema, getIntrospectionQuery } from 'graphql';
+import styles from './RequestSection.module.scss';
 
-const RequestSection = () => {
+const RequestSection: FC = () => {
   const requestEditorParent = useRef(null);
 
   const dispatch = useAppDispatch();
