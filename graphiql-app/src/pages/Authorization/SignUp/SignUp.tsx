@@ -3,16 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useState, FC } from 'react';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { setUser } from '../../../store/userSlice';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
+import { useAuth } from '../../../hooks/use-auth';
 
 const SignUp: FC = () => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { isAuth } = useAuth();
 
   const handleSignUp = (email: string, password: string) => {
     const auth = getAuth();
@@ -31,7 +33,9 @@ const SignUp: FC = () => {
       .catch(console.error);
   };
 
-  return (
+  return isAuth ? (
+    <Navigate to="/main" />
+  ) : (
     <>
       <div className={styles.form_wrapper}>
         <div className={styles.form_container}>
