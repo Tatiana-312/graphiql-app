@@ -1,7 +1,7 @@
 import { Routes, Route, Link } from 'react-router-dom';
-import SignIn from './views/Authorization/SignIn/SignIn';
-import SignUp from './views/Authorization/SignUp/SignUp';
-import Home from './views/Home/Home';
+import SignIn from './pages/Authorization/SignIn/SignIn';
+import SignUp from './pages/Authorization/SignUp/SignUp';
+import Home from './pages/Home/Home';
 
 function App() {
   return (

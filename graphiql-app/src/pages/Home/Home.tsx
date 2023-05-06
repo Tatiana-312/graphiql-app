@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { removeUser } from '../../store/userSlice';
+import { removeUser } from '../../redux/store/userSlice';
 import { useAuth } from '../../hooks/use-auth';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/redux-hooks';
