@@ -1,11 +1,14 @@
-import { useAppSelector } from '../../redux/hook';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import styles from './GraphRequestEditor.module.scss';
-
 import RequestSection from './RequestSection/RequestSection';
 import VariablesSection from './ParamsSection/VariablesSection';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
+import { addApiData } from '../../redux/store/apiDataSlice';
+import { useEffect } from 'react';
 
 const GraphRequestEditors = () => {
+  const dispatch = useAppDispatch();
+  const addData = (data: string) => dispatch(addApiData(data));
   const querySchema = useAppSelector((state) => state.requestSchema);
   const queryVariables = useAppSelector((state) => state.requestVariables);
 
@@ -19,6 +22,12 @@ const GraphRequestEditors = () => {
     });
     await trigger(body);
   };
+
+  useEffect(() => {
+    if (!data) return;
+
+    addData(data);
+  }, [data]);
 
   return (
     <div className={styles.container}>
@@ -35,9 +44,6 @@ const GraphRequestEditors = () => {
         <VariablesSection />
         <button type="submit">Get</button>
       </form>
-      <pre>
-        <code>{JSON.stringify(data, null, 4)}</code>
-      </pre>
     </div>
   );
 };

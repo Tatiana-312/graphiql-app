@@ -29,15 +29,12 @@ const VariablesSection = () => {
         myTheme,
         bracketMatching(),
         closeBrackets(),
-        // history(),
-        // autocompletion(),
         lineNumbers(),
         keymap.of(defaultKeymap),
         syntaxHighlighting(myHighlightStyle),
       ],
       parent: variablesEditorParent.current!,
     });
-    console.log('new Editor')
 
     return () => view.destroy();
   }, []);

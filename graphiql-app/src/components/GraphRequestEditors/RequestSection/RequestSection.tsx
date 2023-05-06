@@ -70,7 +70,6 @@ const RequestSection = () => {
       ],
       parent: requestEditorParent.current!,
     });
-    console.log('Request editor')
     return () => view.destroy();
   }, [requestEditorParent.current, docSchema]);
 
