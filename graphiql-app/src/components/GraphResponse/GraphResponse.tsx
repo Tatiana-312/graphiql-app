@@ -5,7 +5,7 @@ import { closeBrackets } from '@codemirror/autocomplete';
 import { Compartment, EditorState } from '@codemirror/state';
 import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { myHighlightStyle, myTheme } from '../GraphRequestEditors/editorStyles';
-import { useAppSelector } from '../../redux/hook';
+import { useAppSelector } from '../../hooks/redux-hooks';
 import { json } from '@codemirror/lang-json';
 import styles from './GraphResponse.module.scss';
 

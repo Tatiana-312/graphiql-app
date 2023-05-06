@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import styles from './GraphRequestEditor.module.scss';
 import RequestSection from './RequestSection/RequestSection';
 import VariablesSection from './ParamsSection/VariablesSection';

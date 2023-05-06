@@ -7,7 +7,7 @@ import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { graphql } from 'cm6-graphql';
 import { myTheme } from '../editorStyles';
 import { myHighlightStyle } from '../editorStyles';
-import { useAppDispatch, useAppSelector } from '../../../redux/hook';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestSchema } from '../../../redux/store/requestSchemaSlice';
 import { GraphQLSchema, buildClientSchema, getIntrospectionQuery } from 'graphql';
 
