@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { EditorView, keymap, lineNumbers } from '@codemirror/view';
 import { defaultKeymap } from '@codemirror/commands';
 import { closeBrackets } from '@codemirror/autocomplete';
-import { Compartment, EditorState } from "@codemirror/state";
+import { Compartment, EditorState } from '@codemirror/state';
 import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { myHighlightStyle, myTheme } from '../GraphRequestEditors/editorStyles';
 import { useAppSelector } from '../../redux/hook';
 import { json } from '@codemirror/lang-json';
+import styles from './GraphResponse.module.scss';
 
 const GraphResponse = () => {
   const responseParent = useRef(null);
@@ -23,7 +24,6 @@ const GraphResponse = () => {
         myTheme,
         bracketMatching(),
         closeBrackets(),
-        lineNumbers(),
         keymap.of(defaultKeymap),
         syntaxHighlighting(myHighlightStyle),
         json(),
@@ -42,7 +42,11 @@ const GraphResponse = () => {
     });
   }, [data]);
 
-  return <div className="response" ref={responseParent}></div>;
+  return (
+    <div className={styles.response_container}>
+      <div className="response" ref={responseParent}></div>
+    </div>
+  );
 };
 
 export default GraphResponse;

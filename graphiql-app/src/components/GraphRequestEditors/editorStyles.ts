@@ -6,15 +6,21 @@ export const myTheme = EditorView.theme(
   {
     '&': {
       height: '80vh',
-      width: '600px',
+      width: '100%',
       minWidth: '320px',
       color: '#ddd',
       backgroundColor: '#3d3d3d',
-      fontSize: '18px',
-      borderRadius: '10px',
+      fontSize: '17px',
     },
     '.variables-editor > &': {
       height: '10vh',
+    },
+    '.response &': {
+      flexGrow: '1',
+    },
+    '.response > &': {
+      height: '93vh',
+      backgroundColor: '#494949',
     },
     '.cm-content': {
       caretColor: '#fc6',
@@ -23,7 +29,7 @@ export const myTheme = EditorView.theme(
       borderLeftColor: '#0e9',
     },
     '&.cm-focused .cm-selectionBackground, ::selection': {
-      backgroundColor: '#fff',
+      backgroundColor: '#7272726a',
     },
     '&.cm-focused': {
       outline: 'none',
