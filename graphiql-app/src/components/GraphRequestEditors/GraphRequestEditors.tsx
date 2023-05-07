@@ -32,9 +32,11 @@ const GraphRequestEditors = () => {
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <RequestSection />
-        <VariablesSection />
-        {/* <button type="submit">Get</button> */}
+        <div className={styles.editors}>
+          <RequestSection />
+          <VariablesSection />
+        </div>
+        <button className={styles.get_button} type="submit">►</button>
       </form>
     </div>
   );

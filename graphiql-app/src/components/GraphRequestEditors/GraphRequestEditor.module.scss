@@ -4,6 +4,24 @@
 }
 
 .form {
+  display: flex;
   flex-grow: 1;
   position: relative;
+  background-color: #3d3d3d;
+}
+
+.editors {
+  flex-grow: 1;
+}
+
+.get_button {
+  background-color: rgb(222, 191, 128);
+  cursor: pointer;
+  padding: 2px;
+  height: 35px;
+  width: 35px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  margin: 15px;
 }

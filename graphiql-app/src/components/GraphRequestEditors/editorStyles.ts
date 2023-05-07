@@ -39,7 +39,7 @@ export const myTheme = EditorView.theme(
       outline: 'none',
     },
     '.cm-gutters': {
-      backgroundColor: '#727272',
+      backgroundColor: '#3d3d3d',
       color: '#ddd',
       border: 'none',
     },
