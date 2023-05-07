@@ -8,21 +8,21 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestVariables } from '../../../redux/store/requestVariablesSlice';
 import { myVariablesCloseTheme, myVariablesOpenTheme } from './paramsEditorStyle';
 
-const VariablesSection = () => {
-  const variablesEditorParent = useRef(null);
+const HeadersSection = () => {
+  const headersEditorParent = useRef(null);
   const dispatch = useAppDispatch();
   const addVariables = (variables: string) => dispatch(addRequestVariables(variables));
   const queryVariables = useAppSelector((state) => state.requestVariables);
   const isShown = useAppSelector((state) => state.displayVariablesSection.active);
 
   useEffect(() => {
-    if (!variablesEditorParent) return;
+    if (!headersEditorParent) return;
     const view = new EditorView({
-      doc: queryVariables,
+      doc: 'queryHeaders',
       extensions: [
-        EditorView.updateListener.of((e) => {
-          addVariables(e.state.doc.toString());
-        }),
+        // EditorView.updateListener.of((e) => {
+        //   addVariables(e.state.doc.toString());
+        // }),
         isShown ? myVariablesOpenTheme : myVariablesCloseTheme,
         bracketMatching(),
         closeBrackets(),
@@ -30,13 +30,13 @@ const VariablesSection = () => {
         keymap.of(defaultKeymap),
         syntaxHighlighting(myHighlightStyle),
       ],
-      parent: variablesEditorParent.current!,
+      parent: headersEditorParent.current!,
     });
 
     return () => view.destroy();
   }, [isShown]);
 
-  return <div className="variables-editor" ref={variablesEditorParent}></div>;
+  return <div className="headers-editor" ref={headersEditorParent}></div>;
 };
 
-export default VariablesSection;
+export default HeadersSection;

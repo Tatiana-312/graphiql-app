@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import requestSchemaReducer from './requestSchemaSlice';
 import requestVariablesReducer from './requestVariablesSlice';
 import displayVariablesSectionReducer from './displayVariablesSectionSlice';
+import paramsSectionTypeReducer from './paramsSectionTypeSlice';
 import apiDataReducer from './apiDataSlice';
 import { graphqlApi } from '../graphqlApi';
 
@@ -10,6 +11,7 @@ const store = configureStore({
     requestSchema: requestSchemaReducer,
     requestVariables: requestVariablesReducer,
     displayVariablesSection: displayVariablesSectionReducer,
+    paramsSectionType: paramsSectionTypeReducer,
     apiData: apiDataReducer,
     [graphqlApi.reducerPath]: graphqlApi.reducer,
   },

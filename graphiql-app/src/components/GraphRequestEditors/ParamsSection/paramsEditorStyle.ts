@@ -2,9 +2,7 @@ import { EditorView } from '@codemirror/view';
 
 const generalTheme = {
   '&': {
-    height: '90vh',
     width: '100%',
-    minWidth: '320px',
     color: '#ddd',
     backgroundColor: '#3d3d3d',
     fontSize: '17px',
@@ -34,7 +32,7 @@ const generalTheme = {
 export const myVariablesOpenTheme = EditorView.theme(
   {
     ...generalTheme,
-    '.variables-editor > &': {
+    '.variables-editor > &, .headers-editor > &': {
       height: '10vh',
       padding: '0px',
     },
@@ -45,7 +43,7 @@ export const myVariablesOpenTheme = EditorView.theme(
 export const myVariablesCloseTheme = EditorView.theme(
   {
     ...generalTheme,
-    '.variables-editor > &': {
+    '.variables-editor > &, .headers-editor > &': {
       height: '0vh',
       padding: '0px',
     },
