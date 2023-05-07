@@ -7,3 +7,12 @@
 .params_buttons {
   display: flex;
 }
+
+.show_button {
+  width: 6%;
+  cursor: pointer;
+  background-color: rgb(222, 191, 128);
+  border: none;
+  font-size: 16px;
+  border-radius: 4px;
+}
