@@ -5,18 +5,13 @@ import { tags } from '@lezer/highlight';
 export const myTheme = EditorView.theme(
   {
     '&': {
-      height: '90vh',
+      height: '100vh',
       width: '100%',
-      minWidth: '320px',
       color: '#ddd',
       backgroundColor: '#3d3d3d',
       fontSize: '17px',
-      paddingRight: '25px',
       paddingBottom: '25px',
-    },
-    '.variables-editor > &': {
-      height: '10vh',
-      padding: '0px',
+      overflow: "auto"
     },
     '.response &': {
       flexGrow: '1',
