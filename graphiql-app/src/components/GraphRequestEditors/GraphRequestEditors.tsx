@@ -5,6 +5,7 @@ import VariablesSection from './ParamsSection/VariablesSection';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
 import { addApiData } from '../../redux/store/apiDataSlice';
 import { useEffect } from 'react';
+import ParamsSection from './ParamsSection/ParamsSection';
 
 const GraphRequestEditors = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +35,7 @@ const GraphRequestEditors = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.editors}>
           <RequestSection />
-          <VariablesSection />
+          <ParamsSection />
         </div>
         <button className={styles.get_button} type="submit">►</button>
       </form>
