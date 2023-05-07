@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import requestSchemaReducer from './requestSchemaSlice';
 import requestVariablesReducer from './requestVariablesSlice';
+import requestHeadersReducer from './requestHeadersSlice';
 import displayVariablesSectionReducer from './displayVariablesSectionSlice';
 import paramsSectionTypeReducer from './paramsSectionTypeSlice';
 import apiDataReducer from './apiDataSlice';
@@ -10,6 +11,7 @@ const store = configureStore({
   reducer: {
     requestSchema: requestSchemaReducer,
     requestVariables: requestVariablesReducer,
+    requestHeaders: requestHeadersReducer,
     displayVariablesSection: displayVariablesSectionReducer,
     paramsSectionType: paramsSectionTypeReducer,
     apiData: apiDataReducer,
