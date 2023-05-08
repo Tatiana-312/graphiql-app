@@ -24,9 +24,6 @@ export const myTheme = EditorView.theme(
     '.cm-content': {
       caretColor: '#fc6',
     },
-    '&.cm-focused .cm-cursor': {
-      borderLeftColor: '#0e9',
-    },
     '&.cm-focused .cm-selectionBackground, ::selection': {
       backgroundColor: '#7272726a',
     },

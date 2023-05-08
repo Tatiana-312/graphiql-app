@@ -5,7 +5,7 @@ import { closeBrackets } from '@codemirror/autocomplete';
 import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { myHighlightStyle } from '../editorStyles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
-import { myParamsCloseTheme, myParamsOpenTheme } from './paramsEditorStyle';
+import { myOptionsCloseTheme, myOptionsOpenTheme } from './optionsEditorStyle';
 import { addRequestHeaders } from '../../../redux/store/requestHeadersSlice';
 
 const HeadersSection: FC = () => {
@@ -24,7 +24,7 @@ const HeadersSection: FC = () => {
         EditorView.updateListener.of((e) => {
           addHeaders(e.state.doc.toString());
         }),
-        isShown ? myParamsOpenTheme : myParamsCloseTheme,
+        isShown ? myOptionsOpenTheme : myOptionsCloseTheme,
         bracketMatching(),
         closeBrackets(),
         lineNumbers(),
