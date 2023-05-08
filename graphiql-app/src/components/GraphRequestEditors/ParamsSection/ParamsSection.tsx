@@ -8,8 +8,9 @@ import {
   openHeadersSection,
   openVariablesSection,
 } from '../../../redux/store/paramsSectionTypeSlice';
+import { FC } from 'react';
 
-const ParamsSection = () => {
+const ParamsSection: FC = () => {
   const dispatch = useAppDispatch();
   const changeDisplay = () => dispatch(changeDisplayVariablesSection());
   const openVariables = () => dispatch(openVariablesSection());
@@ -17,7 +18,8 @@ const ParamsSection = () => {
   const sectionType = useAppSelector((state) => state.paramsSectionType);
   const isShown = useAppSelector((state) => state.displayVariablesSection.active);
 
-  const [isVariablesActive, isHeadersActive] = sectionType === 'variables' ? [true, false] : [false, true];
+  const [isVariablesActive, isHeadersActive] =
+    sectionType === 'variables' ? [true, false] : [false, true];
 
   return (
     <div className={styles.container}>
