@@ -21,7 +21,7 @@ const generalTheme = {
 
 export const myResponseTheme = EditorView.theme(
   {
-    generalTheme,
+    ...generalTheme,
     '.response > &': {
       height: '100vh',
       backgroundColor: '#494949',
