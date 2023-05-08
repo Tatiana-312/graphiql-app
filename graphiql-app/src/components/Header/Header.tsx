@@ -39,11 +39,11 @@ export function Header(props: { isAuthorized: boolean }) {
             {language}
           </div>
           {props.isAuthorized ? (
-            <button className="btn sign-out-btn">{t('sign-out')}</button>
+            <button className={'btn ' + styles.signBtn}>{t('sign-out')}</button>
           ) : (
             <>
-              <button className="btn sign-in-btn">{t('sign-in')}</button>
-              <button className="btn sign-up-btn">{t('sign-up')}</button>
+              <button className={'btn ' + styles.signBtn}>{t('sign-in')}</button>
+              <button className={'btn ' + styles.signBtn}>{t('sign-up')}</button>
             </>
           )}
         </div>

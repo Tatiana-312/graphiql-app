@@ -7,6 +7,8 @@
   top: 0;
   z-index: 9999;
   transition: 0.32s ease-in-out;
+  background-color: $color-header;
+  color: $color-font;
 }
 
 .scrolled {
@@ -16,7 +18,7 @@
 }
 
 .headerWraper {
-  height: 100px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,6 +39,12 @@
 
 .userBtns {
   display: flex;
-  gap: 10px;
+  gap: 30px;
   align-items: center;
+  width: 200px;
+}
+
+.signBtn {
+  width: 70px;
+  height: 30px;
 }
