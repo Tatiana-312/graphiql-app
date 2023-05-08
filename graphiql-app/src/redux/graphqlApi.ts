@@ -1,16 +1,17 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { FetchArgs, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const graphqlApi = createApi({
   reducerPath: 'graphqlApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/graphql' }),
+  baseQuery: fetchBaseQuery({ baseUrl: '' }),
   endpoints: (builder) => ({
     getGraphql: builder.mutation({
-      query: (body: string) => ({
-        url: '',
-        method: 'POST',
-        headers: { 'Content-type': 'application/json' },
-        body: body,
-      }),
+      // query: (body: string) => ({
+      //   url: '',
+      //   method: 'POST',
+      //   headers: { 'Content-type': 'application/json' },
+      //   body: body,
+      // }),
+      query: (options: FetchArgs) => (options),
     }),
   }),
 });
