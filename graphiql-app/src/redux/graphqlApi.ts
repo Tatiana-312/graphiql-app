@@ -5,15 +5,12 @@ export const graphqlApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: '' }),
   endpoints: (builder) => ({
     getGraphql: builder.mutation({
-      // query: (body: string) => ({
-      //   url: '',
-      //   method: 'POST',
-      //   headers: { 'Content-type': 'application/json' },
-      //   body: body,
-      // }),
-      query: (options: FetchArgs) => (options),
+      query: (options: FetchArgs) => options,
+    }),
+    getGraphqlSchema: builder.mutation({
+      query: (options: FetchArgs) => options,
     }),
   }),
 });
 
-export const { useGetGraphqlMutation } = graphqlApi;
+export const { useGetGraphqlMutation, useGetGraphqlSchemaMutation } = graphqlApi;

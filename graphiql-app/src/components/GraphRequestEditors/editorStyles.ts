@@ -11,7 +11,7 @@ export const myTheme = EditorView.theme(
       backgroundColor: '#3d3d3d',
       fontSize: '17px',
       paddingBottom: '25px',
-      overflow: "auto"
+      overflow: 'auto',
     },
     '.response &': {
       flexGrow: '1',
