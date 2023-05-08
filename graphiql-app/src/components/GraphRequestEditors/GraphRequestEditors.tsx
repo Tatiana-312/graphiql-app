@@ -3,7 +3,7 @@ import styles from './GraphRequestEditor.module.scss';
 import RequestSection from './RequestSection/RequestSection';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
 import { FC } from 'react';
-import ParamsSection from './ParamsSection/ParamsSection';
+import OptionsSection from './OptionsSection/OptionsSection';
 import { API_URL, ERROR_MESSAGE } from '../../utils/constants';
 import { addParseError } from '../../redux/store/parseError';
 
@@ -57,7 +57,7 @@ const GraphRequestEditors: FC = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.editors}>
           <RequestSection />
-          <ParamsSection />
+          <OptionsSection />
         </div>
         <button className={styles.get_button} type="submit">
           ►

@@ -1,21 +1,21 @@
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import Button from './Button';
-import styles from './ParamsSection.module.scss';
+import styles from './OptionsSection.module.scss';
 import { changeDisplayVariablesSection } from '../../../redux/store/displayVariablesSectionSlice';
 import VariablesSection from './VariablesSection';
 import HeadersSection from './HeadersSection';
 import {
   openHeadersSection,
   openVariablesSection,
-} from '../../../redux/store/paramsSectionTypeSlice';
+} from '../../../redux/store/optionsSectionTypeSlice';
 import { FC } from 'react';
 
-const ParamsSection: FC = () => {
+const OptionsSection: FC = () => {
   const dispatch = useAppDispatch();
   const changeDisplay = () => dispatch(changeDisplayVariablesSection());
   const openVariables = () => dispatch(openVariablesSection());
   const openHeaders = () => dispatch(openHeadersSection());
-  const sectionType = useAppSelector((state) => state.paramsSectionType);
+  const sectionType = useAppSelector((state) => state.optionsSectionType);
   const isShown = useAppSelector((state) => state.displayVariablesSection.active);
 
   const [isVariablesActive, isHeadersActive] =
@@ -35,4 +35,4 @@ const ParamsSection: FC = () => {
   );
 };
 
-export default ParamsSection;
+export default OptionsSection;

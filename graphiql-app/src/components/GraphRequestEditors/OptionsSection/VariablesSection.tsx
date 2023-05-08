@@ -6,7 +6,7 @@ import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { myHighlightStyle } from '../editorStyles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestVariables } from '../../../redux/store/requestVariablesSlice';
-import { myParamsCloseTheme, myParamsOpenTheme } from './paramsEditorStyle';
+import { myOptionsCloseTheme, myOptionsOpenTheme } from './optionsEditorStyle';
 
 const VariablesSection: FC = () => {
   const variablesEditorParent = useRef(null);
@@ -23,7 +23,7 @@ const VariablesSection: FC = () => {
         EditorView.updateListener.of((e) => {
           addVariables(e.state.doc.toString());
         }),
-        isShown ? myParamsOpenTheme : myParamsCloseTheme,
+        isShown ? myOptionsOpenTheme : myOptionsCloseTheme,
         bracketMatching(),
         closeBrackets(),
         lineNumbers(),

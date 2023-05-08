@@ -3,7 +3,7 @@ import requestSchemaReducer from './requestSchemaSlice';
 import requestVariablesReducer from './requestVariablesSlice';
 import requestHeadersReducer from './requestHeadersSlice';
 import displayVariablesSectionReducer from './displayVariablesSectionSlice';
-import paramsSectionTypeReducer from './paramsSectionTypeSlice';
+import optionsSectionTypeReducer from './optionsSectionTypeSlice';
 import parseErrorReducer from './parseError';
 import { graphqlApi } from '../graphqlApi';
 
@@ -13,7 +13,7 @@ const store = configureStore({
     requestVariables: requestVariablesReducer,
     requestHeaders: requestHeadersReducer,
     displayVariablesSection: displayVariablesSectionReducer,
-    paramsSectionType: paramsSectionTypeReducer,
+    optionsSectionType: optionsSectionTypeReducer,
     parseError: parseErrorReducer,
     [graphqlApi.reducerPath]: graphqlApi.reducer,
   },

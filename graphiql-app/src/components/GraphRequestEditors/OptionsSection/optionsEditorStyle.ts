@@ -24,7 +24,7 @@ const generalTheme = {
   '.cm-scroller': { overflow: 'auto' },
 };
 
-export const myParamsOpenTheme = EditorView.theme(
+export const myOptionsOpenTheme = EditorView.theme(
   {
     ...generalTheme,
     '.variables-editor > &, .headers-editor > &': {
@@ -35,7 +35,7 @@ export const myParamsOpenTheme = EditorView.theme(
   { dark: true }
 );
 
-export const myParamsCloseTheme = EditorView.theme(
+export const myOptionsCloseTheme = EditorView.theme(
   {
     ...generalTheme,
     '.variables-editor > &, .headers-editor > &': {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const paramsSectionTypeSlice = createSlice({
+const optionsSectionTypeSlice = createSlice({
   name: 'paramsSectionType',
   initialState: 'variables',
   reducers: {
@@ -9,6 +9,6 @@ const paramsSectionTypeSlice = createSlice({
   },
 });
 
-export const { openVariablesSection, openHeadersSection } = paramsSectionTypeSlice.actions;
+export const { openVariablesSection, openHeadersSection } = optionsSectionTypeSlice.actions;
 
-export default paramsSectionTypeSlice.reducer;
+export default optionsSectionTypeSlice.reducer;
