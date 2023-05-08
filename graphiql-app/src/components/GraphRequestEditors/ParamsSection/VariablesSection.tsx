@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { EditorView, keymap, lineNumbers } from '@codemirror/view';
 import { defaultKeymap } from '@codemirror/commands';
 import { closeBrackets } from '@codemirror/autocomplete';
@@ -6,9 +6,9 @@ import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { myHighlightStyle } from '../editorStyles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestVariables } from '../../../redux/store/requestVariablesSlice';
-import { myVariablesCloseTheme, myVariablesOpenTheme } from './paramsEditorStyle';
+import { myParamsCloseTheme, myParamsOpenTheme } from './paramsEditorStyle';
 
-const VariablesSection = () => {
+const VariablesSection: FC = () => {
   const variablesEditorParent = useRef(null);
   const dispatch = useAppDispatch();
   const addVariables = (variables: string) => dispatch(addRequestVariables(variables));
@@ -23,7 +23,7 @@ const VariablesSection = () => {
         EditorView.updateListener.of((e) => {
           addVariables(e.state.doc.toString());
         }),
-        isShown ? myVariablesOpenTheme : myVariablesCloseTheme,
+        isShown ? myParamsOpenTheme : myParamsCloseTheme,
         bracketMatching(),
         closeBrackets(),
         lineNumbers(),

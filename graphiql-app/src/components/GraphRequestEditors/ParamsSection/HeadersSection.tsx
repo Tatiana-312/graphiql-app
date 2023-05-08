@@ -1,14 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { EditorView, keymap, lineNumbers } from '@codemirror/view';
 import { defaultKeymap } from '@codemirror/commands';
 import { closeBrackets } from '@codemirror/autocomplete';
 import { bracketMatching, syntaxHighlighting } from '@codemirror/language';
 import { myHighlightStyle } from '../editorStyles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
-import { myVariablesCloseTheme, myVariablesOpenTheme } from './paramsEditorStyle';
+import { myParamsCloseTheme, myParamsOpenTheme } from './paramsEditorStyle';
 import { addRequestHeaders } from '../../../redux/store/requestHeadersSlice';
 
-const HeadersSection = () => {
+const HeadersSection: FC = () => {
   const headersEditorParent = useRef(null);
   const dispatch = useAppDispatch();
   const addHeaders = (headers: string) => dispatch(addRequestHeaders(headers));
@@ -17,13 +17,14 @@ const HeadersSection = () => {
 
   useEffect(() => {
     if (!headersEditorParent) return;
+
     const view = new EditorView({
       doc: queryHeaders,
       extensions: [
         EditorView.updateListener.of((e) => {
           addHeaders(e.state.doc.toString());
         }),
-        isShown ? myVariablesOpenTheme : myVariablesCloseTheme,
+        isShown ? myParamsOpenTheme : myParamsCloseTheme,
         bracketMatching(),
         closeBrackets(),
         lineNumbers(),

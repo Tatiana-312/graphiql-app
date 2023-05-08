@@ -6,14 +6,9 @@ const generalTheme = {
     color: '#ddd',
     backgroundColor: '#3d3d3d',
     fontSize: '17px',
-    paddingRight: '25px',
-    paddingBottom: '25px',
   },
   '.cm-content': {
     caretColor: '#fc6',
-  },
-  '&.cm-focused .cm-cursor': {
-    borderLeftColor: '#0e9',
   },
   '&.cm-focused .cm-selectionBackground, ::selection': {
     backgroundColor: '#7272726a',
@@ -29,7 +24,7 @@ const generalTheme = {
   '.cm-scroller': { overflow: 'auto' },
 };
 
-export const myVariablesOpenTheme = EditorView.theme(
+export const myParamsOpenTheme = EditorView.theme(
   {
     ...generalTheme,
     '.variables-editor > &, .headers-editor > &': {
@@ -40,7 +35,7 @@ export const myVariablesOpenTheme = EditorView.theme(
   { dark: true }
 );
 
-export const myVariablesCloseTheme = EditorView.theme(
+export const myParamsCloseTheme = EditorView.theme(
   {
     ...generalTheme,
     '.variables-editor > &, .headers-editor > &': {
