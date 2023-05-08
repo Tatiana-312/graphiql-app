@@ -5,8 +5,10 @@ import styles from './MainPage.module.scss';
 const MainPage = () => {
   return (
     <div className={styles.mainPage}>
-      <GraphRequestEditors />
-      <GraphResponse />
+      <div className={styles.container}>
+        <GraphRequestEditors />
+        <GraphResponse />
+      </div>
     </div>
   );
 };
