@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { EditorView } from '@codemirror/view';
 import { Compartment, EditorState } from '@codemirror/state';
 import { syntaxHighlighting } from '@codemirror/language';
-import { myHighlightStyle, myTheme } from '../GraphRequestEditors/editorStyles';
+import { myHighlightStyle } from '../GraphRequestEditors/editorStyles';
 import { useAppSelector } from '../../hooks/redux-hooks';
 import { json } from '@codemirror/lang-json';
 import styles from './GraphResponse.module.scss';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
+import { myResponseTheme } from './responseEditorStyles';
 
 const GraphResponse = () => {
   const responseParent = useRef(null);
@@ -21,7 +22,7 @@ const GraphResponse = () => {
     const view = new EditorView({
       doc: '',
       extensions: [
-        myTheme,
+        myResponseTheme,
         syntaxHighlighting(myHighlightStyle),
         json(),
         new Compartment().of(EditorState.readOnly.of(true)),
