@@ -2,19 +2,19 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import styles from './GraphRequestEditor.module.scss';
 import RequestSection from './RequestSection/RequestSection';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
-import { addApiData } from '../../redux/store/apiDataSlice';
-import { useEffect } from 'react';
+import { FC } from 'react';
 import ParamsSection from './ParamsSection/ParamsSection';
-import { API_URL } from '../../utils/constants';
+import { API_URL, ERROR_MESSAGE } from '../../utils/constants';
+import { addParseError } from '../../redux/store/parseError';
 
-const GraphRequestEditors = () => {
+const GraphRequestEditors: FC = () => {
   const dispatch = useAppDispatch();
-  const addData = (data: string) => dispatch(addApiData(data));
+  const addCustomError = (data: string) => dispatch(addParseError(data));
   const querySchema = useAppSelector((state) => state.requestSchema);
   const queryVariables = useAppSelector((state) => state.requestVariables);
   const queryHeaders = useAppSelector((state) => state.requestHeaders);
 
-  const [trigger, { data, isError, error }] = useGetGraphqlMutation();
+  const [trigger] = useGetGraphqlMutation({ fixedCacheKey: 'myCacheKey' });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const GraphRequestEditors = () => {
       try {
         queryVariables && JSON.parse(queryVariables);
       } catch {
-        throw new Error('Variables are invalid JSON');
+        throw new Error(ERROR_MESSAGE.VARIABLES);
       }
 
       try {
@@ -34,7 +34,6 @@ const GraphRequestEditors = () => {
             myHeaders.append(name, value as string);
           }
         }
-
         const options = {
           url: API_URL,
           method: 'POST',
@@ -44,22 +43,14 @@ const GraphRequestEditors = () => {
             variables: queryVariables ? JSON.parse(queryVariables) : {},
           }),
         };
-
         await trigger(options);
-
       } catch {
-        throw new Error('Headers are invalid JSON');
+        throw new Error(ERROR_MESSAGE.HEADERS);
       }
-    } catch (err: Error | any) {
-      addData(err.message);
+    } catch (err) {
+      addCustomError(JSON.parse((err as Error).message));
     }
   };
-
-  useEffect(() => {
-    if (!data) return;
-
-    addData(data);
-  }, [data]);
 
   return (
     <div className={styles.container}>
