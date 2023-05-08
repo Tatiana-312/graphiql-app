@@ -4,8 +4,9 @@ import RequestSection from './RequestSection/RequestSection';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
 import { FC } from 'react';
 import OptionsSection from './OptionsSection/OptionsSection';
-import { API_URL, ERROR_MESSAGE } from '../../utils/constants';
+import { API_URL } from '../../utils/constants';
 import { addParseError } from '../../redux/store/parseError';
+import { checkIsValidHeaders, checkIsValidVariables } from '../../utils/checkIsValidJson';
 
 const GraphRequestEditors: FC = () => {
   const dispatch = useAppDispatch();
@@ -22,31 +23,27 @@ const GraphRequestEditors: FC = () => {
     myHeaders.append('Content-type', 'application/json');
 
     try {
-      try {
-        queryVariables && JSON.parse(queryVariables);
-      } catch {
-        throw new Error(ERROR_MESSAGE.VARIABLES);
-      }
+      checkIsValidVariables(queryVariables);
+      checkIsValidHeaders(queryHeaders);
 
-      try {
-        if (queryHeaders) {
-          for (const [name, value] of Object.entries(JSON.parse(queryHeaders))) {
+      if (queryHeaders) {
+        for (const [name, value] of Object.entries(JSON.parse(queryHeaders))) {
+          if (name.toLowerCase() !== 'content-type') {
             myHeaders.append(name, value as string);
           }
         }
-        const options = {
-          url: API_URL,
-          method: 'POST',
-          headers: myHeaders,
-          body: JSON.stringify({
-            query: querySchema,
-            variables: queryVariables ? JSON.parse(queryVariables) : {},
-          }),
-        };
-        await trigger(options);
-      } catch {
-        throw new Error(ERROR_MESSAGE.HEADERS);
       }
+      const options = {
+        url: API_URL,
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify({
+          query: querySchema,
+          variables: queryVariables ? JSON.parse(queryVariables) : {},
+        }),
+      };
+
+      await trigger(options);
     } catch (err) {
       addCustomError(JSON.parse((err as Error).message));
     }
