@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { EditorView } from '@codemirror/view';
 import { Compartment, EditorState } from '@codemirror/state';
 import { syntaxHighlighting } from '@codemirror/language';
@@ -9,7 +9,7 @@ import styles from './GraphResponse.module.scss';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
 import { myResponseTheme } from './responseEditorStyles';
 
-const GraphResponse = () => {
+const GraphResponse: FC = () => {
   const responseParent = useRef(null);
   const parseError = useAppSelector((state) => state.parseError);
   const [editor, setEditor] = useState<EditorView>();
