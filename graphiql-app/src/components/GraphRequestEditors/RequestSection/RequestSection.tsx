@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestSchema } from '../../../redux/store/requestSchemaSlice';
 import { GraphQLSchema, buildClientSchema, getIntrospectionQuery } from 'graphql';
 import styles from './RequestSection.module.scss';
+import { API_URL } from '../../../utils/constants';
 
 const RequestSection: FC = () => {
   const requestEditorParent = useRef(null);
@@ -19,8 +20,6 @@ const RequestSection: FC = () => {
   const querySchema = useAppSelector((state) => state.requestSchema);
 
   const [docSchema, setDocSchema] = useState<GraphQLSchema>();
-
-  const url = 'https://rickandmortyapi.com/graphql';
 
   useEffect(() => {
     async function remoteSchema(url: string) {
@@ -39,7 +38,7 @@ const RequestSection: FC = () => {
       setDocSchema(buildClientSchema(data));
       return buildClientSchema(data);
     }
-    remoteSchema(url);
+    remoteSchema(API_URL);
   }, []);
 
   useEffect(() => {

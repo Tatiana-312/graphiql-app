@@ -8,10 +8,12 @@
   flex-grow: 1;
   position: relative;
   background-color: #3d3d3d;
+  overflow: auto;
 }
 
 .editors {
   flex-grow: 1;
+  overflow: auto;
 }
 
 .get_button {
