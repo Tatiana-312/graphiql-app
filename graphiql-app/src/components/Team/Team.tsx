@@ -11,22 +11,17 @@ export function Team() {
         <li className={styles.developer}>
           <div className={styles.photoWrap}></div>
           <div className={styles.profile}>
-            <h4 className={styles.name}>Tatiana Kuznetsova</h4>
-            <p className={styles.role}>Team lead</p>
-            <p className={styles.responsibility}>
-              Main page, code editor, variables and headers sections, documentation and schema,
-              response section
-            </p>
+            <h4 className={styles.name}>{t('tatiana')}</h4>
+            <p className={styles.role}>{t('teamLead')}</p>
+            <p className={styles.responsibility}>{t('tatianaResp')}</p>
           </div>
         </li>
         <li className={styles.developer}>
           <div className={styles.photoWrap}></div>
           <div className={styles.profile}>
-            <h4 className={styles.name}>Altynbek Anarbekov</h4>
-            <p className={styles.role}>Team member</p>
-            <p className={styles.responsibility}>
-              Sign In/Sign Up page, client-side form validation
-            </p>
+            <h4 className={styles.name}>{t('altynbek')}</h4>
+            <p className={styles.role}>{t('teamMember')}</p>
+            <p className={styles.responsibility}>{t('altynbekResp')}</p>
           </div>
         </li>
         <li className={styles.developer}>
@@ -34,9 +29,9 @@ export function Team() {
             <div className={styles.photoDiana}></div>
           </div>
           <div className={styles.profile}>
-            <h4 className={styles.name}>Diana Smertina</h4>
-            <p className={styles.role}>Team member</p>
-            <p className={styles.responsibility}>Welcome page and header, localization, design</p>
+            <h4 className={styles.name}>{t('diana')}</h4>
+            <p className={styles.role}>{t('teamMember')}</p>
+            <p className={styles.responsibility}>{t('dianaResp')}</p>
           </div>
         </li>
       </ul>

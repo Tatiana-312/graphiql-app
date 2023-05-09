@@ -14,6 +14,15 @@ export const resources = {
       feature3: 'Real-time error highlighting',
       feature4: 'Documentation explorer',
       developers: 'Developers',
+      tatiana: 'Tatiana Kuznetsova',
+      teamLead: 'Team lead',
+      tatianaResp:
+        'Main page, code editor, variables and headers sections, documentation and schema, response section',
+      altynbek: 'Altynbek Anarbekov',
+      teamMember: 'Team member',
+      altynbekResp: 'Sign In/Sign Up page, client-side form validation',
+      diana: 'Diana Smertina',
+      dianaResp: 'Welcome page and header, localization, design',
     },
   },
   RUS: {
@@ -31,6 +40,15 @@ export const resources = {
       feature3: 'Выделение ошибок в режиме реального времени',
       feature4: 'Проводник документации',
       developers: 'Разработчики',
+      tatiana: 'Татьяна Кузнецова',
+      teamLead: 'Лидер команды',
+      tatianaResp:
+        'Главная страница, редактор кода, блок переменных и заголовков, документация и схема, блок ответов API',
+      altynbek: 'Алтынбек Анарбеков',
+      teamMember: 'Участник команды',
+      altynbekResp: 'Страница регистрации и авторизации, валидация формы на стороне клиента',
+      diana: 'Диана Смертина',
+      dianaResp: 'Стартовая страница и header, интернационализация, дизайн',
     },
   },
 };
