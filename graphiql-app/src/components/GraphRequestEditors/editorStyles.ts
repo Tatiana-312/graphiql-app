@@ -5,21 +5,13 @@ import { tags } from '@lezer/highlight';
 export const myTheme = EditorView.theme(
   {
     '&': {
-      height: '100vh',
+      height: 'inherit',
       width: '100%',
       color: '#ddd',
       backgroundColor: '#3d3d3d',
       fontSize: '17px',
       paddingBottom: '25px',
       overflow: 'auto',
-    },
-    '.response &': {
-      flexGrow: '1',
-    },
-    '.response > &': {
-      height: '100vh',
-      backgroundColor: '#494949',
-      padding: '0px',
     },
     '.cm-content': {
       caretColor: '#fc6',
