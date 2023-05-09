@@ -1,7 +1,8 @@
-import React from 'react';
 import { Header } from '../../components/Header/Header';
 import { useTranslation } from 'react-i18next';
 import styles from './WelcomePage.module.scss';
+import { Team } from '../../components/Team/Team';
+import { Footer } from '../../components/Footer/Footer';
 
 export function WelcomePage() {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ export function WelcomePage() {
   return (
     <>
       <Header isAuthorized={isAuthorized} />
-      <main className="main">
+      <main className={styles.main}>
         <div className={styles.welcome}>
           <div className="wrapper">
             <h2 className={styles.greeting}>{t('welcome')}</h2>
@@ -32,13 +33,15 @@ export function WelcomePage() {
             )}
           </div>
         </div>
-        <div className="wrapper">
+        <div className={styles.aboutWrapper + ' wrapper'}>
           <div className={styles.aboutApp}>
             <h3 className={styles.descriptionHeader}>{t('descrition-header')}</h3>
             <p className={styles.description}>{t('description')}</p>
-            <ul>{createList()}</ul>
+            <ul className={styles.list}>{createList()}</ul>
           </div>
         </div>
+        <Team />
+        <Footer />
       </main>
     </>
   );

@@ -13,6 +13,7 @@ export const resources = {
       feature2: 'Intelligent type ahead of fields',
       feature3: 'Real-time error highlighting',
       feature4: 'Documentation explorer',
+      developers: 'Developers',
     },
   },
   RUS: {
@@ -23,13 +24,13 @@ export const resources = {
       welcome: 'Добро пожаловать в GraphiQL',
       start: 'Начать',
       'descrition-header': 'Графическая интерактивная среда разработки GraphQL в браузере.',
-      description:
-        'Это приложение является клоном GraphiQL. Оно предоставяет следующие возможности: ',
+      description: 'Это приложение является клоном GraphiQL и предоставяет следующие возможности: ',
       feature0: 'Языковая поддержка последней спецификации GraphQL ',
       feature1: 'Подсветка синтаксиса',
       feature2: 'Определение типа полей',
       feature3: 'Выделение ошибок в режиме реального времени',
       feature4: 'Проводник документации',
+      developers: 'Разработчики',
     },
   },
 };

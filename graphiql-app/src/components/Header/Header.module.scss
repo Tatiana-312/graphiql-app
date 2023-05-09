@@ -29,6 +29,9 @@
   width: 200px;
   display: flex;
   align-items: center;
+  @media (max-width: $mobile-big-width) {
+    width: 130px;
+  }
 }
 
 .logo {
@@ -76,7 +79,7 @@
   background-image: url(../../assets/icons/menu.svg);
   background-size: 40px;
   cursor: pointer;
-  @media (min-width: $mobile-big-width) {
+  @media (min-width: 551px) {
     display: none;
   }
 }

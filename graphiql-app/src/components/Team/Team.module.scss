@@ -1,0 +1,100 @@
+@import '../../assets/styles/constants';
+
+.team {
+  top: -80px;
+  position: relative;
+}
+
+.title {
+  margin: 30px 0;
+}
+
+.list {
+  padding-left: 0;
+}
+
+.developer {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 1200px;
+  margin-bottom: 30px;
+  @media (max-width: $content-width) {
+    width: 900px;
+  }
+  @media (max-width: $content-small-width) {
+    width: 600px;
+  }
+  @media (max-width: $tablet-width) {
+    width: 530px;
+  }
+  @media (max-width: $mobile-big-width) {
+    flex-direction: column;
+    width: 300px;
+  }
+}
+
+.developer:nth-child(even) {
+  flex-direction: row-reverse;
+  @media (max-width: $mobile-big-width) {
+    flex-direction: column;
+  }
+}
+
+.photoWrap {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-image: linear-gradient(135deg, #f0e6d2, $color-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: $content-small-width) {
+    width: 180px;
+    height: 180px;
+  }
+  @media (max-width: $tablet-width) {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.profile {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @media (max-width: $content-small-width) {
+    width: 380px;
+  }
+  @media (max-width: $tablet-width) {
+    width: 280px;
+  }
+  @media (max-width: $mobile-big-width) {
+    align-items: center;
+  }
+}
+
+.responsibility {
+  @media (max-width: $mobile-big-width) {
+    text-align: center;
+  }
+}
+
+.photoDiana {
+  background-image: url('../../assets/images/DSC_0177_1.jpg');
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background-size: 190px;
+  @media (max-width: $content-small-width) {
+    width: 170px;
+    height: 170px;
+    background-size: 170px;
+  }
+  @media (max-width: $tablet-width) {
+    width: 140px;
+    height: 140px;
+    background-size: 140px;
+  }
+}
