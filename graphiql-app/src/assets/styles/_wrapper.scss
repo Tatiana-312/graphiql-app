@@ -4,6 +4,10 @@
   margin: 0 auto;
   padding-left: 40px;
   padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   @media (max-width: $content-small-width) {
     max-width: $content-small-width;
     padding-left: 20px;
