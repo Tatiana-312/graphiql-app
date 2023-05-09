@@ -47,7 +47,7 @@ export function Header(props: { isAuthorized: boolean }) {
               {language}
             </div>
             {props.isAuthorized ? (
-              <button className={'btn ' + styles.signBtn}>{t('sign-out')}</button>
+              <button className={'btn ' + styles.signOutBtn}>{t('sign-out')}</button>
             ) : (
               <>
                 <div className={styles.burger} onClick={clickBurgerHandler}></div>

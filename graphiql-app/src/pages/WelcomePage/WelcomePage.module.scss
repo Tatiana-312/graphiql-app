@@ -23,11 +23,18 @@
   color: $color-font;
   margin-bottom: 20px;
   text-align: center;
+  @media (max-width: $mobile-big-width) {
+    font-size: 2.5rem;
+  }
 }
 
 .getStartedBtn {
   width: 150px;
   height: 50px;
+  @media (max-width: $mobile-big-width) {
+    width: 120px;
+    font-size: 1.6rem;
+  }
 }
 
 .aboutApp {
