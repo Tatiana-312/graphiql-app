@@ -110,8 +110,8 @@ body {
 
   input {
     &[type='text'],
-    &[type='email'],
-    &[type='password'] {
+    &[placeholder='Email'],
+    &[placeholder='Password'] {
       width: 100%;
       padding: 8px 10px 9px 35px;
       height: 35px;
@@ -131,11 +131,11 @@ body {
     }
 
     &[type='text']:focus,
-    &[type='email']:focus,
-    &[type='password']:focus {
+    &[name='email']:focus,
+    &[name='password']:focus {
       -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
-      box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
-      border: 1px solid $yellow;
+      box-shadow: 0 0 2px 1px rgba(163, 202, 247, 0.5);
+      border: 1px solid rgb(148, 148, 240);
       background: #fafafa;
     }
 
@@ -337,6 +337,10 @@ body {
   a {
     color: darken($yellow, 7%);
   }
+}
+
+.error {
+  background-color: rgb(255, 216, 216) !important;
 }
 
 @-webkit-keyframes check {

@@ -1,30 +1,23 @@
-import styles from './SignIn.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import { FC, useState } from 'react';
-import { getAuth, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth';
-import { setUser } from '../../../redux/store/userSlice';
-import { redirect, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AuthForm from '../../../components/AuthForm/AuthForm';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
-import { useAuth } from '../../../hooks/use-auth';
+import { setUser } from '../../../redux/store/userSlice';
+import { AuthFormFields } from '../../../types/authTypes';
 
 const SignIn: FC = () => {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { isAuth } = useAuth();
 
-  const handleLogin = (email: string, password: string) => {
+  const handleLogin = (data: AuthFormFields) => {
     const auth = getAuth();
-    auth.setPersistence(browserSessionPersistence);
 
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        // ...
 
         dispatch(
           setUser({
@@ -33,71 +26,18 @@ const SignIn: FC = () => {
             token: user.refreshToken,
           })
         );
-        console.log(user);
         navigate('/');
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('errorCode: ', errorCode);
-        console.log('errorMessage: ', errorMessage);
+        toast.error(errorMessage);
       });
   };
 
   return (
     <>
-      <div className={styles.form_wrapper}>
-        <div className={styles.form_container}>
-          <div className={styles.title_container}>
-            <h2>Sign In</h2>
-          </div>
-          <div className={`${styles.row} ${styles.clearfix}`}>
-            <div>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleLogin(email, pass);
-                }}
-              >
-                <div className={styles.input_field}>
-                  {' '}
-                  <span>
-                    <FontAwesomeIcon icon={faEnvelope} />
-                  </span>
-                  <input
-                    onChange={(e) => setEmail(e.target.value)}
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-                <div className={styles.input_field}>
-                  {' '}
-                  <span>
-                    <FontAwesomeIcon icon={faLock} />
-                  </span>
-                  <input
-                    onChange={(e) => setPass(e.target.value)}
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-
-                <input className={styles.button} type="submit" value="Sign In" />
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p className={styles.credit}>
-        Blablabla{' '}
-        <a href="#" target="_blank" rel="noreferrer">
-          some link
-        </a>
-      </p>
+      <ToastContainer />
+      <AuthForm submitFunction={handleLogin} />
     </>
   );
 };

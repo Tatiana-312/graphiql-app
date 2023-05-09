@@ -14,11 +14,7 @@ const Home: FC = () => {
     <div>
       <h1>Welcome! You are LOGGED IN</h1>
       <Link to="/main">Go to Main</Link>
-      <br />
-      <Link to="/sign-in">Go to Sign In</Link>
-      <br />
-      <Link to="/sign-up">Go to Sign Up</Link>
-      <br />
+      <br></br>
       <button
         onClick={() => {
           signOut(auth);

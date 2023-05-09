@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import SignIn from './pages/Authorization/SignIn/SignIn';
 import SignUp from './pages/Authorization/SignUp/SignUp';
 import Home from './pages/Home/Home';
@@ -13,28 +13,31 @@ function App() {
   const dispatch = useAppDispatch();
   const auth = getAuth();
   const { pending } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const authChange = async () => {
-      await onAuthStateChanged(auth, (user) => {
-        console.log('Here1');
+    onAuthStateChanged(auth, (user) => {
+      navigate('/');
 
-        //   setCurrentUser(user);
-        //   setPending(false);
-        if (user) {
-          dispatch(
-            setUser({
-              email: user.email,
-              id: user.uid,
-              token: user.refreshToken,
-            })
-          );
-        }
-        dispatch(setPending(false));
-      });
-    };
-
-    authChange();
+      if (user) {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.refreshToken,
+          })
+        );
+      } else {
+        dispatch(
+          setUser({
+            email: null,
+            id: null,
+            token: null,
+          })
+        );
+      }
+      dispatch(setPending(false));
+    });
   }, []);
 
   if (pending) {
