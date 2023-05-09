@@ -11,6 +11,7 @@ import { addRequestSchema } from '../../../redux/store/requestSchemaSlice';
 import { buildClientSchema, getIntrospectionQuery } from 'graphql';
 import { API_URL } from '../../../utils/constants';
 import { useGetGraphqlSchemaMutation } from '../../../redux/graphqlApi';
+import styles from './RequestSection.module.scss';
 
 const RequestSection: FC = () => {
   const requestEditorParent = useRef(null);
@@ -18,6 +19,7 @@ const RequestSection: FC = () => {
   const dispatch = useAppDispatch();
   const addQuerySchema = (query: string) => dispatch(addRequestSchema(query));
   const querySchema = useAppSelector((state) => state.requestSchema);
+  const isOptionsSectionShown = useAppSelector((state) => state.displayVariablesSection.active);
 
   const [trigger, { data }] = useGetGraphqlSchemaMutation();
 
@@ -66,7 +68,12 @@ const RequestSection: FC = () => {
     return () => view.destroy();
   }, [requestEditorParent.current, data]);
 
-  return <div ref={requestEditorParent}></div>;
+  return (
+    <div
+      className={isOptionsSectionShown ? styles.small : styles.big}
+      ref={requestEditorParent}
+    ></div>
+  );
 };
 
 export default RequestSection;
