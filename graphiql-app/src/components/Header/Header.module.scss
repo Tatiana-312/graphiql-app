@@ -64,6 +64,10 @@
   }
 }
 
+.language {
+  cursor: pointer;
+}
+
 .title {
   @media (max-width: $tablet-width) {
     font-size: 2.4rem;
