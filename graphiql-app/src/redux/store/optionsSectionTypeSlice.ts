@@ -4,8 +4,8 @@ const optionsSectionTypeSlice = createSlice({
   name: 'paramsSectionType',
   initialState: 'variables',
   reducers: {
-    openVariablesSection: (_state: string) => 'variables',
-    openHeadersSection: (_state: string) => 'headers',
+    openVariablesSection: () => 'variables',
+    openHeadersSection: () => 'headers',
   },
 });
 

@@ -14,7 +14,7 @@ const GraphResponse: FC = () => {
   const parseError = useAppSelector((state) => state.parseError);
   const [editor, setEditor] = useState<EditorView>();
 
-  const [_, { data, error }] = useGetGraphqlMutation({ fixedCacheKey: 'myCacheKey' });
+  const [trigger, { data, error }] = useGetGraphqlMutation({ fixedCacheKey: 'myCacheKey' });
 
   useEffect(() => {
     if (!responseParent) return;
@@ -33,7 +33,7 @@ const GraphResponse: FC = () => {
     setEditor(view);
 
     return () => view.destroy();
-  }, []);
+  }, [trigger]);
 
   const changeResponseData = (data: string | object) => {
     editor?.dispatch({
