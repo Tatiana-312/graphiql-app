@@ -3,6 +3,12 @@
   width: 50%;
 }
 
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+}
+
 .form {
   display: flex;
   flex-grow: 1;
