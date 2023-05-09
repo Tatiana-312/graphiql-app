@@ -54,13 +54,19 @@
 .signBtn {
   width: 120px;
   height: 30px;
-  font-size: 1.7rem;
   @media (max-width: $tablet-width) {
     width: 105px;
     font-size: 1.6rem;
   }
   @media (max-width: $mobile-big-width) {
     display: none;
+  }
+}
+
+.signOutBtn {
+  height: 30px;
+  @media (max-width: $mobile-big-width) {
+    font-size: 1.6rem;
   }
 }
 

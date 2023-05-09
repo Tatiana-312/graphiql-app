@@ -6,7 +6,7 @@ import { Footer } from '../../components/Footer/Footer';
 
 export function WelcomePage() {
   const { t } = useTranslation();
-  const isAuthorized = false;
+  const isAuthorized = true;
 
   function createList() {
     const arr = new Array(5).fill(0).map((el, i) => {
