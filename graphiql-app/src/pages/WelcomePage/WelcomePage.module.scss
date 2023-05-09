@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   background-image: url(../../assets/images/layout.jpg);
-  height: 500px;
+  height: 450px;
   background-size: 100% 500px;
   top: -80px;
   position: relative;
@@ -17,6 +17,7 @@
   font-size: 3rem;
   color: $color-font;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .getStartedBtn {
@@ -24,7 +25,7 @@
   height: 50px;
 }
 
-.aboutUs {
+.aboutApp {
   height: 2000px;
   display: flex;
   flex-direction: column;
@@ -34,7 +35,47 @@
   position: relative;
 }
 
+.descriptionHeader {
+  text-align: center;
+}
+
 .description {
-  margin-top: 20px;
-  max-width: 600px;
+  margin: 20px 0;
+  text-align: center;
+  max-width: 750px;
+}
+
+.feature {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  height: 25px;
+  align-items: center;
+}
+
+.featureIcon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+}
+
+.featureIcon0 {
+  background-image: url(../../assets/icons/checkmark-circle-outline.svg);
+}
+
+.featureIcon1 {
+  background-image: url(../../assets/icons/pencil-outline.svg);
+}
+
+.featureIcon2 {
+  background-image: url(../../assets/icons/thumbs-up.svg);
+}
+
+.featureIcon3 {
+  background-image: url(../../assets/icons/iconmonstr-error-4.svg);
+}
+
+.featureIcon4 {
+  background-image: url(../../assets/icons/document-text-outline.svg);
 }

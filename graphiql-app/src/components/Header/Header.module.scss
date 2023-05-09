@@ -22,6 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .graphqlHeader {
@@ -34,17 +35,48 @@
   height: 30px;
   width: 30px;
   background-image: url(/graphQL_logo.svg);
-  background-size: 30px 30px;
+  background-size: 30px;
+  margin-right: 5px;
 }
 
 .userBtns {
   display: flex;
   gap: 30px;
   align-items: center;
-  width: 200px;
+  @media (max-width: $tablet-width) {
+    gap: 15px;
+  }
 }
 
 .signBtn {
-  width: 70px;
+  width: 120px;
   height: 30px;
+  font-size: 1.7rem;
+  @media (max-width: $tablet-width) {
+    width: 105px;
+    font-size: 1.6rem;
+  }
+  @media (max-width: $mobile-big-width) {
+    display: none;
+  }
+}
+
+.title {
+  @media (max-width: $tablet-width) {
+    font-size: 2.4rem;
+  }
+  @media (max-width: $mobile-big-width) {
+    font-size: 2rem;
+  }
+}
+
+.burger {
+  height: 40px;
+  width: 40px;
+  background-image: url(../../assets/icons/menu.svg);
+  background-size: 40px;
+  cursor: pointer;
+  @media (min-width: $mobile-big-width) {
+    display: none;
+  }
 }
