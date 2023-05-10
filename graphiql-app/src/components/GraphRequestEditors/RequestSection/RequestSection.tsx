@@ -8,7 +8,7 @@ import { myTheme } from '../editorStyles';
 import { myHighlightStyle } from '../editorStyles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestSchema } from '../../../redux/store/requestSchemaSlice';
-import { buildClientSchema, getIntrospectionQuery } from 'graphql';
+import { buildClientSchema } from 'graphql';
 import { API_URL } from '../../../utils/constants';
 import { useGetGraphqlSchemaMutation } from '../../../redux/graphqlApi';
 import styles from './RequestSection.module.scss';
@@ -21,20 +21,10 @@ const RequestSection: FC = () => {
   const querySchema = useAppSelector((state) => state.requestSchema);
   const isOptionsSectionShown = useAppSelector((state) => state.displayVariablesSection.active);
 
-  const [trigger, { data }] = useGetGraphqlSchemaMutation();
+  const [getGraphQlSchema, { data }] = useGetGraphqlSchemaMutation();
 
   useEffect(() => {
-    const options = {
-      url: API_URL,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        operationName: 'IntrospectionQuery',
-        query: getIntrospectionQuery(),
-      }),
-    };
-
-    trigger(options);
+    getGraphQlSchema(API_URL);
   }, []);
 
   useEffect(() => {
