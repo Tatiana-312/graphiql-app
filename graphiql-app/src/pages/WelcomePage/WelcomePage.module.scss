@@ -28,7 +28,7 @@
   }
 }
 
-.getStartedBtn {
+.get_started_btn {
   width: 150px;
   height: 50px;
   @media (max-width: $mobile-big-width) {
@@ -37,19 +37,19 @@
   }
 }
 
-.aboutApp {
+.about_app {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 30px 0;
 }
 
-.aboutWrapper {
+.about_wrapper {
   top: -80px;
   position: relative;
 }
 
-.descriptionHeader {
+.description_header {
   text-align: center;
 }
 
@@ -71,29 +71,29 @@
   align-items: center;
 }
 
-.featureIcon {
+.feature_icon {
   display: block;
   width: 25px;
   height: 25px;
   background-size: 25px;
 }
 
-.featureIcon0 {
+.feature_icon0 {
   background-image: url(../../assets/icons/checkmark-circle-outline.svg);
 }
 
-.featureIcon1 {
+.feature_icon1 {
   background-image: url(../../assets/icons/pencil-outline.svg);
 }
 
-.featureIcon2 {
+.feature_icon2 {
   background-image: url(../../assets/icons/thumbs-up.svg);
 }
 
-.featureIcon3 {
+.feature_icon3 {
   background-image: url(../../assets/icons/iconmonstr-error-4.svg);
 }
 
-.featureIcon4 {
+.feature_icon4 {
   background-image: url(../../assets/icons/document-text-outline.svg);
 }

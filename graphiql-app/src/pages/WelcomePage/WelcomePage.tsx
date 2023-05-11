@@ -1,19 +1,20 @@
+import { FC } from 'react';
 import { Header } from '../../components/Header/Header';
 import { useTranslation } from 'react-i18next';
 import styles from './WelcomePage.module.scss';
 import { Team } from '../../components/Team/Team';
 import { Footer } from '../../components/Footer/Footer';
 
-export function WelcomePage() {
+export const WelcomePage: FC = () => {
   const { t } = useTranslation();
-  const isAuthorized = true;
+  const isAuthorized = false;
 
   function createList() {
     const arr = new Array(5).fill(0).map((el, i) => {
-      const iconsClass = 'featureIcon' + i;
+      const iconsClass = 'feature_icon' + i;
       return (
         <li className={styles.feature} key={i}>
-          <span className={styles[iconsClass] + ' ' + styles.featureIcon}></span>
+          <span className={styles[iconsClass] + ' ' + styles.feature_icon}></span>
           {t('feature' + i)}
         </li>
       );
@@ -29,13 +30,13 @@ export function WelcomePage() {
           <div className="wrapper">
             <h2 className={styles.greeting}>{t('welcome')}</h2>
             {isAuthorized && (
-              <button className={'btn ' + styles.getStartedBtn}>{t('start')}</button>
+              <button className={'btn ' + styles.get_started_btn}>{t('start')}</button>
             )}
           </div>
         </div>
-        <div className={styles.aboutWrapper + ' wrapper'}>
-          <div className={styles.aboutApp}>
-            <h3 className={styles.descriptionHeader}>{t('descrition-header')}</h3>
+        <div className={styles.about_wrapper + ' wrapper'}>
+          <div className={styles.about_app}>
+            <h3 className={styles.description_header}>{t('descrition-header')}</h3>
             <p className={styles.description}>{t('description')}</p>
             <ul className={styles.list}>{createList()}</ul>
           </div>
@@ -45,4 +46,4 @@ export function WelcomePage() {
       </main>
     </>
   );
-}
+};
