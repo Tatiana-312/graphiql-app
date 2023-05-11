@@ -21,7 +21,7 @@ const RequestSection: FC = () => {
   const querySchema = useAppSelector((state) => state.requestSchema);
   const isOptionsSectionShown = useAppSelector((state) => state.displayVariablesSection.active);
 
-  const [getGraphQlSchema, { data }] = useGetGraphqlSchemaMutation();
+  const [getGraphQlSchema, { data }] = useGetGraphqlSchemaMutation({ fixedCacheKey: 'schemaKey' });
 
   useEffect(() => {
     getGraphQlSchema(API_URL);
