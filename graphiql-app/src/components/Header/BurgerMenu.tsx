@@ -1,16 +1,21 @@
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Burger.module.scss';
 
-export function BurgerMenu(props: { onClick: () => void }) {
+interface BurgerProps {
+  onClick: () => void;
+}
+
+export const BurgerMenu: FC<BurgerProps> = ({ onClick }) => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.burgerBackground} onClick={() => props.onClick()}>
-      <div className={styles.burgerBtns} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.close} onClick={() => props.onClick()}></div>
-        <button className={'btn ' + styles.signBtn}>{t('sign-in')}</button>
-        <button className={'btn ' + styles.signBtn}>{t('sign-up')}</button>
+    <div className={styles.burger_background} onClick={() => onClick()}>
+      <div className={styles.burger_btns} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.close} onClick={() => onClick()}></div>
+        <button className={'btn ' + styles.sign_btn}>{t('sign-in')}</button>
+        <button className={'btn ' + styles.sign_btn}>{t('sign-up')}</button>
       </div>
     </div>
   );
-}
+};

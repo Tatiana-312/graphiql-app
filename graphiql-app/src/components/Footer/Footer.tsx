@@ -1,13 +1,14 @@
+import { FC } from 'react';
 import styles from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';
 
-export function Footer() {
+export const Footer: FC = () => {
   const { t } = useTranslation();
 
   return (
     <footer className={styles.footer}>
       <div className="wrapper">
-        <div className={styles.footerWrapper}>
+        <div className={styles.footer_wrapper}>
           <div>
             <ul className={styles.list}>
               <li>
@@ -28,11 +29,11 @@ export function Footer() {
             </ul>
           </div>
           <div>2023</div>
-          <a href="https://rs.school/react/" className={styles.rsLink}>
-            <div className={styles.rsLogo}></div>
+          <a href="https://rs.school/react/">
+            <div className={styles.rs_logo}></div>
           </a>
         </div>
       </div>
     </footer>
   );
-}
+};

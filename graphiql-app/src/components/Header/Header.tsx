@@ -1,9 +1,14 @@
+import { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Header.module.scss';
 import { BurgerMenu } from './BurgerMenu';
 
-export function Header(props: { isAuthorized: boolean }) {
+interface HeaderProps {
+  isAuthorized: boolean;
+}
+
+export const Header: FC<HeaderProps> = ({ isAuthorized }) => {
   const [scrolled, setScrolled] = useState(false);
   const [language, setLanguage] = useState('ENG');
   const [burger, setBurger] = useState(false);
@@ -36,23 +41,23 @@ export function Header(props: { isAuthorized: boolean }) {
   return (
     <header className={scrolled ? styles.header + ' ' + styles.scrolled : styles.header}>
       {burger ? <BurgerMenu onClick={clickBurgerHandler} /> : null}
-      <div className={'wrapper '}>
-        <div className={styles.headerWraper}>
-          <div className={styles.graphqlHeader}>
+      <div className="wrapper">
+        <div className={styles.header_wraper}>
+          <div className={styles.graphql_header}>
             <div className={styles.logo}></div>
             <h1 className={styles.title}>GraphiQL</h1>
           </div>
-          <div className={styles.userBtns}>
+          <div className={styles.user_btns}>
             <div className={styles.language} onClick={clickLangHandler}>
               {language}
             </div>
-            {props.isAuthorized ? (
-              <button className={'btn ' + styles.signOutBtn}>{t('sign-out')}</button>
+            {isAuthorized ? (
+              <button className={'btn ' + styles.sign_out_btn}>{t('sign-out')}</button>
             ) : (
               <>
                 <div className={styles.burger} onClick={clickBurgerHandler}></div>
-                <button className={'btn ' + styles.signBtn}>{t('sign-in')}</button>
-                <button className={'btn ' + styles.signBtn}>{t('sign-up')}</button>
+                <button className={'btn ' + styles.sign_btn}>{t('sign-in')}</button>
+                <button className={'btn ' + styles.sign_btn}>{t('sign-up')}</button>
               </>
             )}
           </div>
@@ -60,4 +65,4 @@ export function Header(props: { isAuthorized: boolean }) {
       </div>
     </header>
   );
-}
+};

@@ -17,7 +17,7 @@
   background-color: $color-header-scrolled;
 }
 
-.headerWraper {
+.header_wraper {
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -25,7 +25,7 @@
   width: 100%;
 }
 
-.graphqlHeader {
+.graphql_header {
   width: 200px;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@
   margin-right: 5px;
 }
 
-.userBtns {
+.user_btns {
   display: flex;
   gap: 30px;
   align-items: center;
@@ -51,7 +51,7 @@
   }
 }
 
-.signBtn {
+.sign_btn {
   width: 120px;
   height: 30px;
   @media (max-width: $tablet-width) {
@@ -63,7 +63,7 @@
   }
 }
 
-.signOutBtn {
+.sign_out_btn {
   height: 30px;
   @media (max-width: $mobile-big-width) {
     font-size: 1.6rem;

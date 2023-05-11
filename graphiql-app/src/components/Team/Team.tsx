@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import styles from './Team.module.scss';
 import { useTranslation } from 'react-i18next';
 
-export function Team() {
+export const Team: FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -9,7 +10,7 @@ export function Team() {
       <h3 className={styles.title}>{t('developers')}</h3>
       <ul className={styles.list}>
         <li className={styles.developer}>
-          <div className={styles.photoWrap}></div>
+          <div className={styles.photo_wrap}></div>
           <div className={styles.profile}>
             <h4 className={styles.name}>{t('tatiana')}</h4>
             <p className={styles.role}>{t('teamLead')}</p>
@@ -17,7 +18,7 @@ export function Team() {
           </div>
         </li>
         <li className={styles.developer}>
-          <div className={styles.photoWrap}></div>
+          <div className={styles.photo_wrap}></div>
           <div className={styles.profile}>
             <h4 className={styles.name}>{t('altynbek')}</h4>
             <p className={styles.role}>{t('teamMember')}</p>
@@ -25,8 +26,8 @@ export function Team() {
           </div>
         </li>
         <li className={styles.developer}>
-          <div className={styles.photoWrap}>
-            <div className={styles.photoDiana}></div>
+          <div className={styles.photo_wrap}>
+            <div className={styles.photo_diana}></div>
           </div>
           <div className={styles.profile}>
             <h4 className={styles.name}>{t('diana')}</h4>
@@ -37,4 +38,4 @@ export function Team() {
       </ul>
     </div>
   );
-}
+};
