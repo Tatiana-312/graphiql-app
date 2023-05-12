@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { resources } from './assets/languages/resourse';
+import { resources } from './assets/languages/resources';
 
 i18n.use(initReactI18next).init({
   resources,

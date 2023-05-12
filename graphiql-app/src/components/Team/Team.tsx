@@ -10,7 +10,9 @@ export const Team: FC = () => {
       <h3 className={styles.title}>{t('developers')}</h3>
       <ul className={styles.list}>
         <li className={styles.developer}>
-          <div className={styles.photo_wrap}></div>
+          <div className={styles.photo_wrap}>
+            <div className={styles.photo + ' ' + styles.photo_tatiana}></div>
+          </div>
           <div className={styles.profile}>
             <h4 className={styles.name}>{t('tatiana')}</h4>
             <p className={styles.role}>{t('teamLead')}</p>
@@ -27,7 +29,7 @@ export const Team: FC = () => {
         </li>
         <li className={styles.developer}>
           <div className={styles.photo_wrap}>
-            <div className={styles.photo_diana}></div>
+            <div className={styles.photo + ' ' + styles.photo_diana}></div>
           </div>
           <div className={styles.profile}>
             <h4 className={styles.name}>{t('diana')}</h4>
