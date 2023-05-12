@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface DocState {
+  history: string[];
   currentName: string;
   currentType: string;
 }
@@ -8,6 +9,7 @@ interface DocState {
 const docSlice = createSlice({
   name: 'displayVariablesSection',
   initialState: {
+    history: [],
     currentName: '/',
     currentType: '',
   },
@@ -17,6 +19,12 @@ const docSlice = createSlice({
     },
     updateCurrentType: (state: DocState, { payload }: PayloadAction<string>) => {
       state.currentType = payload;
+    },
+    addHistoryData: (state: DocState, { payload }: PayloadAction<string>) => {
+      state.history.push(payload);
+    },
+    removeHistoryData: (state: DocState) => {
+      state.history.pop();
     },
   },
 });
