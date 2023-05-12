@@ -1,6 +1,8 @@
 import { GraphQLObjectType } from 'graphql';
 import { FC } from 'react';
 import Fields from '../Fields';
+import { useAppDispatch } from '../../../hooks/redux-hooks';
+import { updateCurrentName } from '../../../redux/store/docSlice';
 
 // interface ObjectTypeProps {
 //   name: string;
@@ -9,7 +11,10 @@ import Fields from '../Fields';
 // }
 
 const ObjectDoc: FC<any> = ({ type }) => {
-//   console.log('type', type);
+  const dispatch = useAppDispatch();
+  const updatePlace = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
+
+  console.log('type', type);
   return (
     <div>
       <p className="title">{type.name}</p>
