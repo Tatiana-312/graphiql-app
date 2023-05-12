@@ -5,12 +5,12 @@ import { updateCurrentName } from '../../redux/store/docSlice';
 
 const EntryDoc: FC<any> = ({ type }) => {
   const dispatch = useAppDispatch();
-  const updatePlace = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
+  const updateName = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
 
   return (
     <div>
       <p>Root Type</p>
-      <p className="name" onClick={() => updatePlace('fields')}>
+      <p className="name" onClick={() => updateName('fields')}>
         {type.name}
       </p>
     </div>

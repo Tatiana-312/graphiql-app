@@ -4,15 +4,9 @@ import Fields from '../Fields';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
 import { updateCurrentName } from '../../../redux/store/docSlice';
 
-// interface ObjectTypeProps {
-//   name: string;
-//   description: string;
-//   fields: any;
-// }
-
 const ObjectDoc: FC<any> = ({ type }) => {
   const dispatch = useAppDispatch();
-  const updatePlace = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
+  const updateName = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
 
   console.log('type', type);
   return (

@@ -33,7 +33,6 @@ const GraphDoc: FC = () => {
     <div className={styles.container}>
       <h2>Docs</h2>
       {data && renderContent(buildClientSchema(data.data).getQueryType(), currentName)}
-      {/* {data && <ObjectDoc type={buildClientSchema(data.data).getQueryType()} />} */}
     </div>
   );
 };

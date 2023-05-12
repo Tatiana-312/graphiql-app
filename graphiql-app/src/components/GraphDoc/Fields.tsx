@@ -19,13 +19,13 @@ const Fields: FC<any> = ({ fields }) => {
     arrOfFields.push(value);
   });
 
-  const FIELDS = arrOfFields.map((field: any) => {
+  const renderFields = arrOfFields.map((field: any) => {
     return (
       <div key={`${uuidv4()}`}>
-        <p className='name' key={styles.name} onClick={() => updateName(field.name)}>
+        <p className="name" key={styles.name} onClick={() => updateName(field.name)}>
           {field.name}
         </p>
-        <p className='description' key={`${uuidv4()}`}>
+        <p className="description" key={`${uuidv4()}`}>
           {field.description}
         </p>
       </div>
@@ -35,8 +35,7 @@ const Fields: FC<any> = ({ fields }) => {
   return (
     <div>
       <h3>Fields</h3>
-      {/* {currentPlace.length ? FIELDS : <Field field={fields[currentPlace]}/>} */}
-      {FIELDS}
+      {renderFields}
     </div>
   );
 };

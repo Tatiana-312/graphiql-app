@@ -8,8 +8,8 @@ const Field: FC<any> = ({ field }) => {
   return (
     <div>
       <h3>Type</h3>
-      <p className='description'>{field.description}</p>
-      <p className='name'>{field.type.name}</p>
+      <p className="description">{field.description}</p>
+      <p className="name">{field.type.name}</p>
       <h3>Arguments</h3>
       <p>{field.args[0].name}</p>
     </div>
