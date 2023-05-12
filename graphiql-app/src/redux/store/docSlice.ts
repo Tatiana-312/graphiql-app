@@ -1,21 +1,26 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface DocState {
-  currentPlace: string;
+  currentName: string;
+  currentType: string;
 }
 
 const docSlice = createSlice({
   name: 'displayVariablesSection',
   initialState: {
-    currentPlace: '',
+    currentName: '/',
+    currentType: '',
   },
   reducers: {
-    updateCurrentPlace: (state: DocState, { payload }: PayloadAction<string>) => {
-      state.currentPlace = payload;
+    updateCurrentName: (state: DocState, { payload }: PayloadAction<string>) => {
+      state.currentName = payload;
+    },
+    updateCurrentType: (state: DocState, { payload }: PayloadAction<string>) => {
+      state.currentType = payload;
     },
   },
 });
 
-export const { updateCurrentPlace } = docSlice.actions;
+export const { updateCurrentName, updateCurrentType } = docSlice.actions;
 
 export default docSlice.reducer;
