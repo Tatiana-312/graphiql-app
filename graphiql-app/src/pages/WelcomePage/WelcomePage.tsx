@@ -36,7 +36,7 @@ export const WelcomePage: FC = () => {
         </div>
         <div className={styles.about_wrapper + ' wrapper'}>
           <div className={styles.about_app}>
-            <h3 className={styles.description_header}>{t('descrition-header')}</h3>
+            <h3 className={styles.description_header}>{t('description-header')}</h3>
             <p className={styles.description}>{t('description')}</p>
             <ul className={styles.list}>{createList()}</ul>
           </div>

@@ -81,8 +81,7 @@
   }
 }
 
-.photo_diana {
-  background-image: url('../../assets/images/DSC_0177_1.jpg');
+.photo {
   width: 190px;
   height: 190px;
   border-radius: 50%;
@@ -97,4 +96,12 @@
     height: 140px;
     background-size: 140px;
   }
+}
+
+.photo_diana {
+  background-image: url('../../assets/images/diana.jpg');
+}
+
+.photo_tatiana {
+  background-image: url('../../assets/images/tatiana.jpg');
 }
