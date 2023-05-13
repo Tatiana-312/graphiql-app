@@ -14,13 +14,13 @@ const Fields: FC<any> = ({ fields }) => {
 
 //   console.log('fields', fields);
 
-  const arrOfFields: any = [];
+//   const arrOfFields: any = [];
 
-  Object.entries(fields).forEach(([_key, value]) => {
-    arrOfFields.push(value);
-  });
+//   Object.entries(fields).forEach(([_key, value]) => {
+//     arrOfFields.push(value);
+//   });
 
-  const renderFields = arrOfFields.map((field: any) => {
+  const renderFields = fields.map((field: any) => {
     return (
       <div key={`${uuidv4()}`}>
         <p className="name" key={styles.name} onClick={() => updateName(field.name)}>

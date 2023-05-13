@@ -16,7 +16,7 @@ const ObjectDocType: FC<any> = ({ type }) => {
     <div>
       <h2 className={styles.title}>{type.name}</h2>
       <Description description={type.description}/>
-      <Fields fields={type.getFields()} />
+      <Fields fields={type.fields} />
     </div>
   );
 };

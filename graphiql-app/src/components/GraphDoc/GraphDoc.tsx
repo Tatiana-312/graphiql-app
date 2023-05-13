@@ -15,25 +15,26 @@ const GraphDoc: FC = () => {
 
   useEffect(() => {
     if (data) {
-      console.log((data.data.__schema));
+      console.log('SCHEMA', (data.data.__schema));
     }
   }, [data, getGraphQlSchema]);
 
-  const renderContent = (schemaType: any, currentName: string) => {
-    switch (currentName) {
-      case 'fields':
-        return <ObjectDocType type={schemaType} />;
-      case '/':
-        return <EntryDoc type={schemaType} />;
-      default:
-        return <Field field={schemaType.getFields()[currentName]} />;
-    }
-  };
+  // const renderContent = (schemaType: any, currentName: string) => {
+  //   switch (currentName) {
+  //     case 'fields':
+  //       return <ObjectDocType type={schemaType} />;
+  //     case '/':
+  //       return <EntryDoc type={schemaType} />;
+  //     default:
+  //       return <Field field={schemaType.getFields()[currentName]} />;
+  //   }
+  // };
 
   return (
     <div className={styles.container}>
       <h2>Docs</h2>
-      {data && renderContent(buildClientSchema(data.data).getQueryType(), currentName)}
+      {/* {data && renderContent(buildClientSchema(data.data).getQueryType(), currentName)} */}
+      {data && <ObjectDocType type={data.data.__schema.types[0]}/>}
     </div>
   );
 };
