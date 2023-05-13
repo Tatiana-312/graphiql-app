@@ -4,15 +4,17 @@ import './generalStyles.scss';
 import Description from './Description';
 
 const Field: FC<any> = ({ field }) => {
-  console.log('field', field);
+  // console.log('field', field);
 
   return (
     <div>
-      <h3>Type</h3>
+      <span className="name">{field.name}</span>
+      <span className="arg">
+        ({field.args.map((arg: any) => arg.name)}
+        ):
+      </span>
+      {/* TODO render arguments correctly */}
       <Description description={field.description} />
-      <p className="name">{field.type.name}</p>
-      <h3>Arguments</h3>
-      <p>{field.args[0].name}</p>
     </div>
   );
 };

@@ -12,29 +12,14 @@ const Fields: FC<any> = ({ fields }) => {
   const updateName = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
   const currentName = useAppSelector((state) => state.doc.currentName);
 
-//   console.log('fields', fields);
-
-//   const arrOfFields: any = [];
-
-//   Object.entries(fields).forEach(([_key, value]) => {
-//     arrOfFields.push(value);
-//   });
-
-  const renderFields = fields.map((field: any) => {
-    return (
-      <div key={`${uuidv4()}`}>
-        <p className="name" key={styles.name} onClick={() => updateName(field.name)}>
-          {field.name}
-        </p>
-        <Description description={field.description} />
-      </div>
-    );
-  });
+  console.log('fields', fields);
 
   return (
     <div>
-      <h3 className={styles.sub_title} >Fields</h3>
-      {renderFields}
+      <h3 className={styles.sub_title}>Fields</h3>
+      {fields.map((field: any) => (
+        <Field key={field.name} field={field} />
+      ))}
     </div>
   );
 };
