@@ -1,0 +1,26 @@
+.wrapper {
+  width: 100%;
+  max-width: $content-width;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: $content-small-width) {
+    max-width: $content-small-width;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media (max-width: $mobile-big-width) {
+    max-width: $mobile-big-width;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @media (max-width: $mobile-small-width) {
+    max-width: $mobile-small-width;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

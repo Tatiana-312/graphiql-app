@@ -1,12 +1,12 @@
 import styles from './AuthForm.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthFormProps, AuthFormFields } from '../../types/authTypes';
 
-const AuthForm = ({ submitFunction, type }: AuthFormProps) => {
+const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) => {
   const {
     register,
     handleSubmit,
