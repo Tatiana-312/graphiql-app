@@ -6,19 +6,19 @@ import { updateCurrentName } from '../../../redux/store/docSlice';
 import Description from '../Description';
 import styles from './typeStyles.module.scss';
 
-const ObjectDocType: FC<any> = ({ type }) => {
+const InputObjectDocType: FC<any> = ({ type }) => {
   const dispatch = useAppDispatch();
   const updateName = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
 
-  console.log('type', type);
+//   console.log('type', type);
 
   return (
     <div>
       <h2 className={styles.title}>{type.name}</h2>
       <Description description={type.description}/>
-      <Fields fields={type.getFields()} />
+    {/* TODO arguments */}
     </div>
   );
 };
 
-export default ObjectDocType;
+export default InputObjectDocType;

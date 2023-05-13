@@ -12,7 +12,7 @@ const Fields: FC<any> = ({ fields }) => {
   const updateName = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
   const currentName = useAppSelector((state) => state.doc.currentName);
 
-  console.log('fields', fields);
+//   console.log('fields', fields);
 
   const arrOfFields: any = [];
 
@@ -33,7 +33,7 @@ const Fields: FC<any> = ({ fields }) => {
 
   return (
     <div>
-      <h3>Fields</h3>
+      <h3 className={styles.sub_title} >Fields</h3>
       {renderFields}
     </div>
   );
