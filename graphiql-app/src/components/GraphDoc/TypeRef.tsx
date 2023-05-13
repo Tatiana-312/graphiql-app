@@ -1,35 +1,47 @@
-import { FC } from "react";
+import { FC } from 'react';
+import './generalStyles.scss';
+import { useAppDispatch } from '../../hooks/redux-hooks';
+import { addHistoryData, updateCurrentName } from '../../redux/store/docSlice';
+import { useGetGraphqlSchemaMutation } from '../../redux/graphqlApi';
 
 const TypeRef: FC<any> = ({ typeRef }) => {
+  const dispatch = useAppDispatch();
+  const addDataToHistory = (data: object) => dispatch(addHistoryData(data));
+  const [_getGraphQlSchema, { data }] = useGetGraphqlSchemaMutation({
+    fixedCacheKey: 'schemaKey',
+  });
 
-    if (typeRef.kind === 'OBJECT') {
-        return (
-            <a
-                href={`#${typeRef.name}`}
-            >
-                {typeRef.name}
-            </a>
-        );
-    } else if (typeRef.kind === "NON_NULL") {
-        return (
-            <span>
-                <TypeRef typeRef={typeRef.ofType} />
-                !
-            </span>
-        );
-    } else if (typeRef.kind === 'LIST') {
-        return (
-            <span>
-                [
-                <TypeRef typeRef={typeRef.ofType} />
-                ]
-            </span>
-        );
-    }
+  const currentData = data.data.__schema.types.filter((obj: any) => obj.name == typeRef.name);
 
-    throw new Error(`Unknown type ref: ${typeRef.toString()}`);
+  if (typeRef.kind === 'OBJECT' || typeRef.kind === 'SCALAR') {
+    return (
+      <span
+        className="name"
+        onClick={() => {
+          addDataToHistory(currentData[0]);
+        }}
+      >
+        {typeRef.name}
+      </span>
+    );
+  } else if (typeRef.kind === "NON_NULL") {
+    return (
+      <span>
+        <TypeRef typeRef={typeRef.ofType} />
+        !
+      </span>
+    );
+  } else if (typeRef.kind === 'LIST') {
+    return (
+      <span>
+        [
+        <TypeRef typeRef={typeRef.ofType} />
+        ]
+      </span>
+    );
+  }
 
-    // return (<span>{typeRef.name}</span>)
-}
+  throw new Error(`Unknown type ref: ${typeRef.toString()}`);
+};
 
 export default TypeRef;
