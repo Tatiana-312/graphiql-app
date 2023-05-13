@@ -3,19 +3,21 @@ import { FC } from 'react';
 import Fields from '../Fields';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
 import { updateCurrentName } from '../../../redux/store/docSlice';
+import Description from '../Description';
 
-const ObjectDoc: FC<any> = ({ type }) => {
+const ObjectDocType: FC<any> = ({ type }) => {
   const dispatch = useAppDispatch();
   const updateName = (currentPlace: string) => dispatch(updateCurrentName(currentPlace));
 
   console.log('type', type);
+
   return (
     <div>
-      <p className="title">{type.name}</p>
-      <p className="description">{type.description}</p>
+      <h3 className="title">{type.name}</h3>
+      <Description description={type.description}/>
       <Fields fields={type.getFields()} />
     </div>
   );
 };
 
-export default ObjectDoc;
+export default ObjectDocType;
