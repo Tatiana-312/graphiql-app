@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { updateCurrentName } from '../../redux/store/docSlice';
 import Field from './Field';
 import './generalStyles.scss';
+import Description from './Description';
 
 const Fields: FC<any> = ({ fields }) => {
   const dispatch = useAppDispatch();
@@ -25,9 +26,7 @@ const Fields: FC<any> = ({ fields }) => {
         <p className="name" key={styles.name} onClick={() => updateName(field.name)}>
           {field.name}
         </p>
-        <p className="description" key={`${uuidv4()}`}>
-          {field.description}
-        </p>
+        <Description description={field.description} />
       </div>
     );
   });
