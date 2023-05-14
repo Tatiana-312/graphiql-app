@@ -4,17 +4,20 @@ import { useGetGraphqlSchemaMutation } from '../../redux/graphqlApi';
 import { GraphQLSchema, buildClientSchema, isType, printSchema } from 'graphql';
 import './generalStyles.scss';
 import EntryDoc from './EntryDoc';
-import { useAppSelector } from '../../hooks/redux-hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import Field from './Field';
 import ObjectDocType from './DocTypes/ObjectDocType';
 import Fields from './Fields';
 import Scalar from './Scalar';
+import { removeHistoryData } from '../../redux/store/docSlice';
 
 const GraphDoc: FC = () => {
   const [getGraphQlSchema, { data, isLoading }] = useGetGraphqlSchemaMutation({
     fixedCacheKey: 'schemaKey',
   });
-  // const currentName = useAppSelector((state) => state.doc.currentName);
+
+  const dispatch = useAppDispatch();
+  const removeDataFromHistory = () => dispatch(removeHistoryData());
   const history = useAppSelector((state) => state.doc.history);
 
   useEffect(() => {
@@ -42,7 +45,10 @@ const GraphDoc: FC = () => {
 
   return (
     <div className={styles.container}>
-      <a href="#">{previousState?.name}</a>
+      <a href="#" onClick={() => {
+        currentData = previousState?.currentData;
+        removeDataFromHistory();
+      }}>{previousState?.name}</a>
       <h2>{currentName}</h2>
       {content}
     </div>

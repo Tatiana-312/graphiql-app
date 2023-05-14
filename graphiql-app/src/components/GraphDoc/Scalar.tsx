@@ -6,7 +6,7 @@ import styles from './DocTypes/typeStyles.module.scss';
 const Scalar: FC<any> = ({ type }) => {
   return (
     <div>
-      <h2 className={styles.title}>{type.name}</h2>
+      {/* <h2 className={styles.title}>{type.name}</h2> */}
       <Description description={type.description} />
     </div>
   );
