@@ -13,7 +13,7 @@ const TypeRef: FC<any> = ({ typeRef }) => {
 
   const currentData = data.data.__schema.types.filter((obj: any) => obj.name == typeRef.name);
 
-  if (typeRef.kind === 'OBJECT' || typeRef.kind === 'SCALAR') {
+  if (typeRef.kind === 'OBJECT' || typeRef.kind === 'SCALAR' || typeRef.kind === 'INPUT_OBJECT') {
     return (
       <span
         className="name"
@@ -29,13 +29,13 @@ const TypeRef: FC<any> = ({ typeRef }) => {
     );
   } else if (typeRef.kind === 'NON_NULL') {
     return (
-      <span>
+      <span className='span'>
         <TypeRef typeRef={typeRef.ofType} />!
       </span>
     );
   } else if (typeRef.kind === 'LIST') {
     return (
-      <span>
+      <span className='span'>
         [
         <TypeRef typeRef={typeRef.ofType} />]
       </span>

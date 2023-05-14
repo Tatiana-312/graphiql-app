@@ -2,21 +2,16 @@ import { FC } from 'react';
 import './generalStyles.scss';
 import Description from './Description';
 import TypeRef from './TypeRef';
+import Args from './Args';
 
 const Field: FC<any> = ({ field }) => {
   return (
     <div>
+      <div className='cont'>
       <span className="name">{field.name}</span>
-      {field.args.length !== 0 ? (
-        <span className="arg">
-          ({field.args.map((arg: any) => arg.name)}
-          ):
-        </span>
-      ) : (
-        ': '
-      )}
+      <Args args={field.args} />
       <TypeRef typeRef={field.type} />
-      {/* TODO render arguments correctly */}
+      </div>
       <Description description={field.description} />
     </div>
   );

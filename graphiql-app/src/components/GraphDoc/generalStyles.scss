@@ -11,3 +11,14 @@ p {
 .arg {
     color: blue;
 }
+
+.cont {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.span {
+    display: flex;
+    align-items: center;
+}

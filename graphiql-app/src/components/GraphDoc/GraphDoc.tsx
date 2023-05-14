@@ -35,6 +35,8 @@ const GraphDoc: FC = () => {
     content = <EntryDoc type={data.data.__schema.types[0]} />;
   } else if (currentData && currentData.kind === 'SCALAR') {
     content = <Scalar type={currentData} />;
+  } else if (currentData && currentData.kind === 'INPUT_OBJECT') {
+    content = 'INPUT_OBJECT';
   } else if (currentData && Object.keys(currentData).length !== 0) {
     content = <Fields fields={currentData.fields} />;
   }
