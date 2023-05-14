@@ -1,0 +1,95 @@
+@import '../../assets/styles/constants';
+
+.header {
+  background-color: $color-header;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  transition: 0.32s ease-in-out;
+  background-color: $color-header;
+  color: $color-font;
+}
+
+.scrolled {
+  padding: 0px 0;
+  padding-top: 8px;
+  background-color: $color-header-scrolled;
+}
+
+.header_wraper {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.graphql_header {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  @media (max-width: $mobile-big-width) {
+    width: 130px;
+  }
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
+  background-image: url(/graphQL_logo.svg);
+  background-size: 30px;
+  margin-right: 5px;
+}
+
+.user_btns {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  @media (max-width: $tablet-width) {
+    gap: 15px;
+  }
+}
+
+.sign_btn {
+  width: 120px;
+  height: 30px;
+  @media (max-width: $tablet-width) {
+    width: 105px;
+    font-size: 1.6rem;
+  }
+  @media (max-width: $mobile-big-width) {
+    display: none;
+  }
+}
+
+.sign_out_btn {
+  height: 30px;
+  @media (max-width: $mobile-big-width) {
+    font-size: 1.6rem;
+  }
+}
+
+.language {
+  cursor: pointer;
+}
+
+.title {
+  @media (max-width: $tablet-width) {
+    font-size: 2.4rem;
+  }
+  @media (max-width: $mobile-big-width) {
+    font-size: 2rem;
+  }
+}
+
+.burger {
+  height: 40px;
+  width: 40px;
+  background-image: url(../../assets/icons/menu.svg);
+  background-size: 40px;
+  cursor: pointer;
+  @media (min-width: 551px) {
+    display: none;
+  }
+}

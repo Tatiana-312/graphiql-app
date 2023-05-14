@@ -14,13 +14,15 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
+    "i18next": "^22.4.15",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.2",
     "@codemirror/commands": "^6.2.4",
     "@codemirror/lang-json": "^6.0.1",
     "@reduxjs/toolkit": "^1.9.5",
     "cm6-graphql": "^0.0.5",
     "graphql": "^16.6.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "sass": "^1.62.1"
   },
