@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styles from './Args.module.scss';
 import TypeRef from './TypeRef';
 import { v4 as uuidv4 } from 'uuid';
+import './generalStyles.scss';
 
 const Args: FC<any> = ({ args }) => {
   return (
@@ -13,12 +14,14 @@ const Args: FC<any> = ({ args }) => {
             if (index !== args.length - 1) {
               return (
                 <div key={uuidv4()} className={styles.arg + ' ' + styles.symbols}>
+                  <span className='name'>{arg.name}</span>:&nbsp;
                   <TypeRef typeRef={arg.type} />,
                 </div>
               );
             }
             return (
-              <div key={uuidv4()} className={styles.arg}>
+              <div key={uuidv4()} className={styles.arg + ' ' + styles.symbols}>
+                <span className='name'>{arg.name}</span>:&nbsp;
                 <TypeRef typeRef={arg.type} />
               </div>
             );

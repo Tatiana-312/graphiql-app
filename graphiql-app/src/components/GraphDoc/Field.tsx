@@ -6,7 +6,7 @@ import Args from './Args';
 
 const Field: FC<any> = ({ field }) => {
   return (
-    <div>
+    <div className='field-wrapper'>
       <div className='cont'>
       <span className="name">{field.name}</span>
       <Args args={field.args} />
