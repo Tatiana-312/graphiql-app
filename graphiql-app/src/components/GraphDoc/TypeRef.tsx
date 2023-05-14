@@ -1,17 +1,23 @@
 import { FC } from 'react';
 import './generalStyles.scss';
 import { useAppDispatch } from '../../hooks/redux-hooks';
-import { addHistoryData } from '../../redux/store/docSlice';
+import { MyObjectType, addHistoryData } from '../../redux/store/docSlice';
 import { useGetGraphqlSchemaMutation } from '../../redux/graphqlApi';
+import { FieldType, OfType, Type } from './docs.interface';
+interface TypeRefProps {
+  typeRef: Type | OfType;
+}
 
-const TypeRef: FC<any> = ({ typeRef }) => {
+const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
   const dispatch = useAppDispatch();
-  const addDataToHistory = (data: object) => dispatch(addHistoryData(data));
+  const addDataToHistory = (data: MyObjectType) => dispatch(addHistoryData(data));
   const [_getGraphQlSchema, { data }] = useGetGraphqlSchemaMutation({
     fixedCacheKey: 'schemaKey',
   });
 
-  const currentData = data.data.__schema.types.filter((obj: any) => obj.name == typeRef.name);
+  const currentData = data.data.__schema.types.filter(
+    (type: FieldType) => type.name == typeRef.name
+  );
 
   if (typeRef.kind === 'OBJECT' || typeRef.kind === 'SCALAR' || typeRef.kind === 'INPUT_OBJECT') {
     return (
@@ -29,15 +35,15 @@ const TypeRef: FC<any> = ({ typeRef }) => {
     );
   } else if (typeRef.kind === 'NON_NULL') {
     return (
-      <span className='span-flex span'>
-        <TypeRef typeRef={typeRef.ofType} />!
+      <span className="span-flex span">
+        <TypeRef typeRef={typeRef.ofType as OfType} />!
       </span>
     );
   } else if (typeRef.kind === 'LIST') {
     return (
-      <span className='span-flex span'>
+      <span className="span-flex span">
         [
-        <TypeRef typeRef={typeRef.ofType} />]
+        <TypeRef typeRef={typeRef.ofType as OfType} />]
       </span>
     );
   }

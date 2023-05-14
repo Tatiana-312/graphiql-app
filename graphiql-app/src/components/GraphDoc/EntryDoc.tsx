@@ -1,15 +1,20 @@
 import { FC } from 'react';
 import './generalStyles.scss';
 import { useAppDispatch } from '../../hooks/redux-hooks';
-import { addHistoryData } from '../../redux/store/docSlice';
+import { MyObjectType, addHistoryData } from '../../redux/store/docSlice';
+import { ObjectType } from './docs.interface';
 
-const EntryDoc: FC<any> = ({ type }) => {
+interface ObjectTypeProps {
+  type: ObjectType;
+}
+
+const EntryDoc: FC<ObjectTypeProps> = ({ type }) => {
   const dispatch = useAppDispatch();
-  const addData = (data: object) => dispatch(addHistoryData(data));
+  const addData = (data: MyObjectType) => dispatch(addHistoryData(data));
 
   return (
     <div>
-      <p className='sub-title'>Root Type</p>
+      <p className="sub-title">Root Type</p>
       <span className="name">query: </span>
       <span
         className="type"

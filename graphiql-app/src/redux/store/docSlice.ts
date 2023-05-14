@@ -1,7 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { InputObjectType, ObjectType, ScalarType } from '../../components/GraphDoc/docs.interface';
 
 interface DocState {
-  history: object[];
+  history: MyObjectType[];
+}
+export interface MyObjectType {
+  name: string;
+  currentData: object | ObjectType | ScalarType | InputObjectType;
 }
 
 const docSlice = createSlice({
@@ -15,7 +20,7 @@ const docSlice = createSlice({
     ],
   },
   reducers: {
-    addHistoryData: (state: DocState, { payload }: PayloadAction<object>) => {
+    addHistoryData: (state: DocState, { payload }: PayloadAction<MyObjectType>) => {
       state.history.push(payload);
     },
     removeHistoryData: (state: DocState) => {

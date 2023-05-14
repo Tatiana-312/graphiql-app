@@ -8,6 +8,7 @@ import Fields from './Fields';
 import Scalar from './Scalar';
 import { removeHistoryData } from '../../redux/store/docSlice';
 import InputObject from './InputObject';
+import { InputObjectType, ObjectType, ScalarType } from './docs.interface';
 
 const GraphDoc: FC = () => {
   const [getGraphQlSchema, { data, isLoading }] = useGetGraphqlSchemaMutation({
@@ -34,25 +35,34 @@ const GraphDoc: FC = () => {
     content = <p>Loading...</p>;
   } else if (data && history.length === 1) {
     content = <EntryDoc type={data.data.__schema.types[0]} />;
-  } else if (currentData && currentData.kind === 'SCALAR') {
-    content = <Scalar type={currentData} />;
-  } else if (currentData && currentData.kind === 'INPUT_OBJECT') {
-    content = <InputObject type={currentData} />;
+  } else if (
+    currentData &&
+    (currentData as ObjectType | ScalarType | InputObjectType).kind === 'SCALAR'
+  ) {
+    content = <Scalar type={currentData as ScalarType} />;
+  } else if (
+    currentData &&
+    (currentData as ObjectType | ScalarType | InputObjectType).kind === 'INPUT_OBJECT'
+  ) {
+    content = <InputObject type={currentData as InputObjectType} />;
   } else if (currentData && Object.keys(currentData).length !== 0) {
-    content = <Fields fields={currentData.fields} />;
+    content = <Fields fields={(currentData as ObjectType).fields} />;
   }
 
   return (
     <div className={styles.container}>
-      {history.length != 1 && <p className={styles.back}
-        onClick={() => {
-          currentData = previousState?.currentData;
-          removeLastDataFromHistory();
-        }}
-      >
-        &lt; {previousState?.name}
-      </p>}
-      <h2 className='title'>{currentName}</h2>
+      {history.length != 1 && (
+        <p
+          className={styles.back}
+          onClick={() => {
+            currentData = previousState?.currentData;
+            removeLastDataFromHistory();
+          }}
+        >
+          &lt; {previousState?.name}
+        </p>
+      )}
+      <h2 className="title">{currentName}</h2>
       {content}
     </div>
   );

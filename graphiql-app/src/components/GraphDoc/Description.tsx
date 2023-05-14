@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import styles from './Description.module.scss';
+interface DescriptionProps {
+  description: string;
+}
 
-const Description: FC<any> = ({ description }) => {
-  //   console.log('description', description);
+const Description: FC<DescriptionProps> = ({ description }) => {
   if (!description) return null;
 
   return (
