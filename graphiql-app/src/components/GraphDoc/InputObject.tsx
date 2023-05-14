@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import Description from '../Description';
-import InputFields from '../InputFields';
+import Description from './Description';
+import InputFields from './InputFields';
 
-const InputObjectDocType: FC<any> = ({ type }) => {
+const InputObject: FC<any> = ({ type }) => {
   return (
     <div>
       <Description description={type.description} />
@@ -11,4 +11,4 @@ const InputObjectDocType: FC<any> = ({ type }) => {
   );
 };
 
-export default InputObjectDocType;
+export default InputObject;
