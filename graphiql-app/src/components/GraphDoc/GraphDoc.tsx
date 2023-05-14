@@ -14,7 +14,7 @@ const GraphDoc: FC = () => {
   const [getGraphQlSchema, { data, isLoading }] = useGetGraphqlSchemaMutation({
     fixedCacheKey: 'schemaKey',
   });
-  const currentName = useAppSelector((state) => state.doc.currentName);
+  // const currentName = useAppSelector((state) => state.doc.currentName);
   const history = useAppSelector((state) => state.doc.history);
 
   useEffect(() => {
@@ -23,23 +23,27 @@ const GraphDoc: FC = () => {
     }
   }, [data, getGraphQlSchema]);
 
-  const currentData = history.at(-1);
+  let currentData = history.at(-1)?.currentData;
+  const currentName = history.at(-1)?.name;
+  const previousState = history.at(-2);
 
   let content;
 
   if (isLoading) {
     content = <p>Loading...</p>;
-  } else if (data && !history.length) {
+  } else if (data && history.length === 1) {
     content = <EntryDoc type={data.data.__schema.types[0]} />;
-  } else if (currentData && currentData.kind === 'SCALAR') {
+  } 
+  else if (currentData && currentData.kind === 'SCALAR') {
     content = <Scalar type={currentData} />;
-  } else if (currentData) {
+  } else if (currentData && Object.keys(currentData).length !== 0) {
     content = <Fields fields={currentData.fields} />;
   }
 
   return (
     <div className={styles.container}>
-      <h2>Docs</h2>
+      <a href="#">{previousState?.name}</a>
+      <h2>{currentName}</h2>
       {content}
     </div>
   );

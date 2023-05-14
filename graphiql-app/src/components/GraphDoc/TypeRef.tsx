@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import './generalStyles.scss';
 import { useAppDispatch } from '../../hooks/redux-hooks';
-import { addHistoryData, updateCurrentName } from '../../redux/store/docSlice';
+import { addHistoryData } from '../../redux/store/docSlice';
 import { useGetGraphqlSchemaMutation } from '../../redux/graphqlApi';
 
 const TypeRef: FC<any> = ({ typeRef }) => {
@@ -18,25 +18,26 @@ const TypeRef: FC<any> = ({ typeRef }) => {
       <span
         className="name"
         onClick={() => {
-          addDataToHistory(currentData[0]);
+          addDataToHistory({
+            name: typeRef.name,
+            currentData: currentData[0],
+          });
         }}
       >
         {typeRef.name}
       </span>
     );
-  } else if (typeRef.kind === "NON_NULL") {
+  } else if (typeRef.kind === 'NON_NULL') {
     return (
       <span>
-        <TypeRef typeRef={typeRef.ofType} />
-        !
+        <TypeRef typeRef={typeRef.ofType} />!
       </span>
     );
   } else if (typeRef.kind === 'LIST') {
     return (
       <span>
         [
-        <TypeRef typeRef={typeRef.ofType} />
-        ]
+        <TypeRef typeRef={typeRef.ofType} />]
       </span>
     );
   }
