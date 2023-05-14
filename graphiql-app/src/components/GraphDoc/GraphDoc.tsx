@@ -8,6 +8,7 @@ import { useAppSelector } from '../../hooks/redux-hooks';
 import Field from './Field';
 import ObjectDocType from './DocTypes/ObjectDocType';
 import Fields from './Fields';
+import Scalar from './Scalar';
 
 const GraphDoc: FC = () => {
   const [getGraphQlSchema, { data, isLoading }] = useGetGraphqlSchemaMutation({
@@ -31,7 +32,7 @@ const GraphDoc: FC = () => {
   } else if (data && !history.length) {
     content = <EntryDoc type={data.data.__schema.types[0]} />;
   } else if (currentData && currentData.kind === 'SCALAR') {
-    content = <p>SCALAR</p>;
+    content = <Scalar type={currentData} />;
   } else if (currentData) {
     content = <Fields fields={currentData.fields} />;
   }

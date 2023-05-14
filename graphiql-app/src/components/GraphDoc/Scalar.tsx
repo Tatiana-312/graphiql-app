@@ -1,9 +1,9 @@
 import { GraphQLObjectType } from 'graphql';
 import { FC } from 'react';
-import Description from '../Description';
-import styles from './typeStyles.module.scss';
+import Description from './Description';
+import styles from './DocTypes/typeStyles.module.scss';
 
-const ScalarDocType: FC<any> = ({ type }) => {
+const Scalar: FC<any> = ({ type }) => {
   return (
     <div>
       <h2 className={styles.title}>{type.name}</h2>
@@ -12,4 +12,4 @@ const ScalarDocType: FC<any> = ({ type }) => {
   );
 };
 
-export default ScalarDocType;
+export default Scalar;

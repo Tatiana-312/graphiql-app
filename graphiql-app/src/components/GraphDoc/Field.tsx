@@ -10,10 +10,10 @@ const Field: FC<any> = ({ field }) => {
   return (
     <div>
       <span className="name">{field.name}</span>
-      <span className="arg">
+      {field.args.length !== 0 ? <span className="arg">
         ({field.args.map((arg: any) => arg.name)}
         ):
-      </span>
+      </span> : ': '}
       <TypeRef typeRef={field.type}/>
       {/* TODO render arguments correctly */}
       <Description description={field.description} />
