@@ -16,7 +16,7 @@ const TypeRef: FC<any> = ({ typeRef }) => {
   if (typeRef.kind === 'OBJECT' || typeRef.kind === 'SCALAR' || typeRef.kind === 'INPUT_OBJECT') {
     return (
       <span
-        className="name"
+        className="type"
         onClick={() => {
           addDataToHistory({
             name: typeRef.name,
@@ -29,13 +29,13 @@ const TypeRef: FC<any> = ({ typeRef }) => {
     );
   } else if (typeRef.kind === 'NON_NULL') {
     return (
-      <span className='span'>
+      <span className='span-flex span'>
         <TypeRef typeRef={typeRef.ofType} />!
       </span>
     );
   } else if (typeRef.kind === 'LIST') {
     return (
-      <span className='span'>
+      <span className='span-flex span'>
         [
         <TypeRef typeRef={typeRef.ofType} />]
       </span>

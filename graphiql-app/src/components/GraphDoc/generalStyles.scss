@@ -1,11 +1,22 @@
-p {
+.title {
+    color: #ddd;
     margin-bottom: 10px;
 }
 
-.name {
+.sub-title {
+    color: #ddddddd7;
+    margin: 10px 0px;
+}
+
+.type {
     font-size: 20px;
-    color: rgb(163, 0, 0);
+    color: rgb(224, 179, 90);
     cursor: pointer;
+}
+
+.name {
+    color: #096;
+    font-size: 20px;
 }
 
 .arg {
@@ -16,9 +27,14 @@ p {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin: 10px 0px;
+}
+
+.span-flex {
+    display: flex;
+    align-items: center;
 }
 
 .span {
-    display: flex;
-    align-items: center;
+    color: #ddd;
 }

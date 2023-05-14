@@ -8,11 +8,11 @@ const Args: FC<any> = ({ args }) => {
     <div className={styles.args_wrapper}>
       {args.length ? (
         <div className={styles.args}>
-          <span className={styles.bracket_left}>(</span>
+          <span className={styles.bracket_left + ' ' + styles.symbols}>(</span>
           {args.map((arg: any, index: number) => {
             if (index !== args.length - 1) {
               return (
-                <div key={uuidv4()} className={styles.arg}>
+                <div key={uuidv4()} className={styles.arg + ' ' + styles.symbols}>
                   <TypeRef typeRef={arg.type} />,
                 </div>
               );
@@ -23,10 +23,10 @@ const Args: FC<any> = ({ args }) => {
               </div>
             );
           })}
-          <span>):&nbsp;</span>
+          <span className={styles.symbols}>):&nbsp;</span>
         </div>
       ) : (
-        <span>:&nbsp;</span>
+        <span className={styles.symbols}>:&nbsp;</span>
       )}
     </div>
   );

@@ -18,11 +18,11 @@ const GraphDoc: FC = () => {
   const removeLastDataFromHistory = () => dispatch(removeHistoryData());
   const history = useAppSelector((state) => state.doc.history);
 
-  useEffect(() => {
-    if (data) {
-      console.log('SCHEMA', data.data.__schema);
-    }
-  }, [data, getGraphQlSchema]);
+  // useEffect(() => {
+  //   if (data) {
+  //     console.log('SCHEMA', data.data.__schema);
+  //   }
+  // }, [data, getGraphQlSchema]);
 
   let currentData = history.at(-1)?.currentData;
   const currentName = history.at(-1)?.name;
@@ -37,23 +37,22 @@ const GraphDoc: FC = () => {
   } else if (currentData && currentData.kind === 'SCALAR') {
     content = <Scalar type={currentData} />;
   } else if (currentData && currentData.kind === 'INPUT_OBJECT') {
-    content = <InputObject type={currentData}/>
+    content = <InputObject type={currentData} />;
   } else if (currentData && Object.keys(currentData).length !== 0) {
     content = <Fields fields={currentData.fields} />;
   }
 
   return (
     <div className={styles.container}>
-      <a
-        href="#"
+      {history.length != 1 && <p className={styles.back}
         onClick={() => {
           currentData = previousState?.currentData;
           removeLastDataFromHistory();
         }}
       >
-        {previousState?.name}
-      </a>
-      <h2>{currentName}</h2>
+        &lt; {previousState?.name}
+      </p>}
+      <h2 className='title'>{currentName}</h2>
       {content}
     </div>
   );

@@ -9,10 +9,10 @@ const EntryDoc: FC<any> = ({ type }) => {
 
   return (
     <div>
-      <p>Root Type</p>
-      <span>query: </span>
+      <p className='sub-title'>Root Type</p>
+      <span className="name">query: </span>
       <span
-        className="name"
+        className="type"
         onClick={() =>
           addData({
             name: type.name,

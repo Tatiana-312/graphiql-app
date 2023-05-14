@@ -6,7 +6,7 @@ import './generalStyles.scss';
 const Fields: FC<any> = ({ fields }) => {
   return (
     <div>
-      <h3 className={styles.sub_title}>Fields</h3>
+      <h3 className='sub-title'>Fields</h3>
       {fields.map((field: any) => (
         <Field key={field.name} field={field} />
       ))}
