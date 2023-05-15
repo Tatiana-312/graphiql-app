@@ -1,3 +1,21 @@
+export interface SchemaType {
+  directives: Directive[];
+  mutationType: RootType | null;
+  queryType: RootType;
+  subscriptionType: RootType | null;
+  types: ObjectType[];
+}
+
+interface RootType {
+  name: string;
+}
+
+interface Directive {
+  args: ArgType[];
+  description: string;
+  locations: string[];
+  name: string;
+}
 export interface ObjectType {
   description: string;
   enumValues: null;
@@ -28,6 +46,35 @@ export interface InputObjectType {
   kind: string;
   name: string;
   possibleTypes: null;
+}
+
+export interface UnionType {
+  kind: string;
+  name: string;
+  description: string;
+  fields: null;
+  inputFields: null;
+  interfaces: null;
+  enumValues: null;
+  possibleTypes: OfType[];
+}
+
+export interface EnumType {
+  kind: string;
+  name: string;
+  description: string;
+  fields: null;
+  inputFields: null;
+  interfaces: null;
+  enumValues: EnumValueType[];
+  possibleTypes: null;
+}
+
+export interface EnumValueType {
+  name: string;
+  description: string;
+  isDeprecated: boolean;
+  deprecationReason: null;
 }
 
 export interface FieldType {
