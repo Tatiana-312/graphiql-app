@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import './generalStyles.scss';
-import TypeRef from './TypeRef';
+import '../generalStyles.scss';
+import TypeRef from '../TypeRef';
 import { v4 as uuidv4 } from 'uuid';
 import styles from './InputFields.module.scss';
-import { InputField } from './docs.interface';
+import { InputField } from '../docs.interface';
+
 interface InputFieldsProps {
   inputFields: InputField[];
 }

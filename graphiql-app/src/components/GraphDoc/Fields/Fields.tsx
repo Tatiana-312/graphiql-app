@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import styles from './Fields.module.scss';
 import Field from './Field';
-import './generalStyles.scss';
-import { FieldType } from './docs.interface';
+import '../generalStyles.scss';
+import { FieldType } from '../docs.interface';
+
 interface FieldsProps {
   fields: FieldType[];
 }

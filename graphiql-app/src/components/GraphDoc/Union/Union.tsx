@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import Description from './Description';
+import Description from '../Description';
 import PossibleTypes from './PossibleTypes';
-import { UnionType } from './docs.interface';
+import { UnionType } from '../docs.interface';
 
 interface UnionProps {
   type: UnionType;

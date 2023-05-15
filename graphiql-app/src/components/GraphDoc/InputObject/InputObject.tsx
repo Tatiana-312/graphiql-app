@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import Description from './Description';
+import Description from '../Description';
 import InputFields from './InputFields';
-import { InputObjectType } from './docs.interface';
+import { InputObjectType } from '../docs.interface';
+
 interface InputObjectProps {
   type: InputObjectType;
 }

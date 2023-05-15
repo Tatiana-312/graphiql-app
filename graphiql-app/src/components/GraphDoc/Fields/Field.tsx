@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import './generalStyles.scss';
-import Description from './Description';
-import TypeRef from './TypeRef';
+import '../generalStyles.scss';
+import Description from '../Description';
+import TypeRef from '../TypeRef';
 import Args from './Args';
-import { FieldType } from './docs.interface';
+import { FieldType } from '../docs.interface';
+
 interface FieldProps {
   field: FieldType;
 }

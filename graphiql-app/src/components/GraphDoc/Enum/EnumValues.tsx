@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import Description from './Description';
-import './generalStyles.scss';
+import Description from '../Description';
+import '../generalStyles.scss';
 import { v4 as uuidv4 } from 'uuid';
-import { EnumValueType } from './docs.interface';
+import { EnumValueType } from '../docs.interface';
 
 interface EnumValuesProps {
   enumValues: EnumValueType[];

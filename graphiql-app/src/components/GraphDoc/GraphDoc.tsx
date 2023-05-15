@@ -4,13 +4,13 @@ import { useGetGraphqlSchemaMutation } from '../../redux/graphqlApi';
 import './generalStyles.scss';
 import EntryDoc from './EntryDoc';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
-import Fields from './Fields';
+import Fields from './Fields/Fields';
 import Scalar from './Scalar';
 import { removeHistoryData } from '../../redux/store/docSlice';
-import InputObject from './InputObject';
+import InputObject from './InputObject/InputObject';
 import { EnumType, InputObjectType, ObjectType, ScalarType, UnionType } from './docs.interface';
-import Enum from './Enum';
-import Union from './Union';
+import Enum from './Enum/Enum';
+import Union from './Union/Union';
 
 const GraphDoc: FC = () => {
   const [getGraphQlSchema, { data, isLoading }] = useGetGraphqlSchemaMutation({

@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import styles from './Args.module.scss';
-import TypeRef from './TypeRef';
+import TypeRef from '../TypeRef';
 import { v4 as uuidv4 } from 'uuid';
-import './generalStyles.scss';
-import { ArgType } from './docs.interface';
+import '../generalStyles.scss';
+import { ArgType } from '../docs.interface';
+
 interface ArgsProps {
   args: ArgType[];
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import Description from './Description';
+import Description from '../Description';
 import EnumValues from './EnumValues';
-import { EnumType } from './docs.interface';
+import { EnumType } from '../docs.interface';
 
 interface EnumProps {
   type: EnumType;
