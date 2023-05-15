@@ -19,7 +19,13 @@ const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
     (type: FieldType) => type.name == typeRef.name
   );
 
-  if (typeRef.kind === 'OBJECT' || typeRef.kind === 'SCALAR' || typeRef.kind === 'INPUT_OBJECT') {
+  if (
+    typeRef.kind === 'OBJECT' ||
+    typeRef.kind === 'SCALAR' ||
+    typeRef.kind === 'INPUT_OBJECT' ||
+    typeRef.kind === 'ENUM' ||
+    typeRef.kind === 'UNION'
+  ) {
     return (
       <span
         className="type"
@@ -48,7 +54,7 @@ const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
     );
   }
 
-  throw new Error(`Unknown type ref: ${typeRef.toString()}`);
+  return <span>Unknown type!</span>;
 };
 
 export default TypeRef;

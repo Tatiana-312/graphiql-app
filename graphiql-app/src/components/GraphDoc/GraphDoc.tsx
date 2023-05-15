@@ -8,7 +8,9 @@ import Fields from './Fields';
 import Scalar from './Scalar';
 import { removeHistoryData } from '../../redux/store/docSlice';
 import InputObject from './InputObject';
-import { InputObjectType, ObjectType, ScalarType } from './docs.interface';
+import { EnumType, InputObjectType, ObjectType, ScalarType, UnionType } from './docs.interface';
+import Enum from './Enum';
+import Union from './Union';
 
 const GraphDoc: FC = () => {
   const [getGraphQlSchema, { data, isLoading }] = useGetGraphqlSchemaMutation({
@@ -34,17 +36,15 @@ const GraphDoc: FC = () => {
   if (isLoading) {
     content = <p>Loading...</p>;
   } else if (data && history.length === 1) {
-    content = <EntryDoc type={data.data.__schema.types[0]} />;
-  } else if (
-    currentData &&
-    (currentData as ObjectType | ScalarType | InputObjectType).kind === 'SCALAR'
-  ) {
+    content = <EntryDoc schema={data.data.__schema} />;
+  } else if ((currentData as ObjectType).kind === 'SCALAR') {
     content = <Scalar type={currentData as ScalarType} />;
-  } else if (
-    currentData &&
-    (currentData as ObjectType | ScalarType | InputObjectType).kind === 'INPUT_OBJECT'
-  ) {
+  } else if ((currentData as ObjectType).kind === 'INPUT_OBJECT') {
     content = <InputObject type={currentData as InputObjectType} />;
+  } else if ((currentData as ObjectType).kind === 'UNION') {
+    content = <Union type={currentData as UnionType} />;
+  } else if ((currentData as ObjectType).kind === 'ENUM') {
+    content = <Enum type={currentData as EnumType} />;
   } else if (currentData && Object.keys(currentData).length !== 0) {
     content = <Fields fields={(currentData as ObjectType).fields} />;
   }
