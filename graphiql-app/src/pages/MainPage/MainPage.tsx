@@ -1,7 +1,9 @@
-import GraphDoc from '../../components/GraphDoc/GraphDoc';
+import React, { Suspense } from 'react';
 import GraphRequestEditors from '../../components/GraphRequestEditors/GraphRequestEditors';
 import GraphResponse from '../../components/GraphResponse/GraphResponse';
 import styles from './MainPage.module.scss';
+
+const GraphDoc = React.lazy(() => import('../../components/GraphDoc/GraphDoc'));
 
 const MainPage = () => {
   return (
@@ -9,7 +11,9 @@ const MainPage = () => {
       <div className={styles.container}>
         <GraphRequestEditors />
         <GraphResponse />
-        <GraphDoc />
+        <Suspense fallback={<div>Documentation is Loading...</div>}>
+          <GraphDoc />
+        </Suspense>
       </div>
     </div>
   );
