@@ -3,6 +3,8 @@ import { InputObjectType, ObjectType, ScalarType } from '../../components/GraphD
 
 interface DocState {
   history: MyObjectType[];
+  active: boolean;
+  disable: boolean;
 }
 export interface MyObjectType {
   name: string;
@@ -18,6 +20,8 @@ const docSlice = createSlice({
         currentData: {},
       },
     ],
+    active: false,
+    disable: true,
   },
   reducers: {
     addHistoryData: (state: DocState, { payload }: PayloadAction<MyObjectType>) => {
@@ -26,9 +30,19 @@ const docSlice = createSlice({
     removeHistoryData: (state: DocState) => {
       state.history.pop();
     },
+    changeVisibility: (state: DocState) => {
+      state.active = !state.active;
+    },
+    disableButton: (state: DocState) => {
+      state.disable = true;
+    },
+    enableButton: (state: DocState) => {
+      state.disable = false;
+    },
   },
 });
 
-export const { addHistoryData, removeHistoryData } = docSlice.actions;
+export const { addHistoryData, removeHistoryData, changeVisibility, disableButton, enableButton } =
+  docSlice.actions;
 
 export default docSlice.reducer;

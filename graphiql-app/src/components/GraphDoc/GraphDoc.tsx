@@ -6,26 +6,30 @@ import EntryDoc from './EntryDoc';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import Fields from './Fields/Fields';
 import Scalar from './Scalar';
-import { removeHistoryData } from '../../redux/store/docSlice';
+import { disableButton, enableButton, removeHistoryData } from '../../redux/store/docSlice';
 import InputObject from './InputObject/InputObject';
 import { EnumType, InputObjectType, ObjectType, ScalarType, UnionType } from './docs.interface';
 import Enum from './Enum/Enum';
 import Union from './Union/Union';
 
 const GraphDoc: FC = () => {
-  const [getGraphQlSchema, { data, isLoading }] = useGetGraphqlSchemaMutation({
+  const [getGraphQlSchema, { data, isLoading, error, isError }] = useGetGraphqlSchemaMutation({
     fixedCacheKey: 'schemaKey',
   });
 
   const dispatch = useAppDispatch();
   const removeLastDataFromHistory = () => dispatch(removeHistoryData());
   const history = useAppSelector((state) => state.doc.history);
+  const isActive = useAppSelector((state) => state.doc.active);
+  const disableDocButton = () => dispatch(disableButton());
+  const enableDocButton = () => dispatch(enableButton());
 
-  // useEffect(() => {
-  //   if (data) {
-  //     console.log('SCHEMA', data.data.__schema);
-  //   }
-  // }, [data, getGraphQlSchema]);
+  useEffect(() => {
+    if (data) {
+      enableDocButton();
+      // console.log('SCHEMA', data.data.__schema);
+    }
+  }, [data, getGraphQlSchema]);
 
   let currentData = history.at(-1)?.currentData;
   const currentName = history.at(-1)?.name;
@@ -33,8 +37,10 @@ const GraphDoc: FC = () => {
 
   let content;
 
-  if (isLoading) {
-    content = <p>Loading...</p>;
+  if (isLoading || isError) {
+    disableDocButton();
+  } else if (error) {
+    console.log(error);
   } else if (data && history.length === 1) {
     content = <EntryDoc schema={data.data.__schema} />;
   } else if ((currentData as ObjectType).kind === 'SCALAR') {
@@ -49,8 +55,10 @@ const GraphDoc: FC = () => {
     content = <Fields fields={(currentData as ObjectType).fields} />;
   }
 
+  const styleClasses = isActive ? styles.container + ' ' + styles.active : styles.container;
+
   return (
-    <div className={styles.container}>
+    <div className={styleClasses}>
       {history.length != 1 && (
         <p
           className={styles.back}

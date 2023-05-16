@@ -12,7 +12,7 @@ const MainPage = () => {
       <div className={styles.container}>
         <GraphRequestEditors />
         <GraphResponse />
-        <Suspense fallback={<div>Documentation is Loading...</div>}>
+        <Suspense fallback={null}>
           <GraphDoc />
         </Suspense>
         <DocPanel />
