@@ -6,9 +6,11 @@ import displayVariablesSectionReducer from './displayVariablesSectionSlice';
 import optionsSectionTypeReducer from './optionsSectionTypeSlice';
 import parseErrorReducer from './parseError';
 import { graphqlApi } from '../graphqlApi';
+import userSlice from './userSlice';
 
 const store = configureStore({
   reducer: {
+    user: userSlice,
     requestSchema: requestSchemaReducer,
     requestVariables: requestVariablesReducer,
     requestHeaders: requestHeadersReducer,
