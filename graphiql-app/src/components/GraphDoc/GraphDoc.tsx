@@ -31,17 +31,19 @@ const GraphDoc: FC = () => {
     }
   }, [data, getGraphQlSchema]);
 
+  useEffect(() => {
+    if (isLoading || isError) {
+      disableDocButton();
+    }
+  }, [isLoading, isError]);
+
   let currentData = history.at(-1)?.currentData;
   const currentName = history.at(-1)?.name;
   const previousState = history.at(-2);
 
   let content;
 
-  if (isLoading || isError) {
-    disableDocButton();
-  } else if (error) {
-    console.log(error);
-  } else if (data && history.length === 1) {
+  if (data && history.length === 1) {
     content = <EntryDoc schema={data.data.__schema} />;
   } else if ((currentData as ObjectType).kind === 'SCALAR') {
     content = <Scalar type={currentData as ScalarType} />;
