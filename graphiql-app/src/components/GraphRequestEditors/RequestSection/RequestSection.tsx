@@ -35,9 +35,9 @@ const RequestSection: FC = () => {
     if (!requestEditorParent) return;
 
     if (error) {
-      console.log('Errorrrrrr', error);
       toast.error('Fetch schema error!', {
         theme: 'dark',
+        autoClose: 3000,
         style: { background: '#3d3d3d' },
       });
 
