@@ -7,6 +7,7 @@ import OptionsSection from './OptionsSection/OptionsSection';
 import { API_URL } from '../../utils/constants';
 import { addParseError } from '../../redux/store/parseError';
 import { checkIsValidHeaders, checkIsValidVariables } from '../../utils/checkIsValidJson';
+import { toast } from 'react-toastify';
 
 const GraphRequestEditors: FC = () => {
   const dispatch = useAppDispatch();
@@ -45,7 +46,10 @@ const GraphRequestEditors: FC = () => {
 
       await trigger(options);
     } catch (err) {
-      addCustomError(JSON.parse((err as Error).message));
+      toast.error((err as Error).message, {
+        theme: 'dark',
+        style: { background: '#3d3d3d' },
+      });
     }
   };
 
