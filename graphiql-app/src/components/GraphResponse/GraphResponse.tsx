@@ -3,7 +3,6 @@ import { EditorView } from '@codemirror/view';
 import { Compartment, EditorState } from '@codemirror/state';
 import { syntaxHighlighting } from '@codemirror/language';
 import { myHighlightStyle } from '../GraphRequestEditors/editorStyles';
-import { useAppSelector } from '../../hooks/redux-hooks';
 import { json } from '@codemirror/lang-json';
 import styles from './GraphResponse.module.scss';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
@@ -11,7 +10,6 @@ import { myResponseTheme } from './responseEditorStyles';
 
 const GraphResponse: FC = () => {
   const responseParent = useRef(null);
-  const parseError = useAppSelector((state) => state.parseError);
   const [editor, setEditor] = useState<EditorView>();
 
   const [trigger, { data, error }] = useGetGraphqlMutation({ fixedCacheKey: 'myCacheKey' });
@@ -40,10 +38,6 @@ const GraphResponse: FC = () => {
       changes: { from: 0, to: editor.state.doc.length, insert: JSON.stringify(data, null, 2) },
     });
   };
-
-  useEffect(() => {
-    changeResponseData(parseError);
-  }, [parseError]);
 
   useEffect(() => {
     if (error) {

@@ -1,0 +1,46 @@
+.title {
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.sub-title {
+    color: #ddddddd7;
+    margin: 10px 0px;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.type {
+    font-size: 20px;
+    color: rgb(224, 179, 90);
+    cursor: pointer;
+}
+
+.name {
+    color: #096;
+    font-size: 20px;
+}
+
+.arg {
+    color: blue;
+}
+
+.cont {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.span-flex {
+    display: flex;
+    align-items: center;
+}
+
+.span {
+    color: #ddd;
+}
+
+.field-wrapper {
+    border-bottom: 1px solid #72727235;
+}

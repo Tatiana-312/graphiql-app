@@ -8,10 +8,12 @@ import { myTheme } from '../editorStyles';
 import { myHighlightStyle } from '../editorStyles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks';
 import { addRequestSchema } from '../../../redux/store/requestSchemaSlice';
-import { buildClientSchema, getIntrospectionQuery } from 'graphql';
+import { buildClientSchema } from 'graphql';
 import { API_URL } from '../../../utils/constants';
 import { useGetGraphqlSchemaMutation } from '../../../redux/graphqlApi';
 import styles from './RequestSection.module.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RequestSection: FC = () => {
   const requestEditorParent = useRef(null);
@@ -21,58 +23,77 @@ const RequestSection: FC = () => {
   const querySchema = useAppSelector((state) => state.requestSchema);
   const isOptionsSectionShown = useAppSelector((state) => state.displayVariablesSection.active);
 
-  const [trigger, { data }] = useGetGraphqlSchemaMutation();
+  const [getGraphQlSchema, { data, error, isError }] = useGetGraphqlSchemaMutation({
+    fixedCacheKey: 'schemaKey',
+  });
 
   useEffect(() => {
-    const options = {
-      url: API_URL,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        operationName: 'IntrospectionQuery',
-        query: getIntrospectionQuery(),
-      }),
-    };
-
-    trigger(options);
+    getGraphQlSchema(API_URL);
   }, []);
 
   useEffect(() => {
-    if (!requestEditorParent || !data) return;
+    if (!requestEditorParent) return;
 
-    const view = new EditorView({
-      doc: querySchema,
-      extensions: [
-        EditorView.updateListener.of((e) => {
-          addQuerySchema(e.state.doc.toString());
-        }),
-        myTheme,
-        bracketMatching(),
-        closeBrackets(),
-        history(),
-        autocompletion(),
-        lineNumbers(),
-        keymap.of(defaultKeymap),
-        syntaxHighlighting(myHighlightStyle),
-        graphql(buildClientSchema(data.data), {
-          onShowInDocs(field, type, parentType) {
-            alert(`Showing in docs.: Field: ${field}, Type: ${type}, ParentType: ${parentType}`);
-          },
-          onFillAllFields(_view, _schema, _query, _cursor, token) {
-            alert(`Filling all fields. Token: ${token}`);
-          },
-        }),
-      ],
-      parent: requestEditorParent.current!,
-    });
-    return () => view.destroy();
-  }, [requestEditorParent.current, data]);
+    if (error) {
+      toast.error('Fetch schema error!', {
+        theme: 'dark',
+        autoClose: 3000,
+        style: { background: '#3d3d3d' },
+      });
+
+      const view = new EditorView({
+        doc: querySchema,
+        extensions: [
+          EditorView.updateListener.of((e) => {
+            addQuerySchema(e.state.doc.toString());
+          }),
+          myTheme,
+          bracketMatching(),
+          closeBrackets(),
+          history(),
+          autocompletion(),
+          lineNumbers(),
+          keymap.of(defaultKeymap),
+          syntaxHighlighting(myHighlightStyle),
+          graphql(),
+        ],
+        parent: requestEditorParent.current!,
+      });
+      return () => view.destroy();
+    } else if (data) {
+      const view = new EditorView({
+        doc: querySchema,
+        extensions: [
+          EditorView.updateListener.of((e) => {
+            addQuerySchema(e.state.doc.toString());
+          }),
+          myTheme,
+          bracketMatching(),
+          closeBrackets(),
+          history(),
+          autocompletion(),
+          lineNumbers(),
+          keymap.of(defaultKeymap),
+          syntaxHighlighting(myHighlightStyle),
+          graphql(buildClientSchema(data.data), {
+            onShowInDocs(field, type, parentType) {
+              alert(`Showing in docs.: Field: ${field}, Type: ${type}, ParentType: ${parentType}`);
+            },
+            onFillAllFields(_view, _schema, _query, _cursor, token) {
+              alert(`Filling all fields. Token: ${token}`);
+            },
+          }),
+        ],
+        parent: requestEditorParent.current!,
+      });
+      return () => view.destroy();
+    }
+  }, [requestEditorParent.current, data, error]);
 
   return (
-    <div
-      className={isOptionsSectionShown ? styles.small : styles.big}
-      ref={requestEditorParent}
-    ></div>
+    <div className={isOptionsSectionShown ? styles.small : styles.big} ref={requestEditorParent}>
+      <ToastContainer position="top-center" />
+    </div>
   );
 };
 

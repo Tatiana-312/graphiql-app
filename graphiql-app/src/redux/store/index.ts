@@ -4,7 +4,7 @@ import requestVariablesReducer from './requestVariablesSlice';
 import requestHeadersReducer from './requestHeadersSlice';
 import displayVariablesSectionReducer from './displayVariablesSectionSlice';
 import optionsSectionTypeReducer from './optionsSectionTypeSlice';
-import parseErrorReducer from './parseError';
+import docReducer from './docSlice';
 import { graphqlApi } from '../graphqlApi';
 import userSlice from './userSlice';
 
@@ -16,7 +16,7 @@ const store = configureStore({
     requestHeaders: requestHeadersReducer,
     displayVariablesSection: displayVariablesSectionReducer,
     optionsSectionType: optionsSectionTypeReducer,
-    parseError: parseErrorReducer,
+    doc: docReducer,
     [graphqlApi.reducerPath]: graphqlApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(graphqlApi.middleware),

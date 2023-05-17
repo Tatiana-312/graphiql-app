@@ -28,7 +28,7 @@ export const myOptionsOpenTheme = EditorView.theme(
   {
     ...generalTheme,
     '.variables-editor > &, .headers-editor > &': {
-      height: '10vh',
+      height: '15vh',
       padding: '0px',
     },
   },

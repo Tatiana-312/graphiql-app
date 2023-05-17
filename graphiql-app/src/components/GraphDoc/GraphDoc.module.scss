@@ -1,0 +1,33 @@
+.container {
+  width: 0%;
+  padding: 0px;
+  background-color: #3d3d3d;
+  border: none;
+  height: 100vh;
+  overflow: auto;
+}
+
+.back {
+  color: #ddddddd7;
+  cursor: pointer;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.active {
+  width: 30%;
+  padding: 15px;
+  border-left: 1px solid #727272;
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: 0px;
+    order: 1;
+  }
+
+  .active {
+    width: 100%;
+    height: calc(100vh - 65px);
+  }
+}

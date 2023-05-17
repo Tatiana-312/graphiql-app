@@ -1,0 +1,20 @@
+.args {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.arg {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.bracket_left {
+  padding-right: 5px;
+}
+
+.symbols {
+  color: #ddd;
+  font-size: 20px;
+}

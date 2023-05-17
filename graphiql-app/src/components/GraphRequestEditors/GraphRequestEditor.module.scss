@@ -1,12 +1,6 @@
 .container {
   display: flex;
-  width: 50%;
-}
-
-@media (max-width: 600px) {
-  .container {
-    width: 100%;
-  }
+  width: 33%;
 }
 
 .form {
@@ -34,4 +28,15 @@
   font-size: 16px;
   margin: 15px;
   flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    order: 2;
+  }
+
+  .form {
+    height: calc(100vh - 65px);
+  }
 }
