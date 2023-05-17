@@ -1,4 +1,4 @@
-@import '../../assets/styles/constants';
+@import '../../../assets/styles/constants';
 
 .header {
   background-color: $color-header;
@@ -17,7 +17,7 @@
   background-color: $color-header-scrolled;
 }
 
-.header_wraper {
+.header_wrapper {
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -54,6 +54,11 @@
 .sign_btn {
   width: 120px;
   height: 30px;
+  color: black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media (max-width: $tablet-width) {
     width: 105px;
     font-size: 1.6rem;

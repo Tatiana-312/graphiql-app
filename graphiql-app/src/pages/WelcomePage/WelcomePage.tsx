@@ -1,13 +1,12 @@
 import { FC } from 'react';
-import { Header } from '../../components/Header/Header';
 import { useTranslation } from 'react-i18next';
 import styles from './WelcomePage.module.scss';
 import { Team } from '../../components/Team/Team';
-import { Footer } from '../../components/Footer/Footer';
+import { useAuth } from '../../hooks/use-auth';
 
 export const WelcomePage: FC = () => {
   const { t } = useTranslation();
-  const isAuthorized = false;
+  const { isAuth } = useAuth();
 
   function createList() {
     const arr = new Array(5).fill(0).map((el, i) => {
@@ -24,14 +23,11 @@ export const WelcomePage: FC = () => {
 
   return (
     <>
-      <Header isAuthorized={isAuthorized} />
       <main className={styles.main}>
         <div className={styles.welcome}>
           <div className="wrapper">
             <h2 className={styles.greeting}>{t('welcome')}</h2>
-            {isAuthorized && (
-              <button className={'btn ' + styles.get_started_btn}>{t('start')}</button>
-            )}
+            {isAuth && <button className={'btn ' + styles.get_started_btn}>{t('start')}</button>}
           </div>
         </div>
         <div className={styles.about_wrapper + ' wrapper'}>
@@ -42,7 +38,6 @@ export const WelcomePage: FC = () => {
           </div>
         </div>
         <Team />
-        <Footer />
       </main>
     </>
   );
