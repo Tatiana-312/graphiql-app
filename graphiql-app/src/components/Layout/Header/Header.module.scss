@@ -29,6 +29,7 @@
   width: 200px;
   display: flex;
   align-items: center;
+  color: white;
   @media (max-width: $mobile-big-width) {
     width: 130px;
   }
@@ -54,14 +55,17 @@
 .sign_btn {
   width: 120px;
   height: 30px;
-  color: black;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   @media (max-width: $tablet-width) {
     width: 105px;
     font-size: 1.6rem;
+  }
+}
+
+.link_btns {
+  display: flex;
+  gap: 30px;
+  @media (max-width: $tablet-width) {
+    gap: 15px;
   }
   @media (max-width: $mobile-big-width) {
     display: none;
@@ -70,8 +74,10 @@
 
 .sign_out_btn {
   height: 30px;
+  width: 100px;
   @media (max-width: $mobile-big-width) {
     font-size: 1.6rem;
+    width: 85px;
   }
 }
 
@@ -91,7 +97,7 @@
 .burger {
   height: 40px;
   width: 40px;
-  background-image: url(../../assets/icons/menu.svg);
+  background-image: url(../../../assets/icons/menu.svg);
   background-size: 40px;
   cursor: pointer;
   @media (min-width: 551px) {

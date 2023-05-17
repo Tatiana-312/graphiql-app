@@ -33,3 +33,9 @@ a {
 li {
   list-style: none;
 }
+
+main {
+  min-height: calc(100vh - 180px);
+  position: relative;
+  top: 80px;
+}

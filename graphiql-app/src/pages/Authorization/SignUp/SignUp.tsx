@@ -28,9 +28,9 @@ const SignUp: FC = () => {
   };
 
   return (
-    <>
+    <main>
       <AuthForm submitFunction={handleSignUp} type="SignUp" />
-    </>
+    </main>
   );
 };
 

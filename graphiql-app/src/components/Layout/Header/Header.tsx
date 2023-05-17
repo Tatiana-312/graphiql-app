@@ -47,10 +47,10 @@ export const Header: FC = () => {
       {burger ? <BurgerMenu onClick={clickBurgerHandler} /> : null}
       <div className="wrapper">
         <div className={styles.header_wrapper}>
-          <div className={styles.graphql_header}>
+          <Link to="/" className={styles.graphql_header}>
             <div className={styles.logo}></div>
             <h1 className={styles.title}>GraphiQL</h1>
-          </div>
+          </Link>
           <div className={styles.user_btns}>
             <div className={styles.language} onClick={clickLangHandler}>
               {language}
@@ -68,12 +68,14 @@ export const Header: FC = () => {
             ) : (
               <>
                 <div className={styles.burger} onClick={clickBurgerHandler}></div>
-                <Link to="/sign-in" className={'btn ' + styles.sign_btn}>
-                  {t('sign-in')}
-                </Link>
-                <Link to="/sign-up" className={'btn ' + styles.sign_btn}>
-                  {t('sign-up')}
-                </Link>
+                <div className={styles.link_btns}>
+                  <Link to="/sign-in" className={'btn ' + styles.sign_btn}>
+                    {t('sign-in')}
+                  </Link>
+                  <Link to="/sign-up" className={'btn ' + styles.sign_btn}>
+                    {t('sign-up')}
+                  </Link>
+                </div>
               </>
             )}
           </div>

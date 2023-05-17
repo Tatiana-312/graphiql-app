@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Burger.module.scss';
+import { Link } from 'react-router-dom';
 
 interface BurgerProps {
   onClick: () => void;
@@ -13,8 +14,12 @@ export const BurgerMenu: FC<BurgerProps> = ({ onClick }) => {
     <div className={styles.burger_background} onClick={() => onClick()}>
       <div className={styles.burger_btns} onClick={(e) => e.stopPropagation()}>
         <div className={styles.close} onClick={() => onClick()}></div>
-        <button className={'btn ' + styles.sign_btn}>{t('sign-in')}</button>
-        <button className={'btn ' + styles.sign_btn}>{t('sign-up')}</button>
+        <Link to="/sign-in" className={'btn ' + styles.sign_btn} onClick={() => onClick()}>
+          {t('sign-in')}
+        </Link>
+        <Link to="/sign-up" className={'btn ' + styles.sign_btn} onClick={() => onClick()}>
+          {t('sign-up')}
+        </Link>
       </div>
     </div>
   );
