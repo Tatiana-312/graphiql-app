@@ -23,3 +23,10 @@
 .disable {
   background-color: #727272;
 }
+
+@media (max-width: 600px) {
+  .panel {
+    order: 0;
+    border-bottom: 1px solid #727272;
+  }
+}
