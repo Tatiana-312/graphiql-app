@@ -22,7 +22,7 @@ const SignUp: FC = () => {
             token: user.refreshToken,
           })
         );
-        navigate('/');
+        navigate('/main');
       })
       .catch(console.error);
   };

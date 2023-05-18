@@ -26,7 +26,7 @@ const SignIn: FC = () => {
             token: user.refreshToken,
           })
         );
-        navigate('/');
+        navigate('/main');
       })
       .catch((error) => {
         const errorMessage = error.message;
