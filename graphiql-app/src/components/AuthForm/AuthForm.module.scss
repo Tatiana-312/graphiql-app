@@ -2,6 +2,7 @@ $yellow: #f5ba1a;
 $yellow: #c715be;
 $black: #000000;
 $grey: #cccccc;
+@import '../../assets/styles/constants';
 
 body {
   font-family: Verdana, Geneva, sans-serif;
@@ -499,5 +500,5 @@ body {
 
 footer {
   position: relative;
-  top: 80px;
+  top: $header-height;
 }
