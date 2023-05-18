@@ -58,7 +58,7 @@ const GraphRequestEditors: FC = () => {
           <RequestSection />
           <OptionsSection />
         </div>
-        <button className={styles.get_button} type="submit">
+        <button className={'btn ' + styles.get_button} type="submit">
           ►
         </button>
       </form>

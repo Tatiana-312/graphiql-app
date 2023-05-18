@@ -13,7 +13,11 @@ const DocPanel = () => {
 
   return (
     <div className={styles.panel}>
-      <button className={classesWithDisable} onClick={() => updateVisibilityState()} disabled={isDisableButton}>
+      <button
+        className={'btn ' + classesWithDisable}
+        onClick={() => updateVisibilityState()}
+        disabled={isDisableButton}
+      >
         Doc
       </button>
     </div>
