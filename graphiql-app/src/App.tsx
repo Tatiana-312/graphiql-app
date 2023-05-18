@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import SignIn from './pages/Authorization/SignIn/SignIn';
 import SignUp from './pages/Authorization/SignUp/SignUp';
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
@@ -40,7 +40,7 @@ function App() {
   }, []);
 
   if (pending) {
-    return <>Loading...</>; //будем ли делать красивый компонент?
+    return <>Loading...</>;
   }
 
   return (

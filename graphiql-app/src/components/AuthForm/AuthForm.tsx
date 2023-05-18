@@ -5,6 +5,7 @@ import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthFormProps, AuthFormFields } from '../../types/authTypes';
+import { useTranslation } from 'react-i18next';
 
 const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) => {
   const {
@@ -15,31 +16,32 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
   } = useForm<AuthFormFields>({
     reValidateMode: 'onSubmit',
   });
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (formState.errors.email?.type === 'required') {
-      toast.error('Email is required', {
+      toast.error(`${t('email-required')}`, {
         toastId: 'emailRequired',
       });
     }
 
     formState.errors.password?.type === 'required' &&
-      toast.error('Password is required', {
+      toast.error(`${t('password-required')}`, {
         toastId: 'passwordRequired',
       });
 
     formState.errors.email?.type === 'pattern' &&
-      toast.error('Invalid email pattern', {
+      toast.error(`${t('invalid-email')}`, {
         toastId: 'emailPattern',
       });
 
     formState.errors.password?.type === 'minLength' &&
-      toast.error('Password must have at least 8 characters', {
+      toast.error(`${t('password-length')}`, {
         toastId: 'minLength',
       });
 
     formState.errors.password?.type === 'pattern' &&
-      toast.error('Password must have at least one letter, one digit, and one special character', {
+      toast.error(`${t('password-pattern')}`, {
         toastId: 'pattern',
       });
   }, [formState]);
@@ -50,7 +52,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
       <div className={styles.form_wrapper}>
         <div className={styles.form_container}>
           <div className={styles.title_container}>
-            <h2>Sign Up</h2>
+            <h2>{t('sign-up')}</h2>
           </div>
           <div className={`${styles.row} ${styles.clearfix}`}>
             <div>
@@ -62,7 +64,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                   </span>
                   <input
                     className={`${errors.email && styles.error}`}
-                    placeholder="Email"
+                    placeholder={`${t('email')}`}
                     {...register('email', {
                       ...(type === 'SignUp' && {
                         required: true,
@@ -79,7 +81,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                   </span>
                   <input
                     className={`${errors.password && styles.error}`}
-                    placeholder="Password"
+                    placeholder={`${t('password')}`}
                     {...register('password', {
                       ...(type === 'SignUp' && {
                         required: true,
@@ -89,7 +91,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                     })}
                   />
                 </div>
-                <input className={styles.button} type="submit" value="Register" />
+                <input className={styles.button} type="submit" value={`${t('register')}`} />
               </form>
             </div>
           </div>
