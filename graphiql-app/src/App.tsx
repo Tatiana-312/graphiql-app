@@ -10,6 +10,7 @@ import { setUser, setPending } from './redux/store/userSlice';
 import { useAuth } from './hooks/use-auth';
 import Layout from './components/Layout/Layout';
 import MainPage from './pages/MainPage/MainPage';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -53,6 +54,7 @@ function App() {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
           </Route>
+          <Route path="/*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

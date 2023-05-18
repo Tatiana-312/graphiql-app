@@ -34,6 +34,7 @@ export const resources = {
       'password-length': 'Password must have at least 8 characters',
       'password-pattern':
         'Password must have at least one letter, one digit, and one special character',
+      'not-found': 'Page not found :(',
     },
   },
   RUS: {
@@ -71,6 +72,7 @@ export const resources = {
       'password-length': 'Пароль должен состоять минимум из 8 символов',
       'password-pattern':
         'Пароль должен содержать хотя бы одну букву латинского алфавита, одну цифру и один специальный символ',
+      'not-found': 'Страница не найдена :(',
     },
   },
 };
