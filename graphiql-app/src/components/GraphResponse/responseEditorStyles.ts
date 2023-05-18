@@ -23,7 +23,7 @@ export const myResponseTheme = EditorView.theme(
   {
     ...generalTheme,
     '.response > &': {
-      height: '100vh',
+      height: 'calc(100vh - 80px)',
       backgroundColor: '#494949',
     },
   },
