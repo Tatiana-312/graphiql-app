@@ -24,23 +24,14 @@ const WelcomePage: FC = () => {
 
   return (
     <>
-<<<<<<< HEAD
-=======
-      <Header isAuthorized={isAuthorized} />
->>>>>>> develop
       <main className={styles.main}>
         <div className={styles.welcome}>
           <div className="wrapper">
             <h2 className={styles.greeting}>{t('welcome')}</h2>
-<<<<<<< HEAD
             {isAuth && (
               <Link to="/main" className={'btn ' + styles.get_started_btn}>
                 {t('start')}
               </Link>
-=======
-            {isAuthorized && (
-              <button className={'btn ' + styles.get_started_btn}>{t('start')}</button>
->>>>>>> develop
             )}
           </div>
         </div>
@@ -52,16 +43,9 @@ const WelcomePage: FC = () => {
           </div>
         </div>
         <Team />
-<<<<<<< HEAD
-=======
-        <Footer />
->>>>>>> develop
       </main>
     </>
   );
 };
-<<<<<<< HEAD
 
 export default WelcomePage;
-=======
->>>>>>> develop
