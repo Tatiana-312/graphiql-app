@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './WelcomePage.module.scss';
-import { Team } from '../../components/Team/Team';
+import Team from '../../components/Team/Team';
 import { useAuth } from '../../hooks/use-auth';
 import { Link } from 'react-router-dom';
 
-export const WelcomePage: FC = () => {
+const WelcomePage: FC = () => {
   const { t } = useTranslation();
   const { isAuth } = useAuth();
 
@@ -47,3 +47,5 @@ export const WelcomePage: FC = () => {
     </>
   );
 };
+
+export default WelcomePage;

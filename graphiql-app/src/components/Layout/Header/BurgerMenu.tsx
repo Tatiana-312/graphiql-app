@@ -7,7 +7,7 @@ interface BurgerProps {
   onClick: () => void;
 }
 
-export const BurgerMenu: FC<BurgerProps> = ({ onClick }) => {
+const BurgerMenu: FC<BurgerProps> = ({ onClick }) => {
   const { t } = useTranslation();
 
   return (
@@ -24,3 +24,5 @@ export const BurgerMenu: FC<BurgerProps> = ({ onClick }) => {
     </div>
   );
 };
+
+export default BurgerMenu;

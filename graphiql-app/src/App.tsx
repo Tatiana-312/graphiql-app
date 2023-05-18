@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import SignIn from './pages/Authorization/SignIn/SignIn';
 import SignUp from './pages/Authorization/SignUp/SignUp';
-import { WelcomePage } from './pages/WelcomePage/WelcomePage';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 import PrivateRoute from './components/PrivateRoute';
 import { useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';

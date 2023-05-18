@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './Team.module.scss';
 import { useTranslation } from 'react-i18next';
 
-export const Team: FC = () => {
+const Team: FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -41,3 +41,5 @@ export const Team: FC = () => {
     </div>
   );
 };
+
+export default Team;

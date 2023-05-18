@@ -2,14 +2,14 @@ import { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Header.module.scss';
-import { BurgerMenu } from './BurgerMenu';
+import BurgerMenu from './BurgerMenu';
 import { useAuth } from '../../../hooks/use-auth';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
 import { getAuth, signOut } from 'firebase/auth';
 import { removeUser } from '../../../redux/store/userSlice';
 import { Link } from 'react-router-dom';
 
-export const Header: FC = () => {
+const Header: FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [language, setLanguage] = useState('ENG');
   const [burger, setBurger] = useState(false);
@@ -84,3 +84,5 @@ export const Header: FC = () => {
     </header>
   );
 };
+
+export default Header;
