@@ -4,6 +4,7 @@ import Description from '../Description';
 import TypeRef from '../TypeRef';
 import Args from './Args';
 import { FieldType } from '../docs.interface';
+import styles from './Field.module.scss';
 
 interface FieldProps {
   field: FieldType;
@@ -11,8 +12,8 @@ interface FieldProps {
 
 const Field: FC<FieldProps> = ({ field }) => {
   return (
-    <div className="field-wrapper">
-      <div className="cont">
+    <div className={styles.field}>
+      <div className={styles.container}>
         <span className="name">{field.name}</span>
         <Args args={field.args} />
         <TypeRef typeRef={field.type} />

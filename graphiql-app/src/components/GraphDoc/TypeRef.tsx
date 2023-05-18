@@ -4,6 +4,8 @@ import { useAppDispatch } from '../../hooks/redux-hooks';
 import { MyObjectType, addHistoryData } from '../../redux/store/docSlice';
 import { useGetGraphqlSchemaMutation } from '../../redux/graphqlApi';
 import { FieldType, OfType, Type } from './docs.interface';
+import styles from './TypeRef.module.scss';
+
 interface TypeRefProps {
   typeRef: Type | OfType;
 }
@@ -41,13 +43,13 @@ const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
     );
   } else if (typeRef.kind === 'NON_NULL') {
     return (
-      <span className="span-flex span">
+      <span className={styles.span_flex}>
         <TypeRef typeRef={typeRef.ofType as OfType} />!
       </span>
     );
   } else if (typeRef.kind === 'LIST') {
     return (
-      <span className="span-flex span">
+      <span className={styles.span_flex}>
         [
         <TypeRef typeRef={typeRef.ofType as OfType} />]
       </span>

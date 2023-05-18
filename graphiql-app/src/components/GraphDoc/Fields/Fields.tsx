@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import styles from './Fields.module.scss';
 import Field from './Field';
 import '../generalStyles.scss';
 import { FieldType } from '../docs.interface';

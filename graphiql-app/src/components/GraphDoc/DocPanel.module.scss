@@ -1,7 +1,7 @@
 @import '../../assets/styles/constants';
 
 .panel {
-    background-color: #3d3d3d;
+    background-color: $color-bg-dark-grey;
     border-left: 1px solid #727272;
 }
 
@@ -15,11 +15,13 @@
 
 .active {
   background-image: none !important;
-  background-color: $color-btn !important;
+  background-color: rgb(224, 179, 90) !important;
+  box-shadow: inset 0 0 5px $color-bg-dark-grey !important;
 }
 
 .disable {
-  background-color: #727272;
+  background-image: none !important;
+  background-color: #727272 !important;
 }
 
 @media (max-width: 600px) {

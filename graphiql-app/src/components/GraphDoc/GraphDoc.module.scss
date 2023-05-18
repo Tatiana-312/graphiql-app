@@ -1,16 +1,18 @@
+@import '../../assets/styles/constants';
+
 .container {
   width: 0%;
   padding: 0px;
-  background-color: #3d3d3d;
+  background-color: $color-bg-dark-grey;
   border: none;
   height: calc(100vh - 80px);
   overflow: auto;
 }
 
 .back {
-  color: #ddddddd7;
+  display: inline-block;
+  color: $color-font-grey-opacity;
   cursor: pointer;
-  font-size: 18px;
   margin-bottom: 10px;
 }
 
