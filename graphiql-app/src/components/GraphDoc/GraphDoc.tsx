@@ -41,20 +41,20 @@ const GraphDoc: FC = () => {
   const currentName = history.at(-1)?.name;
   const previousState = history.at(-2);
 
-  let content;
+  let component;
 
   if (data && history.length === 1) {
-    content = <EntryDoc schema={data.data.__schema} />;
+    component = <EntryDoc schema={data.data.__schema} />;
   } else if ((currentData as ObjectType).kind === 'SCALAR') {
-    content = <Scalar type={currentData as ScalarType} />;
+    component = <Scalar type={currentData as ScalarType} />;
   } else if ((currentData as ObjectType).kind === 'INPUT_OBJECT') {
-    content = <InputObject type={currentData as InputObjectType} />;
+    component = <InputObject type={currentData as InputObjectType} />;
   } else if ((currentData as ObjectType).kind === 'UNION') {
-    content = <Union type={currentData as UnionType} />;
+    component = <Union type={currentData as UnionType} />;
   } else if ((currentData as ObjectType).kind === 'ENUM') {
-    content = <Enum type={currentData as EnumType} />;
+    component = <Enum type={currentData as EnumType} />;
   } else if (currentData && Object.keys(currentData).length !== 0) {
-    content = <Fields fields={(currentData as ObjectType).fields} />;
+    component = <Fields fields={(currentData as ObjectType).fields} />;
   }
 
   const styleClasses = isActive ? styles.container + ' ' + styles.active : styles.container;
@@ -73,7 +73,7 @@ const GraphDoc: FC = () => {
         </p>
       )}
       <h2 className="title">{currentName}</h2>
-      {content}
+      {component}
     </div>
   );
 };
