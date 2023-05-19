@@ -4,6 +4,7 @@ import TypeRef from '../TypeRef';
 import { v4 as uuidv4 } from 'uuid';
 import '../generalStyles.scss';
 import { ArgType } from '../docs.interface';
+import Arg from './Arg';
 
 interface ArgsProps {
   args: ArgType[];
@@ -17,19 +18,9 @@ const Args: FC<ArgsProps> = ({ args }) => {
           <span className={styles.bracket_left + ' ' + styles.symbols}>(</span>
           {args.map((arg: ArgType, index: number) => {
             if (index !== args.length - 1) {
-              return (
-                <div key={uuidv4()} className={styles.arg + ' ' + styles.symbols}>
-                  <span className="name">{arg.name}</span>:&nbsp;
-                  <TypeRef typeRef={arg.type} />,
-                </div>
-              );
+              return <Arg key={uuidv4()} arg={arg} isLast={true} />;
             }
-            return (
-              <div key={uuidv4()} className={styles.arg + ' ' + styles.symbols}>
-                <span className="name">{arg.name}</span>:&nbsp;
-                <TypeRef typeRef={arg.type} />
-              </div>
-            );
+            return <Arg key={uuidv4()} arg={arg} isLast={false} />;
           })}
           <span className={styles.symbols}>):&nbsp;</span>
         </div>
