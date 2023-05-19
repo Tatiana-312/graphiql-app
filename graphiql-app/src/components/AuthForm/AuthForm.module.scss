@@ -1,5 +1,4 @@
-$yellow: #f5ba1a;
-$yellow: #c715be;
+$yellow: #fc8422;
 $black: #000000;
 $grey: #cccccc;
 @import '../../assets/styles/constants';
@@ -21,7 +20,7 @@ body {
 }
 
 .form_wrapper {
-  background: #fff;
+  background: #454545;
   width: 400px;
   max-width: 100%;
   box-sizing: border-box;
@@ -32,7 +31,7 @@ body {
   border-top: 5px solid $yellow;
 
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
   transform-origin: 50% 0%;
 
@@ -44,6 +43,7 @@ body {
   opacity: 0;
 
   h2 {
+    color: white;
     font-size: 1.5em;
     line-height: 1.5em;
     margin: 0;
