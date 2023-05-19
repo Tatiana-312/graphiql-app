@@ -36,7 +36,6 @@ const SignIn: FC = () => {
 
   return (
     <main>
-      <ToastContainer />
       <AuthForm submitFunction={handleLogin} />
     </main>
   );

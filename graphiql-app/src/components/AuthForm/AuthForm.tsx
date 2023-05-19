@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthFormProps, AuthFormFields } from '../../types/authTypes';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) => {
   const {
@@ -52,7 +53,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
       <div className={styles.form_wrapper}>
         <div className={styles.form_container}>
           <div className={styles.title_container}>
-            <h2>{t('sign-up')}</h2>
+            <h2>{type === 'SignUp' ? t('sign-up') : t('sign-in')}</h2>
           </div>
           <div className={`${styles.row} ${styles.clearfix}`}>
             <div>
@@ -98,10 +99,10 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
         </div>
       </div>
       <p className={styles.credit}>
-        Blablabla{' '}
-        <a href="#" target="_blank" rel="noreferrer">
-          some link
-        </a>
+        Go back to{' '}
+        <Link className={styles.link} to="./">
+          welcome page
+        </Link>
       </p>
     </>
   );
