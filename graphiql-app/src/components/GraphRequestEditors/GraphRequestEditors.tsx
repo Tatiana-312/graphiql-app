@@ -44,9 +44,15 @@ const GraphRequestEditors: FC = () => {
       await trigger(options);
     } catch (err) {
       toast.error((err as Error).message, {
-        theme: 'dark',
         autoClose: 3000,
-        style: { background: '#3d3d3d' },
+        theme: 'dark',
+        style: {
+          // backgroundImage: 'linear-gradient(135deg, #f0e6d2, #d79106)',
+          // boxShadow: '2px 6px 15px rgba(255, 72, 112, 0.35)',
+          // color: 'black',
+          border: '1px solid #727272',
+          backgroundColor: '#3d3d3d',
+        },
       });
     }
   };
