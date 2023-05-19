@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { AuthFormProps, AuthFormFields } from '../../types/authTypes';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/use-auth';
 
 const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) => {
   const {
@@ -18,6 +19,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
     reValidateMode: 'onSubmit',
   });
   const { t } = useTranslation();
+  const { formLoading } = useAuth();
 
   useEffect(() => {
     if (formState.errors.email?.type === 'required') {
@@ -92,7 +94,11 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                     })}
                   />
                 </div>
-                <input className={styles.button} type="submit" value={`${t('register')}`} />
+                <input
+                  className={styles.button}
+                  type="submit"
+                  value={formLoading ? 'Loading' : `${t('register')}`}
+                />
               </form>
             </div>
           </div>
@@ -100,7 +106,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
       </div>
       <p className={styles.credit}>
         Go back to{' '}
-        <Link className={styles.link} to="./">
+        <Link className={styles.link} to="../">
           welcome page
         </Link>
       </p>
