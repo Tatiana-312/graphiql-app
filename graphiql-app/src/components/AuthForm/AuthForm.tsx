@@ -97,7 +97,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                 <input
                   className={styles.button}
                   type="submit"
-                  value={formLoading ? 'Loading' : `${t('register')}`}
+                  value={formLoading ? 'Loading...' : `${t('register')}`}
                 />
               </form>
             </div>
