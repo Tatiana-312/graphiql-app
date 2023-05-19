@@ -22,15 +22,15 @@ const SignUp: FC = () => {
             token: user.refreshToken,
           })
         );
-        navigate('/');
+        navigate('/main');
       })
       .catch(console.error);
   };
 
   return (
-    <>
+    <main>
       <AuthForm submitFunction={handleSignUp} type="SignUp" />
-    </>
+    </main>
   );
 };
 

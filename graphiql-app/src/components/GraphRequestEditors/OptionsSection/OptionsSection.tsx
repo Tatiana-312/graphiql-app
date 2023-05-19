@@ -10,10 +10,12 @@ import { FC, useRef } from 'react';
 import OptionsEditor from './OptionsEditor';
 import { addRequestVariables } from '../../../redux/store/requestVariablesSlice';
 import { addRequestHeaders } from '../../../redux/store/requestHeadersSlice';
+import { useTranslation } from 'react-i18next';
 
 const OptionsSection: FC = () => {
   const variablesEditorParent = useRef(null);
   const headersEditorParent = useRef(null);
+  const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
   const changeDisplay = () => dispatch(changeDisplayVariablesSection());
@@ -33,11 +35,15 @@ const OptionsSection: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.params_buttons}>
-        <Button name={'Variables'} onClick={() => openVariables()} isActive={isVariablesActive} />
+        <Button
+          name={`${t('variables')}`}
+          onClick={() => openVariables()}
+          isActive={isVariablesActive}
+        />
         <button className={styles.show_button} onClick={() => changeDisplay()} type="button">
           {isShown ? '▼' : '▲'}
         </button>
-        <Button name={'Headers'} onClick={() => openHeaders()} isActive={isHeadersActive} />
+        <Button name={`${t('headers')}`} onClick={() => openHeaders()} isActive={isHeadersActive} />
       </div>
       {sectionType === 'variables' ? (
         <OptionsEditor

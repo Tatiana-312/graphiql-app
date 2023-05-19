@@ -1,5 +1,10 @@
 .btn {
   border: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
   border-radius: 5px;
   font-size: 1.7rem;
   cursor: pointer;
