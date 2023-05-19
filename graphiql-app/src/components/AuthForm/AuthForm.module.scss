@@ -2,6 +2,7 @@ $yellow: #f5ba1a;
 $yellow: #c715be;
 $black: #000000;
 $grey: #cccccc;
+@import '../../assets/styles/constants';
 
 body {
   font-family: Verdana, Geneva, sans-serif;
@@ -25,7 +26,7 @@ body {
   max-width: 100%;
   box-sizing: border-box;
   padding: 25px;
-  margin: 8% auto 0;
+  margin: 20px auto 0;
   position: relative;
   z-index: 1;
   border-top: 5px solid $yellow;
@@ -111,7 +112,9 @@ body {
   input {
     &[type='text'],
     &[placeholder='Email'],
-    &[placeholder='Password'] {
+    &[placeholder='Password'],
+    &[placeholder='Пароль'],
+    &[placeholder='Электронная почта'] {
       width: 100%;
       padding: 8px 10px 9px 35px;
       height: 35px;
@@ -493,4 +496,9 @@ body {
   .remember_me {
     padding-bottom: 20px;
   }
+}
+
+footer {
+  position: relative;
+  top: $header-height;
 }

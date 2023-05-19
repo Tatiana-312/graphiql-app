@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 const PrivateRoute: FC = () => {
   const { isAuth } = useAuth();
 
-  return !isAuth ? <Outlet /> : <Navigate to="/" />;
+  return !isAuth ? <Outlet /> : <Navigate to="/main" />;
 };
 
 export default PrivateRoute;

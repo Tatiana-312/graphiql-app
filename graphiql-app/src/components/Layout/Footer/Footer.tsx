@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';
 
-export const Footer: FC = () => {
+const Footer: FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -37,3 +37,5 @@ export const Footer: FC = () => {
     </footer>
   );
 };
+
+export default Footer;
