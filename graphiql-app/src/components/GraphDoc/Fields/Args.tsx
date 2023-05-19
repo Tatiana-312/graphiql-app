@@ -16,12 +16,13 @@ const Args: FC<ArgsProps> = ({ args }) => {
       {args.length ? (
         <div className={styles.args}>
           <span className={styles.bracket_left + ' ' + styles.symbols}>(</span>
-          {args.map((arg: ArgType, index: number) => {
-            if (index !== args.length - 1) {
-              return <Arg key={uuidv4()} arg={arg} isLast={true} />;
-            }
-            return <Arg key={uuidv4()} arg={arg} isLast={false} />;
-          })}
+          {args.map((arg: ArgType, index: number) =>
+            index !== args.length - 1 ? (
+              <Arg key={uuidv4()} arg={arg} isLast={true} />
+            ) : (
+              <Arg key={uuidv4()} arg={arg} isLast={false} />
+            )
+          )}
           <span className={styles.symbols}>):&nbsp;</span>
         </div>
       ) : (
