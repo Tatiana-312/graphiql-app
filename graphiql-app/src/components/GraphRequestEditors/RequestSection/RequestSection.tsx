@@ -23,7 +23,7 @@ const RequestSection: FC = () => {
   const querySchema = useAppSelector((state) => state.requestSchema);
   const isOptionsSectionShown = useAppSelector((state) => state.displayVariablesSection.active);
 
-  const [getGraphQlSchema, { data, error, isError }] = useGetGraphqlSchemaMutation({
+  const [getGraphQlSchema, { data, error }] = useGetGraphqlSchemaMutation({
     fixedCacheKey: 'schemaKey',
   });
 

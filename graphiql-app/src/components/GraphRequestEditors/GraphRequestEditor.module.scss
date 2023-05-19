@@ -1,3 +1,5 @@
+@import '../../assets/styles/constants';
+
 .container {
   display: flex;
   width: 33%;
@@ -7,7 +9,7 @@
   display: flex;
   flex-grow: 1;
   position: relative;
-  background-color: #3d3d3d;
+  background-color: $color-bg-dark-grey;
   overflow: auto;
   height: calc(100vh - 80px);
 }
@@ -32,6 +34,6 @@
   }
 
   .form {
-    height: calc(100vh - 65px);
+    height: calc(100vh - 65px - 80px);
   }
 }

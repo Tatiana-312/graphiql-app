@@ -26,7 +26,8 @@ const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
     typeRef.kind === 'SCALAR' ||
     typeRef.kind === 'INPUT_OBJECT' ||
     typeRef.kind === 'ENUM' ||
-    typeRef.kind === 'UNION'
+    typeRef.kind === 'UNION' ||
+    typeRef.kind === 'INTERFACE'
   ) {
     return (
       <span

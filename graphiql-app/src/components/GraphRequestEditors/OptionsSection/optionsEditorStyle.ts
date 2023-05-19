@@ -4,7 +4,6 @@ const generalTheme = {
   '&': {
     width: '100%',
     color: '#ddd',
-    backgroundColor: '#3d3d3d',
     fontSize: '17px',
   },
   '.cm-content': {

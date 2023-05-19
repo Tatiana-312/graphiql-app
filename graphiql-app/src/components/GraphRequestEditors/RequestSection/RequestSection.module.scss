@@ -3,15 +3,15 @@
 }
 
 .small {
-  height: 85vh;
+  height: calc(85vh - 80px);
 }
 
 @media (max-width: 600px) {
   .big {
-    height: calc(100vh - 65px);
+    height: calc(100vh - 65px - 80px);
   }
 
   .small {
-    height: calc(85vh - 65px);
+    height: calc(85vh - 65px - 80px);
   }
 }
