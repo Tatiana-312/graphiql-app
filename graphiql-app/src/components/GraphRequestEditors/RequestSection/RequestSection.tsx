@@ -36,9 +36,12 @@ const RequestSection: FC = () => {
 
     if (error) {
       toast.error('Fetch schema error!', {
-        theme: 'dark',
         autoClose: 3000,
-        style: { backgroundColor: '#3d3d3d', border: '1px solid #727272' },
+        style: {
+          backgroundImage: 'linear-gradient(135deg, #f0e6d2, #E0B052)',
+          boxShadow: '2px 6px 15px rgba(255, 72, 112, 0.35)',
+          color: 'black',
+        },
       });
 
       const view = new EditorView({
