@@ -13,7 +13,7 @@ import Enum from './Enum/Enum';
 import Union from './Union/Union';
 
 const GraphDoc: FC = () => {
-  const [getGraphQlSchema, { data, isLoading, error, isError }] = useGetGraphqlSchemaMutation({
+  const [getGraphQlSchema, { data, isLoading, isError }] = useGetGraphqlSchemaMutation({
     fixedCacheKey: 'schemaKey',
   });
 

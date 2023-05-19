@@ -13,7 +13,8 @@ interface TypeRefProps {
 const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
   const dispatch = useAppDispatch();
   const addDataToHistory = (data: MyObjectType) => dispatch(addHistoryData(data));
-  const [_getGraphQlSchema, { data }] = useGetGraphqlSchemaMutation({
+
+  const [, { data }] = useGetGraphqlSchemaMutation({
     fixedCacheKey: 'schemaKey',
   });
 
