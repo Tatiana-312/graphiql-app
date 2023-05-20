@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { changeVisibility } from '../../redux/store/docSlice';
 import styles from './DocPanel.module.scss';
 
-const DocPanel = () => {
+const DocPanel: FC = () => {
   const dispatch = useAppDispatch();
   const updateVisibilityState = () => dispatch(changeVisibility());
   const isActiveDoc = useAppSelector((state) => state.doc.active);

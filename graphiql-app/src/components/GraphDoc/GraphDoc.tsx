@@ -61,7 +61,7 @@ const GraphDoc: FC = () => {
 
   return (
     <div className={styleClasses}>
-      {history.length != 1 && (
+      {history.length !== 1 && (
         <p
           className={styles.back}
           onClick={() => {

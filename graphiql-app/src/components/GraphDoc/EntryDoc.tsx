@@ -14,7 +14,7 @@ const EntryDoc: FC<EntryDocProps> = ({ schema }) => {
 
   const rootTypes = schema.types.filter(
     (type: ObjectType) =>
-      type.name == 'Query' || type.name == 'Mutation' || type.name == 'Subscription'
+      type.name === 'Query' || type.name === 'Mutation' || type.name === 'Subscription'
   );
 
   return (

@@ -19,7 +19,7 @@ const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
   });
 
   const currentData = data.data.__schema.types.filter(
-    (type: FieldType) => type.name == typeRef.name
+    (type: FieldType) => type.name === typeRef.name
   );
 
   if (
