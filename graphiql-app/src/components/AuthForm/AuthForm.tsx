@@ -1,7 +1,7 @@
 import styles from './AuthForm.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import { FC, useEffect } from 'react';
+import { faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthFormProps, AuthFormFields } from '../../types/authTypes';
@@ -20,6 +20,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
   });
   const { t } = useTranslation();
   const { formLoading } = useAuth();
+  const [passwordShown, setPasswordShown] = useState(false);
 
   useEffect(() => {
     if (formState.errors.email?.type === 'required') {
@@ -47,6 +48,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
       toast.error(`${t('password-pattern')}`, {
         toastId: 'pattern',
       });
+    console.log(errors);
   }, [formState]);
 
   return (
@@ -83,7 +85,8 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                     <FontAwesomeIcon icon={faLock} />
                   </span>
                   <input
-                    className={`${errors.password && styles.error}`}
+                    className={`${errors && styles.error}`}
+                    type={passwordShown ? 'text' : 'password'}
                     placeholder={`${t('password')}`}
                     {...register('password', {
                       ...(type === 'SignUp' && {
@@ -92,6 +95,11 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                         pattern: /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/,
                       }),
                     })}
+                  />
+                  <FontAwesomeIcon
+                    onClick={() => setPasswordShown(!passwordShown)}
+                    className={styles.showPassword}
+                    icon={passwordShown ? faEyeSlash : faEye}
                   />
                 </div>
                 <input

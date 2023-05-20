@@ -5,6 +5,7 @@ const initialState = {
   token: null,
   id: null,
   pending: true,
+  formLoading: false,
 };
 
 const userSlice = createSlice({
@@ -24,8 +25,11 @@ const userSlice = createSlice({
     setPending(state, action) {
       state.pending = action.payload;
     },
+    setFormLoading(state, action) {
+      state.formLoading = action.payload;
+    },
   },
 });
 
-export const { setUser, removeUser, setPending } = userSlice.actions;
+export const { setUser, removeUser, setPending, setFormLoading } = userSlice.actions;
 export default userSlice.reducer;

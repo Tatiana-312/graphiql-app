@@ -1,5 +1,5 @@
 // $yellow: #fc8422;
-$yellow: #d4910a;
+$yellow: #e69f42;
 $black: #000000;
 $grey: #cccccc;
 @import '../../assets/styles/constants';
@@ -8,6 +8,17 @@ body {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
   background: #f2f2f2;
+}
+
+.showPassword {
+  position: absolute;
+  transform: translateX(-30px) translateY(9px);
+  padding-left: 5px;
+  border-left: 1px solid #000;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .clearfix {
@@ -178,6 +189,11 @@ body {
       padding: 0;
       position: absolute;
       width: 1px;
+    }
+  }
+  input {
+    &[placeholder='Password'] {
+      padding-right: 35px;
     }
   }
 }

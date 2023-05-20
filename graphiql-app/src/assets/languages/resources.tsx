@@ -25,7 +25,7 @@ export const resources = {
       dianaResp: 'Welcome page and header, localization, design',
       password: 'Password',
       email: 'Email',
-      register: 'Register',
+      register: 'Confirm',
       variables: 'Variables',
       headers: 'Headers',
       'email-required': 'Email is required',
