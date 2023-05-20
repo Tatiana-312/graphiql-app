@@ -9,12 +9,15 @@ export const myTheme = EditorView.theme(
       width: '100%',
       color: '#ddd',
       backgroundColor: '#3d3d3d',
-      fontSize: '17px',
+      fontSize: '16px',
       paddingBottom: '25px',
+      paddingTop: '11px',
       overflow: 'auto',
     },
     '.cm-content': {
       caretColor: '#fc6',
+      fontFamily: '"Noto Sans", sans-serif',
+      lineHeight: '25px',
     },
     '&.cm-focused .cm-selectionBackground, ::selection': {
       backgroundColor: '#7272726a',

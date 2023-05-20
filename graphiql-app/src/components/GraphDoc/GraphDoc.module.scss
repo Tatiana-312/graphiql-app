@@ -5,7 +5,7 @@
   padding: 0px;
   background-color: $color-bg-dark-grey;
   border: none;
-  height: calc(100vh - 80px);
+  height: calc(100vh - $header-height);
   overflow: auto;
 }
 
@@ -30,7 +30,7 @@
 
   .active {
     width: 100%;
-    height: calc(100vh - 65px - 80px);
+    height: calc(100vh - 65px - $header-height);
     border-bottom: 1px solid #727272;
   }
 }

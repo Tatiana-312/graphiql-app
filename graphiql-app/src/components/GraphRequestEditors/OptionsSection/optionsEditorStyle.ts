@@ -4,10 +4,12 @@ const generalTheme = {
   '&': {
     width: '100%',
     color: '#ddd',
-    fontSize: '17px',
+    fontSize: '16px',
   },
   '.cm-content': {
     caretColor: '#fc6',
+    fontFamily: '"Noto Sans", sans-serif',
+    lineHeight: '25px',
   },
   '&.cm-focused .cm-selectionBackground, ::selection': {
     backgroundColor: '#7272726a',

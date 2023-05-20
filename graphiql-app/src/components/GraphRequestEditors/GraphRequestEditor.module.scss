@@ -11,7 +11,7 @@
   position: relative;
   background-color: $color-bg-dark-grey;
   overflow: auto;
-  height: calc(100vh - 80px);
+  height: calc(100vh - $header-height);
 }
 
 .editors {
@@ -34,6 +34,6 @@
   }
 
   .form {
-    height: calc(100vh - 65px - 80px);
+    height: calc(100vh - 65px - $header-height);
   }
 }
