@@ -40,7 +40,11 @@ const OptionsSection: FC = () => {
           onClick={() => openVariables()}
           isActive={isVariablesActive}
         />
-        <button className={styles.show_button} onClick={() => changeDisplay()} type="button">
+        <button
+          className={'btn ' + styles.show_button}
+          onClick={() => changeDisplay()}
+          type="button"
+        >
           {isShown ? '▼' : '▲'}
         </button>
         <Button name={`${t('headers')}`} onClick={() => openHeaders()} isActive={isHeadersActive} />

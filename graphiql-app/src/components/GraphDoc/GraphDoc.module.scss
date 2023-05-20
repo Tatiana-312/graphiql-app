@@ -1,0 +1,36 @@
+@import '../../assets/styles/constants';
+
+.container {
+  width: 0%;
+  padding: 0px;
+  background-color: $color-bg-dark-grey;
+  border: none;
+  height: calc(100vh - $header-height);
+  overflow: auto;
+}
+
+.back {
+  display: inline-block;
+  color: $color-font-grey-opacity;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.active {
+  width: 30%;
+  padding: 15px;
+  border-left: 1px solid #727272;
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: 0px;
+    order: 1;
+  }
+
+  .active {
+    width: 100%;
+    height: calc(100vh - 65px - $header-height);
+    border-bottom: 1px solid #727272;
+  }
+}
