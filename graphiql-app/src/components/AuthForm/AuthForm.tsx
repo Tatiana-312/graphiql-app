@@ -53,7 +53,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer toastStyle={{ backgroundColor: '#3d3d3d', color: 'white' }} />
       <div className={styles.form_wrapper}>
         <div className={styles.form_container}>
           <div className={styles.title_container}>
