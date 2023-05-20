@@ -5,7 +5,6 @@ import { useGetGraphqlMutation } from '../../redux/graphqlApi';
 import { FC } from 'react';
 import OptionsSection from './OptionsSection/OptionsSection';
 import { API_URL } from '../../utils/constants';
-import { checkIsValidHeaders, checkIsValidVariables } from '../../utils/checkIsValidJson';
 import { toast } from 'react-toastify';
 
 const GraphRequestEditors: FC = () => {
@@ -21,8 +20,9 @@ const GraphRequestEditors: FC = () => {
     myHeaders.append('Content-type', 'application/json');
 
     try {
-      checkIsValidVariables(queryVariables);
-      checkIsValidHeaders(queryHeaders);
+      if (queryVariables) {
+        JSON.parse(queryVariables);
+      }
 
       if (queryHeaders) {
         for (const [name, value] of Object.entries(JSON.parse(queryHeaders))) {

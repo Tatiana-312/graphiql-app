@@ -21,7 +21,7 @@ const EntryDoc: FC<EntryDocProps> = ({ schema }) => {
     <div>
       <p className="sub-title">Root Types</p>
       {rootTypes.map((rootType: ObjectType) => (
-        <div key={rootType.name}>
+        <div key={rootType.name} className="root-type">
           <span className="name">{rootType.name.toLowerCase()}: </span>
           <span
             className="type"
