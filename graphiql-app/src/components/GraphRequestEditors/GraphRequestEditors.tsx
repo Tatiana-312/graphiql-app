@@ -1,16 +1,13 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
+import { useAppSelector } from '../../hooks/redux-hooks';
 import styles from './GraphRequestEditor.module.scss';
 import RequestSection from './RequestSection/RequestSection';
 import { useGetGraphqlMutation } from '../../redux/graphqlApi';
 import { FC } from 'react';
 import OptionsSection from './OptionsSection/OptionsSection';
 import { API_URL } from '../../utils/constants';
-import { addParseError } from '../../redux/store/parseError';
-import { checkIsValidHeaders, checkIsValidVariables } from '../../utils/checkIsValidJson';
+import { toast } from 'react-toastify';
 
 const GraphRequestEditors: FC = () => {
-  const dispatch = useAppDispatch();
-  const addCustomError = (data: string) => dispatch(addParseError(data));
   const querySchema = useAppSelector((state) => state.requestSchema);
   const queryVariables = useAppSelector((state) => state.requestVariables);
   const queryHeaders = useAppSelector((state) => state.requestHeaders);
@@ -23,8 +20,9 @@ const GraphRequestEditors: FC = () => {
     myHeaders.append('Content-type', 'application/json');
 
     try {
-      checkIsValidVariables(queryVariables);
-      checkIsValidHeaders(queryHeaders);
+      if (queryVariables) {
+        JSON.parse(queryVariables);
+      }
 
       if (queryHeaders) {
         for (const [name, value] of Object.entries(JSON.parse(queryHeaders))) {
@@ -45,7 +43,14 @@ const GraphRequestEditors: FC = () => {
 
       await trigger(options);
     } catch (err) {
-      addCustomError(JSON.parse((err as Error).message));
+      toast.error((err as Error).message, {
+        autoClose: 3000,
+        style: {
+          backgroundImage: 'linear-gradient(135deg, #f0e6d2, #E0B052)',
+          boxShadow: '2px 6px 15px rgba(255, 72, 112, 0.35)',
+          color: 'black',
+        },
+      });
     }
   };
 
@@ -56,7 +61,7 @@ const GraphRequestEditors: FC = () => {
           <RequestSection />
           <OptionsSection />
         </div>
-        <button className={styles.get_button} type="submit">
+        <button className={'btn ' + styles.get_button} type="submit">
           ►
         </button>
       </form>

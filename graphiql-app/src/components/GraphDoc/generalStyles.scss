@@ -1,0 +1,26 @@
+@import '../../assets/styles/constants';
+
+.title {
+  color: $color-font-grey;
+  margin-bottom: 10px;
+}
+
+.sub-title {
+  color: $color-font-grey-opacity;
+  margin: 10px 0px;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.type {
+  color: $color-font-yellow;
+  cursor: pointer;
+}
+
+.name {
+  color: $color-font-green;
+}
+
+.root-type {
+  line-height: 25px;
+}

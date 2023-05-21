@@ -4,11 +4,12 @@ const generalTheme = {
   '&': {
     width: '100%',
     color: '#ddd',
-    backgroundColor: '#3d3d3d',
-    fontSize: '17px',
+    fontSize: '16px',
   },
   '.cm-content': {
     caretColor: '#fc6',
+    fontFamily: '"Noto Sans", sans-serif',
+    lineHeight: '25px',
   },
   '&.cm-focused .cm-selectionBackground, ::selection': {
     backgroundColor: '#7272726a',
@@ -28,7 +29,7 @@ export const myOptionsOpenTheme = EditorView.theme(
   {
     ...generalTheme,
     '.variables-editor > &, .headers-editor > &': {
-      height: '10vh',
+      height: '15vh',
       padding: '0px',
     },
   },

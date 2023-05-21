@@ -1,21 +1,17 @@
+@import '../../assets/styles/constants';
+
 .container {
   display: flex;
-  width: 50%;
-}
-
-@media (max-width: 600px) {
-  .container {
-    width: 100%;
-  }
+  width: 33%;
 }
 
 .form {
   display: flex;
   flex-grow: 1;
   position: relative;
-  background-color: #3d3d3d;
+  background-color: $color-bg-dark-grey;
   overflow: auto;
-  height: 100vh;
+  height: calc(100vh - $header-height);
 }
 
 .editors {
@@ -24,14 +20,20 @@
 }
 
 .get_button {
-  background-color: rgb(222, 191, 128);
-  cursor: pointer;
   padding: 2px;
   height: 35px;
   width: 35px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
   margin: 15px;
   flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    order: 2;
+  }
+
+  .form {
+    height: calc(100vh - 65px - $header-height);
+  }
 }

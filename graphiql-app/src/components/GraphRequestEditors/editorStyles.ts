@@ -9,12 +9,15 @@ export const myTheme = EditorView.theme(
       width: '100%',
       color: '#ddd',
       backgroundColor: '#3d3d3d',
-      fontSize: '17px',
+      fontSize: '16px',
       paddingBottom: '25px',
+      paddingTop: '11px',
       overflow: 'auto',
     },
     '.cm-content': {
       caretColor: '#fc6',
+      fontFamily: '"Noto Sans", sans-serif',
+      lineHeight: '25px',
     },
     '&.cm-focused .cm-selectionBackground, ::selection': {
       backgroundColor: '#7272726a',
@@ -35,5 +38,5 @@ export const myTheme = EditorView.theme(
 export const myHighlightStyle = HighlightStyle.define([
   { tag: tags.keyword, color: '#fc6' },
   { tag: tags.name, color: '#096' },
-  { tag: tags.comment, color: '#b28d', fontStyle: 'italic' },
+  { tag: tags.comment, color: '#ddddddd7', fontStyle: 'italic' },
 ]);

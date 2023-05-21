@@ -7,7 +7,7 @@ interface SectionState {
 const displayVariablesSectionSlice = createSlice({
   name: 'displayVariablesSection',
   initialState: {
-    active: true,
+    active: false,
   },
   reducers: {
     changeDisplayVariablesSection: (state: SectionState) => {
