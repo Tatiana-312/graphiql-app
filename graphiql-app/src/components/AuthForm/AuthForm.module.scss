@@ -154,24 +154,17 @@ body {
     }
 
     &[type='submit'] {
-      background: $yellow;
       height: 35px;
       line-height: 35px;
       width: 100%;
-      border: none;
       outline: none;
-      cursor: pointer;
       color: #fff;
       font-size: 1.1em;
       margin-bottom: 10px;
-
+      color: black;
       -moz-transition: all 0.3s ease-in-out;
       -ms-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-
-      &:hover {
-        background: darken($yellow, 12%);
-      }
     }
 
     &[type='checkbox'],

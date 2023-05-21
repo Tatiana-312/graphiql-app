@@ -91,7 +91,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                     <FontAwesomeIcon icon={faLock} />
                   </span>
                   <input
-                    className={`${errors && styles.error}`}
+                    className={`${errors.password && styles.error}`}
                     type={passwordShown ? 'text' : 'password'}
                     placeholder={`${t('password')}`}
                     {...register('password', {
@@ -109,7 +109,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                   />
                 </div>
                 <input
-                  className={styles.button}
+                  className={`btn ${styles.button}`}
                   type="submit"
                   value={formLoading ? 'Loading...' : `${t('register')}`}
                 />
