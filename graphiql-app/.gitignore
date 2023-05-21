@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 *.env
+deleteAllUsers.ts
 
 # Editor directories and files
 .vscode/*

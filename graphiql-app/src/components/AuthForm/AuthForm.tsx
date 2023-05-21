@@ -48,12 +48,18 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
       toast.error(`${t('password-pattern')}`, {
         toastId: 'pattern',
       });
-    console.log(errors);
   }, [formState]);
 
   return (
     <>
-      <ToastContainer toastStyle={{ backgroundColor: '#3d3d3d', color: 'white' }} />
+      <ToastContainer
+        position="top-center"
+        toastStyle={{
+          backgroundImage: 'linear-gradient(135deg, #f0e6d2, #E0B052)',
+          boxShadow: '2px 6px 15px rgba(255, 72, 112, 0.35)',
+          color: 'black',
+        }}
+      />
       <div className={styles.form_wrapper}>
         <div className={styles.form_container}>
           <div className={styles.title_container}>
@@ -71,10 +77,10 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                     className={`${errors.email && styles.error}`}
                     placeholder={`${t('email')}`}
                     {...register('email', {
-                      ...(type === 'SignUp' && {
+                      ...{
                         required: true,
                         pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      }),
+                      },
                     })}
                   />
                 </div>
