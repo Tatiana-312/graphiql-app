@@ -20,7 +20,7 @@ export const resources = {
         'Main page, code editor, variables and headers sections, documentation and schema, response section',
       altynbek: 'Altynbek Anarbekov',
       teamMember: 'Team member',
-      altynbekResp: 'Sign In/Sign Up page, client-side form validation',
+      altynbekResp: 'Sign In/Sign Up page, client-side form validation, private routes',
       diana: 'Diana Smertina',
       dianaResp: 'Welcome page and header, localization, design',
       password: 'Password',
