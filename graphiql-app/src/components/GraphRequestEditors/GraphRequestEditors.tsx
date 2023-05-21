@@ -43,14 +43,7 @@ const GraphRequestEditors: FC = () => {
 
       await trigger(options);
     } catch (err) {
-      toast.error((err as Error).message, {
-        autoClose: 3000,
-        style: {
-          backgroundImage: 'linear-gradient(135deg, #f0e6d2, #E0B052)',
-          boxShadow: '2px 6px 15px rgba(255, 72, 112, 0.35)',
-          color: 'black',
-        },
-      });
+      toast.error((err as Error).message);
     }
   };
 

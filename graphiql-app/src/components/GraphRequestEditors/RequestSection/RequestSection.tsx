@@ -35,14 +35,7 @@ const RequestSection: FC = () => {
     if (!requestEditorParent) return;
 
     if (error) {
-      toast.error('Fetch schema error!', {
-        autoClose: 3000,
-        style: {
-          backgroundImage: 'linear-gradient(135deg, #f0e6d2, #E0B052)',
-          boxShadow: '2px 6px 15px rgba(255, 72, 112, 0.35)',
-          color: 'black',
-        },
-      });
+      toast.error('Fetch schema error!');
 
       const view = new EditorView({
         doc: querySchema,
@@ -95,7 +88,14 @@ const RequestSection: FC = () => {
 
   return (
     <div className={isOptionsSectionShown ? styles.small : styles.big} ref={requestEditorParent}>
-      <ToastContainer position="top-center" />
+      <ToastContainer
+        position="top-center"
+        toastStyle={{
+          backgroundImage: 'linear-gradient(135deg, #f0e6d2, #E0B052)',
+          boxShadow: '2px 6px 15px rgba(255, 72, 112, 0.35)',
+          color: 'black',
+        }}
+      />
     </div>
   );
 };
