@@ -36,6 +36,7 @@ export const resources = {
         'Password must have at least one letter, one digit, and one special character',
       'not-found': 'Page not found :(',
       'go-to-main': 'Go to Main Page',
+      loading: 'Loading',
     },
   },
   RUS: {
@@ -75,6 +76,7 @@ export const resources = {
         'Пароль должен содержать хотя бы одну букву латинского алфавита, одну цифру и один специальный символ',
       'not-found': 'Страница не найдена :(',
       'go-to-main': 'На главную',
+      loading: 'Загрузка',
     },
   },
 };

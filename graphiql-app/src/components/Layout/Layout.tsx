@@ -2,12 +2,16 @@ import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
+import { useAuth } from '../../hooks/use-auth';
+import Loading from '../Loading/Loading';
 
 const Layout: FC = () => {
+  const { pending } = useAuth();
+
   return (
     <>
       <Header />
-      <Outlet />
+      {pending ? <Loading /> : <Outlet />}
       <Footer />
     </>
   );
