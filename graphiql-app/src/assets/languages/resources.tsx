@@ -37,6 +37,8 @@ export const resources = {
       'not-found': 'Page not found :(',
       'go-to-main': 'Go to Main Page',
       loading: 'Loading',
+      'go-back': 'Go back to ',
+      'welcome-page': 'welcome page',
     },
   },
   RUS: {
@@ -76,7 +78,8 @@ export const resources = {
         'Пароль должен содержать хотя бы одну букву латинского алфавита, одну цифру и один специальный символ',
       'not-found': 'Страница не найдена :(',
       'go-to-main': 'На главную',
-      loading: 'Загрузка',
+      'go-back': 'Назад на ',
+      'welcome-page': 'стартовую страницу',
     },
   },
 };
