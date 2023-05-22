@@ -1,11 +1,13 @@
 import styles from './AuthForm.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import { FC, useEffect } from 'react';
+import { faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthFormProps, AuthFormFields } from '../../types/authTypes';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/use-auth';
 
 const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) => {
   const {
@@ -17,6 +19,8 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
     reValidateMode: 'onSubmit',
   });
   const { t } = useTranslation();
+  const { formLoading } = useAuth();
+  const [passwordShown, setPasswordShown] = useState(false);
 
   useEffect(() => {
     if (formState.errors.email?.type === 'required') {
@@ -48,11 +52,18 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        toastStyle={{
+          backgroundImage: 'linear-gradient(135deg, #f0e6d2, #E0B052)',
+          boxShadow: '2px 6px 15px rgba(255, 72, 112, 0.35)',
+          color: 'black',
+        }}
+      />
       <div className={styles.form_wrapper}>
         <div className={styles.form_container}>
           <div className={styles.title_container}>
-            <h2>{t('sign-up')}</h2>
+            <h2>{type === 'SignUp' ? t('sign-up') : t('sign-in')}</h2>
           </div>
           <div className={`${styles.row} ${styles.clearfix}`}>
             <div>
@@ -66,10 +77,10 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                     className={`${errors.email && styles.error}`}
                     placeholder={`${t('email')}`}
                     {...register('email', {
-                      ...(type === 'SignUp' && {
+                      ...{
                         required: true,
                         pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      }),
+                      },
                     })}
                   />
                 </div>
@@ -81,6 +92,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                   </span>
                   <input
                     className={`${errors.password && styles.error}`}
+                    type={passwordShown ? 'text' : 'password'}
                     placeholder={`${t('password')}`}
                     {...register('password', {
                       ...(type === 'SignUp' && {
@@ -90,18 +102,27 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                       }),
                     })}
                   />
+                  <FontAwesomeIcon
+                    onClick={() => setPasswordShown(!passwordShown)}
+                    className={styles.showPassword}
+                    icon={passwordShown ? faEyeSlash : faEye}
+                  />
                 </div>
-                <input className={styles.button} type="submit" value={`${t('register')}`} />
+                <input
+                  className={`btn ${styles.button}`}
+                  type="submit"
+                  value={formLoading ? 'Loading...' : `${t('register')}`}
+                />
               </form>
             </div>
           </div>
         </div>
       </div>
       <p className={styles.credit}>
-        Blablabla{' '}
-        <a href="#" target="_blank" rel="noreferrer">
-          some link
-        </a>
+        Go back to{' '}
+        <Link className={styles.link} to="../">
+          welcome page
+        </Link>
       </p>
     </>
   );

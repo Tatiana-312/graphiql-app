@@ -20,7 +20,9 @@ const Team: FC = () => {
           </div>
         </li>
         <li className={styles.developer}>
-          <div className={styles.photo_wrap}></div>
+          <div className={styles.photo_wrap}>
+            <div className={styles.photo + ' ' + styles.photo_altyn}></div>
+          </div>
           <div className={styles.profile}>
             <h4 className={styles.name}>{t('altynbek')}</h4>
             <p className={styles.role}>{t('teamMember')}</p>

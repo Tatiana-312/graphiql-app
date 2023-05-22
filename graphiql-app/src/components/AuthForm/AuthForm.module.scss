@@ -1,13 +1,23 @@
-$yellow: #f5ba1a;
-$yellow: #c715be;
+// $yellow: #fc8422;
+$yellow: #e69f42;
 $black: #000000;
 $grey: #cccccc;
 @import '../../assets/styles/constants';
 
 body {
-  font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
   background: #f2f2f2;
+}
+
+.showPassword {
+  position: absolute;
+  transform: translateX(-30px) translateY(9px);
+  padding-left: 5px;
+  border-left: 1px solid #000;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .clearfix {
@@ -21,7 +31,7 @@ body {
 }
 
 .form_wrapper {
-  background: #fff;
+  background: $color-bg-dark-grey;
   width: 400px;
   max-width: 100%;
   box-sizing: border-box;
@@ -29,10 +39,10 @@ body {
   margin: 20px auto 0;
   position: relative;
   z-index: 1;
-  border-top: 5px solid $yellow;
+  border-top: 5px solid $color-btn;
 
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
   transform-origin: 50% 0%;
 
@@ -44,6 +54,7 @@ body {
   opacity: 0;
 
   h2 {
+    color: white;
     font-size: 1.5em;
     line-height: 1.5em;
     margin: 0;
@@ -143,28 +154,17 @@ body {
     }
 
     &[type='submit'] {
-      background: $yellow;
       height: 35px;
       line-height: 35px;
       width: 100%;
-      border: none;
       outline: none;
-      cursor: pointer;
       color: #fff;
       font-size: 1.1em;
       margin-bottom: 10px;
-
+      color: black;
       -moz-transition: all 0.3s ease-in-out;
       -ms-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-
-      &:hover {
-        background: darken($yellow, 7%);
-      }
-
-      &:focus {
-        background: darken($yellow, 7%);
-      }
     }
 
     &[type='checkbox'],
@@ -179,6 +179,11 @@ body {
       width: 1px;
     }
   }
+  input {
+    &[placeholder='Password'] {
+      padding-right: 35px;
+    }
+  }
 }
 
 .form_container {
@@ -187,6 +192,10 @@ body {
       border-left: 1px solid $grey;
     }
   }
+}
+
+.link {
+  text-decoration: underline;
 }
 
 .checkbox_option {

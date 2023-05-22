@@ -1,12 +1,12 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import SignIn from './pages/Authorization/SignIn/SignIn';
 import SignUp from './pages/Authorization/SignUp/SignUp';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
-import PrivateRoute from './components/PrivateRoute';
+import AuthRoutes from './components/AuthRoutes';
 import { useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useAppDispatch } from './hooks/redux-hooks';
-import { setUser, setPending } from './redux/store/userSlice';
+import { setUser, setPending, removeUser } from './redux/store/userSlice';
 import { useAuth } from './hooks/use-auth';
 import Layout from './components/Layout/Layout';
 import MainPage from './pages/MainPage/MainPage';
@@ -15,7 +15,7 @@ import NotFound from './pages/NotFound/NotFound';
 function App() {
   const dispatch = useAppDispatch();
   const auth = getAuth();
-  const { pending } = useAuth();
+  const { pending, isAuth } = useAuth();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -28,13 +28,7 @@ function App() {
           })
         );
       } else {
-        dispatch(
-          setUser({
-            email: null,
-            id: null,
-            token: null,
-          })
-        );
+        dispatch(removeUser);
       }
       dispatch(setPending(false));
     });
@@ -49,8 +43,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<WelcomePage />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route element={<PrivateRoute />}>
+          <Route path="/main" element={isAuth ? <MainPage /> : <Navigate to="/" replace />} />
+          <Route element={<AuthRoutes />}>
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
           </Route>
