@@ -6,6 +6,8 @@ import AuthForm from '../../../components/AuthForm/AuthForm';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
 import { setFormLoading, setUser } from '../../../redux/store/userSlice';
 import { AuthFormFields } from '../../../types/authTypes';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback/ErrorBoundaryFallback';
 
 const SignIn: FC = () => {
   const dispatch = useAppDispatch();
@@ -33,9 +35,11 @@ const SignIn: FC = () => {
   };
 
   return (
-    <main>
-      <AuthForm submitFunction={handleLogin} />
-    </main>
+    <ErrorBoundary fallback={<ErrorBoundaryFallback />}>
+      <main>
+        <AuthForm submitFunction={handleLogin} />
+      </main>
+    </ErrorBoundary>
   );
 };
 
