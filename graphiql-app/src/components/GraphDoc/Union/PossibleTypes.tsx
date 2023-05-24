@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import '../generalStyles.scss';
 import TypeRef from '../TypeRef';
-import { v4 as uuidv4 } from 'uuid';
 import { OfType } from '../docs.interface';
 
 interface PossibleTypesProps {
@@ -13,7 +12,7 @@ const PossibleTypes: FC<PossibleTypesProps> = ({ possibleTypes }) => {
     <div>
       <h3 className="sub-title">Possible Types</h3>
       {possibleTypes.map((type: OfType) => (
-        <div key={uuidv4()}>
+        <div key={type.name}>
           <TypeRef typeRef={type} />
         </div>
       ))}

@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import Description from '../Description';
 import '../generalStyles.scss';
-import { v4 as uuidv4 } from 'uuid';
 import { EnumValueType } from '../docs.interface';
 
 interface EnumValuesProps {
@@ -13,7 +12,7 @@ const EnumValues: FC<EnumValuesProps> = ({ enumValues }) => {
     <div>
       <h3 className="sub-title">Values</h3>
       {enumValues.map((value: EnumValueType) => (
-        <div key={uuidv4()}>
+        <div key={value.name}>
           <span className="name">{value.name}:&nbsp;</span>
           <Description description={value.description} />
         </div>
