@@ -27,7 +27,6 @@ const GraphDoc: FC = () => {
   useEffect(() => {
     if (data) {
       enableDocButton();
-      // console.log('SCHEMA', data.data.__schema);
     }
   }, [data, getGraphQlSchema]);
 
