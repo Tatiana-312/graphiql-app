@@ -119,9 +119,9 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
         </div>
       </div>
       <p className={styles.credit}>
-        Go back to{' '}
+        {t('go-back')}
         <Link className={styles.link} to="../">
-          welcome page
+          {t('welcome-page')}
         </Link>
       </p>
     </>

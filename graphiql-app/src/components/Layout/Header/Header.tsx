@@ -7,7 +7,7 @@ import { useAuth } from '../../../hooks/use-auth';
 import { useAppDispatch } from '../../../hooks/redux-hooks';
 import { getAuth, signOut } from 'firebase/auth';
 import { removeUser } from '../../../redux/store/userSlice';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header: FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -17,6 +17,7 @@ const Header: FC = () => {
   const { isAuth } = useAuth();
   const dispatch = useAppDispatch();
   const auth = getAuth();
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => {
@@ -55,28 +56,35 @@ const Header: FC = () => {
             <div className={styles.language} onClick={clickLangHandler}>
               {language}
             </div>
+            <div className={styles.burger} onClick={clickBurgerHandler}></div>
             {isAuth ? (
-              <button
-                className={'btn ' + styles.sign_out_btn}
-                onClick={() => {
-                  signOut(auth);
-                  dispatch(removeUser());
-                }}
-              >
-                {t('sign-out')}
-              </button>
+              <div className={styles.link_btns}>
+                {location.pathname !== '/main' ? (
+                  <Link to="/main" className={'btn ' + styles.sign_btn}>
+                    {t('go-to-main')}
+                  </Link>
+                ) : (
+                  <></>
+                )}
+                <button
+                  className={'btn ' + styles.sign_btn}
+                  onClick={() => {
+                    signOut(auth);
+                    dispatch(removeUser());
+                  }}
+                >
+                  {t('sign-out')}
+                </button>
+              </div>
             ) : (
-              <>
-                <div className={styles.burger} onClick={clickBurgerHandler}></div>
-                <div className={styles.link_btns}>
-                  <Link to="/sign-in" className={'btn ' + styles.sign_btn}>
-                    {t('sign-in')}
-                  </Link>
-                  <Link to="/sign-up" className={'btn ' + styles.sign_btn}>
-                    {t('sign-up')}
-                  </Link>
-                </div>
-              </>
+              <div className={styles.link_btns}>
+                <Link to="/sign-in" className={'btn ' + styles.sign_btn}>
+                  {t('sign-in')}
+                </Link>
+                <Link to="/sign-up" className={'btn ' + styles.sign_btn}>
+                  {t('sign-up')}
+                </Link>
+              </div>
             )}
           </div>
         </div>
