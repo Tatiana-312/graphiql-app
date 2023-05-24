@@ -35,6 +35,10 @@ export const resources = {
       'password-pattern':
         'Password must have at least one letter, one digit, and one special character',
       'not-found': 'Page not found :(',
+      'go-to-main': 'Go to Main Page',
+      loading: 'Loading',
+      'go-back': 'Go back to ',
+      'welcome-page': 'welcome page',
     },
   },
   RUS: {
@@ -63,7 +67,7 @@ export const resources = {
       dianaResp: 'Стартовая страница и header, интернационализация, дизайн',
       password: 'Пароль',
       email: 'Электронная почта',
-      register: 'Зарегистрироваться',
+      register: 'Подтвердить',
       variables: 'Переменные',
       headers: 'Заголовки',
       'email-required': 'Введите адрес электронной почты',
@@ -73,6 +77,9 @@ export const resources = {
       'password-pattern':
         'Пароль должен содержать хотя бы одну букву латинского алфавита, одну цифру и один специальный символ',
       'not-found': 'Страница не найдена :(',
+      'go-to-main': 'На главную',
+      'go-back': 'Назад на ',
+      'welcome-page': 'стартовую страницу',
     },
   },
 };
