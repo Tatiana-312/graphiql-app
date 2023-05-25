@@ -18,7 +18,7 @@ function App() {
   const { isAuth } = useAuth();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const oneHourInMilliseconds = 60 * 60 * 1000;
         const logoutTimeout = setTimeout(() => {
@@ -39,6 +39,7 @@ function App() {
       }
       dispatch(setPending(false));
     });
+    return () => unsubscribe();
   }, []);
 
   return (
