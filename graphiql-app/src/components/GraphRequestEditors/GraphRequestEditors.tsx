@@ -6,6 +6,8 @@ import { FC } from 'react';
 import OptionsSection from './OptionsSection/OptionsSection';
 import { API_URL } from '../../utils/constants';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const GraphRequestEditors: FC = () => {
   const querySchema = useAppSelector((state) => state.requestSchema);
@@ -55,7 +57,7 @@ const GraphRequestEditors: FC = () => {
           <OptionsSection />
         </div>
         <button className={'btn ' + styles.get_button} type="submit">
-          ►
+          <FontAwesomeIcon icon={faPlay} />
         </button>
       </form>
     </div>

@@ -39,6 +39,7 @@ export const resources = {
       loading: 'Loading',
       'go-back': 'Go back to ',
       'welcome-page': 'welcome page',
+      'error-fallback': 'Something went wrong! :( Please reload the page',
     },
   },
   RUS: {
@@ -80,6 +81,7 @@ export const resources = {
       'go-to-main': 'На главную',
       'go-back': 'Назад на ',
       'welcome-page': 'стартовую страницу',
+      'error-fallback': 'Что-то пошло не так! :( Пожалуйста перезагрузите страницу',
     },
   },
 };

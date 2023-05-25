@@ -11,6 +11,8 @@ import OptionsEditor from './OptionsEditor';
 import { addRequestVariables } from '../../../redux/store/requestVariablesSlice';
 import { addRequestHeaders } from '../../../redux/store/requestHeadersSlice';
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 const OptionsSection: FC = () => {
   const variablesEditorParent = useRef(null);
@@ -45,7 +47,11 @@ const OptionsSection: FC = () => {
           onClick={() => changeDisplay()}
           type="button"
         >
-          {isShown ? '▼' : '▲'}
+          {isShown ? (
+            <FontAwesomeIcon icon={faChevronDown} />
+          ) : (
+            <FontAwesomeIcon icon={faChevronUp} />
+          )}
         </button>
         <Button name={`${t('headers')}`} onClick={() => openHeaders()} isActive={isHeadersActive} />
       </div>

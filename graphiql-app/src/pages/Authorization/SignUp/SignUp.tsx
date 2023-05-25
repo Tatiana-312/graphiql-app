@@ -5,6 +5,8 @@ import { useAppDispatch } from '../../../hooks/redux-hooks';
 import { setFormLoading, setUser } from '../../../redux/store/userSlice';
 import { AuthFormFields } from '../../../types/authTypes';
 import { toast } from 'react-toastify';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorBoundaryFallback from '../../../components/ErrorBoundaryFallback/ErrorBoundaryFallback';
 
 const SignUp: FC = () => {
   const dispatch = useAppDispatch();
@@ -30,9 +32,11 @@ const SignUp: FC = () => {
   };
 
   return (
-    <main>
-      <AuthForm submitFunction={handleSignUp} type="SignUp" />
-    </main>
+    <ErrorBoundary fallback={<ErrorBoundaryFallback />}>
+      <main>
+        <AuthForm submitFunction={handleSignUp} type="SignUp" />
+      </main>
+    </ErrorBoundary>
   );
 };
 

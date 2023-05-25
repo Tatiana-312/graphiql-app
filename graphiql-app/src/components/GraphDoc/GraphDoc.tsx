@@ -11,6 +11,7 @@ import InputObject from './InputObject/InputObject';
 import { EnumType, InputObjectType, ObjectType, ScalarType, UnionType } from './docs.interface';
 import Enum from './Enum/Enum';
 import Union from './Union/Union';
+import { toast } from 'react-toastify';
 
 const GraphDoc: FC = () => {
   const [getGraphQlSchema, { data, isLoading, isError }] = useGetGraphqlSchemaMutation({
@@ -27,7 +28,6 @@ const GraphDoc: FC = () => {
   useEffect(() => {
     if (data) {
       enableDocButton();
-      // console.log('SCHEMA', data.data.__schema);
     }
   }, [data, getGraphQlSchema]);
 
@@ -43,18 +43,22 @@ const GraphDoc: FC = () => {
 
   let component;
 
-  if (data && history.length === 1) {
-    component = <EntryDoc schema={data.data.__schema} />;
-  } else if ((currentData as ObjectType).kind === 'SCALAR') {
-    component = <Scalar type={currentData as ScalarType} />;
-  } else if ((currentData as ObjectType).kind === 'INPUT_OBJECT') {
-    component = <InputObject type={currentData as InputObjectType} />;
-  } else if ((currentData as ObjectType).kind === 'UNION') {
-    component = <Union type={currentData as UnionType} />;
-  } else if ((currentData as ObjectType).kind === 'ENUM') {
-    component = <Enum type={currentData as EnumType} />;
-  } else if (currentData && Object.keys(currentData).length !== 0) {
-    component = <Fields fields={(currentData as ObjectType).fields} />;
+  try {
+    if (data && history.length === 1) {
+      component = <EntryDoc schema={data.data.__schema} />;
+    } else if ((currentData as ObjectType).kind === 'SCALAR') {
+      component = <Scalar type={currentData as ScalarType} />;
+    } else if ((currentData as ObjectType).kind === 'INPUT_OBJECT') {
+      component = <InputObject type={currentData as InputObjectType} />;
+    } else if ((currentData as ObjectType).kind === 'UNION') {
+      component = <Union type={currentData as UnionType} />;
+    } else if ((currentData as ObjectType).kind === 'ENUM') {
+      component = <Enum type={currentData as EnumType} />;
+    } else if (currentData && Object.keys(currentData).length !== 0) {
+      component = <Fields fields={(currentData as ObjectType).fields} />;
+    }
+  } catch (err) {
+    toast.error((err as Error).message);
   }
 
   const styleClasses = isActive ? styles.container + ' ' + styles.active : styles.container;
