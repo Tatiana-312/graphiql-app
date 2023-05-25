@@ -34,7 +34,7 @@ const SignIn: FC = () => {
 
   return (
     <main>
-      <AuthForm submitFunction={handleLogin} />
+      <AuthForm submitFunction={handleLogin} type="SignIn" />
     </main>
   );
 };

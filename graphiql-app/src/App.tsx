@@ -20,6 +20,12 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        const oneHourInMilliseconds = 60 * 60 * 1000;
+        const logoutTimeout = setTimeout(() => {
+          auth.signOut();
+          dispatch(removeUser());
+        }, oneHourInMilliseconds);
+
         dispatch(
           setUser({
             email: user.email,
@@ -27,8 +33,9 @@ function App() {
             token: user.refreshToken,
           })
         );
+        return () => clearTimeout(logoutTimeout);
       } else {
-        dispatch(removeUser);
+        dispatch(removeUser());
       }
       dispatch(setPending(false));
     });
