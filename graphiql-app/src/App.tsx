@@ -15,7 +15,7 @@ import NotFound from './pages/NotFound/NotFound';
 function App() {
   const dispatch = useAppDispatch();
   const auth = getAuth();
-  const { pending, isAuth } = useAuth();
+  const { isAuth } = useAuth();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -40,10 +40,6 @@ function App() {
       dispatch(setPending(false));
     });
   }, []);
-
-  if (pending) {
-    return <>Loading...</>;
-  }
 
   return (
     <>
