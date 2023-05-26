@@ -23,7 +23,6 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
   const [passwordShown, setPasswordShown] = useState(false);
 
   useEffect(() => {
-    console.log(formState.errors);
     if (formState.isSubmitting === false) {
       if (formState.errors.email?.type === 'required') {
         toast.error(`${t('email-required')}`, {

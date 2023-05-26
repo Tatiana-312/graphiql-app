@@ -15,17 +15,12 @@ import NotFound from './pages/NotFound/NotFound';
 function App() {
   const dispatch = useAppDispatch();
   const auth = getAuth();
-  const { isAuth } = useAuth();
+  const { isAuth, pending } = useAuth();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        const oneHourInMilliseconds = 60 * 60 * 1000;
-        const logoutTimeout = setTimeout(() => {
-          auth.signOut();
-          dispatch(removeUser());
-        }, oneHourInMilliseconds);
-
+        dispatch(setPending(false));
         dispatch(
           setUser({
             email: user.email,
@@ -33,13 +28,11 @@ function App() {
             token: user.refreshToken,
           })
         );
-        return () => clearTimeout(logoutTimeout);
       } else {
         dispatch(removeUser());
       }
       dispatch(setPending(false));
     });
-    return () => unsubscribe();
   }, []);
 
   return (
