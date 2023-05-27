@@ -37,7 +37,7 @@ const SignIn: FC = () => {
   return (
     <ErrorBoundary fallback={<ErrorBoundaryFallback />}>
       <main>
-        <AuthForm submitFunction={handleLogin} />
+        <AuthForm submitFunction={handleLogin} type="SignIn" />
       </main>
     </ErrorBoundary>
   );

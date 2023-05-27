@@ -23,32 +23,34 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
   const [passwordShown, setPasswordShown] = useState(false);
 
   useEffect(() => {
-    if (formState.errors.email?.type === 'required') {
-      toast.error(`${t('email-required')}`, {
-        toastId: 'emailRequired',
-      });
+    if (formState.isSubmitting === false) {
+      if (formState.errors.email?.type === 'required') {
+        toast.error(`${t('email-required')}`, {
+          toastId: 'emailRequired',
+        });
+      }
+
+      formState.errors.password?.type === 'required' &&
+        toast.error(`${t('password-required')}`, {
+          toastId: 'passwordRequired',
+        });
+
+      formState.errors.email?.type === 'pattern' &&
+        toast.error(`${t('invalid-email')}`, {
+          toastId: 'emailPattern',
+        });
+
+      formState.errors.password?.type === 'minLength' &&
+        toast.error(`${t('password-length')}`, {
+          toastId: 'minLength',
+        });
+
+      formState.errors.password?.type === 'pattern' &&
+        toast.error(`${t('password-pattern')}`, {
+          toastId: 'pattern',
+        });
     }
-
-    formState.errors.password?.type === 'required' &&
-      toast.error(`${t('password-required')}`, {
-        toastId: 'passwordRequired',
-      });
-
-    formState.errors.email?.type === 'pattern' &&
-      toast.error(`${t('invalid-email')}`, {
-        toastId: 'emailPattern',
-      });
-
-    formState.errors.password?.type === 'minLength' &&
-      toast.error(`${t('password-length')}`, {
-        toastId: 'minLength',
-      });
-
-    formState.errors.password?.type === 'pattern' &&
-      toast.error(`${t('password-pattern')}`, {
-        toastId: 'pattern',
-      });
-  }, [formState]);
+  }, [formState.isSubmitting]);
 
   return (
     <>
@@ -95,8 +97,8 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                     type={passwordShown ? 'text' : 'password'}
                     placeholder={`${t('password')}`}
                     {...register('password', {
+                      required: true,
                       ...(type === 'SignUp' && {
-                        required: true,
                         minLength: 8,
                         pattern: /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/,
                       }),
@@ -109,7 +111,7 @@ const AuthForm: FC<AuthFormProps> = ({ submitFunction, type }: AuthFormProps) =>
                   />
                 </div>
                 <input
-                  className={`btn ${styles.button}`}
+                  className={'btn ' + styles.button}
                   type="submit"
                   value={formLoading ? 'Loading...' : `${t('register')}`}
                 />

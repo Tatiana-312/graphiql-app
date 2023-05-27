@@ -20,6 +20,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        dispatch(setPending(false));
         dispatch(
           setUser({
             email: user.email,
@@ -28,7 +29,7 @@ function App() {
           })
         );
       } else {
-        dispatch(removeUser);
+        dispatch(removeUser());
       }
       dispatch(setPending(false));
     });
