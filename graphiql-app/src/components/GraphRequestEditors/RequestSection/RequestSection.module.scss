@@ -1,0 +1,19 @@
+@import '../../../assets/styles/constants';
+
+.big {
+  height: calc(100vh - $header-height);
+}
+
+.small {
+  height: calc(85vh - $header-height);
+}
+
+@media (max-width: 600px) {
+  .big {
+    height: calc(100vh - 65px - $header-height);
+  }
+
+  .small {
+    height: calc(85vh - 65px - $header-height);
+  }
+}

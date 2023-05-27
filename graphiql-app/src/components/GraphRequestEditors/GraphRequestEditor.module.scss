@@ -1,0 +1,39 @@
+@import '../../assets/styles/constants';
+
+.container {
+  display: flex;
+  width: 33%;
+}
+
+.form {
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+  background-color: $color-bg-dark-grey;
+  overflow: auto;
+  height: calc(100vh - $header-height);
+}
+
+.editors {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.get_button {
+  padding: 2px;
+  height: 35px;
+  width: 35px;
+  margin: 15px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+    order: 2;
+  }
+
+  .form {
+    height: calc(100vh - 65px - $header-height);
+  }
+}

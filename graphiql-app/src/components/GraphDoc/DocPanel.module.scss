@@ -1,0 +1,31 @@
+@import '../../assets/styles/constants';
+
+.panel {
+  background-color: $color-bg-dark-grey;
+  border-left: 1px solid #727272;
+}
+
+.button {
+  padding: 2px;
+  height: 35px;
+  width: 35px;
+  margin: 15px;
+  flex-shrink: 0;
+}
+
+.active {
+  background-image: none !important;
+  background-color: #dea334 !important;
+}
+
+.disable {
+  background-image: none !important;
+  background-color: #727272 !important;
+}
+
+@media (max-width: 600px) {
+  .panel {
+    order: 0;
+    border-bottom: 1px solid #727272;
+  }
+}

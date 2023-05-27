@@ -1,0 +1,37 @@
+@import '../../assets/styles/constants';
+
+.spin_figure {
+  width: 250px;
+  height: 250px;
+  background-image: url(/graphQL_logo.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  animation: animation 1.5s infinite normal running;
+  @media (max-width: $mobile-big-width) {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.loading_wrapper {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.loading_text {
+  font-size: 3rem;
+}
+
+@keyframes animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

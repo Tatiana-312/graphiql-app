@@ -1,0 +1,87 @@
+@import '../../assets/styles/constants';
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../assets/images/layout.jpg);
+  height: 450px;
+  background-size: 100% 500px;
+}
+
+.greeting {
+  margin-bottom: 10px;
+  font-size: 3rem;
+  color: $color-font;
+  margin-bottom: 20px;
+  text-align: center;
+  @media (max-width: $mobile-big-width) {
+    font-size: 2.5rem;
+  }
+}
+
+.get_started_btn {
+  width: 150px;
+  height: 50px;
+  @media (max-width: $mobile-big-width) {
+    width: 120px;
+    font-size: 1.6rem;
+  }
+}
+
+.about_app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.description_header {
+  text-align: center;
+}
+
+.description {
+  margin: 20px 0;
+  text-align: center;
+  max-width: 750px;
+}
+
+.list {
+  padding-left: 0;
+}
+
+.feature {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  height: 25px;
+  align-items: center;
+}
+
+.feature_icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+}
+
+.feature_icon0 {
+  background-image: url(../../assets/icons/checkmark-circle-outline.svg);
+}
+
+.feature_icon1 {
+  background-image: url(../../assets/icons/pencil-outline.svg);
+}
+
+.feature_icon2 {
+  background-image: url(../../assets/icons/thumbs-up.svg);
+}
+
+.feature_icon3 {
+  background-image: url(../../assets/icons/iconmonstr-error-4.svg);
+}
+
+.feature_icon4 {
+  background-image: url(../../assets/icons/document-text-outline.svg);
+}

@@ -1,0 +1,25 @@
+@import '../../assets/styles/constants';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  padding-top: $header-height;
+  background-color: $color-bg-light-grey;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}

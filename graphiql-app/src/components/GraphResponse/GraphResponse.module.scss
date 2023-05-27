@@ -1,0 +1,13 @@
+.response_container {
+  flex-grow: 1;
+  overflow: auto;
+  width: 32%;
+  border-left: 1px solid #727272;
+}
+
+@media (max-width: 600px) {
+  .response_container {
+    width: 100%;
+    order: 3;
+  }
+}

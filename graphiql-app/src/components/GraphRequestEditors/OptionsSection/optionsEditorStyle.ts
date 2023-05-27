@@ -1,0 +1,48 @@
+import { EditorView } from '@codemirror/view';
+
+const generalTheme = {
+  '&': {
+    width: '100%',
+    color: '#ddd',
+    fontSize: '16px',
+  },
+  '.cm-content': {
+    caretColor: '#fc6',
+    fontFamily: '"Noto Sans", sans-serif',
+    lineHeight: '25px',
+  },
+  '&.cm-focused .cm-selectionBackground, ::selection': {
+    backgroundColor: '#7272726a',
+  },
+  '&.cm-focused': {
+    outline: 'none',
+  },
+  '.cm-gutters': {
+    backgroundColor: '#3d3d3d',
+    color: '#ddd',
+    border: 'none',
+  },
+  '.cm-scroller': { overflow: 'auto' },
+};
+
+export const myOptionsOpenTheme = EditorView.theme(
+  {
+    ...generalTheme,
+    '.variables-editor > &, .headers-editor > &': {
+      height: '15vh',
+      padding: '0px',
+    },
+  },
+  { dark: true }
+);
+
+export const myOptionsCloseTheme = EditorView.theme(
+  {
+    ...generalTheme,
+    '.variables-editor > &, .headers-editor > &': {
+      height: '0vh',
+      padding: '0px',
+    },
+  },
+  { dark: true }
+);

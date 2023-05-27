@@ -1,0 +1,22 @@
+@import '../../../assets/styles/constants';
+
+.args {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.arg {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  line-height: 25px;
+}
+
+.bracket_left {
+  padding-right: 5px;
+}
+
+.symbols {
+  color: $color-font-grey;
+}
