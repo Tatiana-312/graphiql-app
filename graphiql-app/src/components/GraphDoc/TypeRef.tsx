@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import './generalStyles.scss';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import { MyObjectType, addHistoryData } from '../../redux/store/docSlice';
@@ -18,13 +18,6 @@ const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
     fixedCacheKey: 'schemaKey',
   });
 
-  let currentData: FieldType[];
-
-  useEffect(() => {
-    if (!data) return;
-    currentData = data.data.__schema.types.filter((type: FieldType) => type.name === typeRef.name);
-  }, [data]);
-
   if (
     typeRef.kind === 'OBJECT' ||
     typeRef.kind === 'SCALAR' ||
@@ -39,7 +32,9 @@ const TypeRef: FC<TypeRefProps> = ({ typeRef }) => {
         onClick={() => {
           addDataToHistory({
             name: typeRef.name,
-            currentData: currentData[0],
+            currentData: data.data.__schema.types.filter(
+              (type: FieldType) => type.name === typeRef.name
+            )[0],
           });
         }}
       >

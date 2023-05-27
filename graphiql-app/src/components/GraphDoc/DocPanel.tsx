@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { changeVisibility } from '../../redux/store/docSlice';
 import styles from './DocPanel.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 const DocPanel: FC = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +21,7 @@ const DocPanel: FC = () => {
         onClick={() => updateVisibilityState()}
         disabled={isDisableButton}
       >
-        Doc
+        <FontAwesomeIcon icon={faBook} />
       </button>
     </div>
   );

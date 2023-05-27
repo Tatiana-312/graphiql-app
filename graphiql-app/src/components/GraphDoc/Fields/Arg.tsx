@@ -1,6 +1,5 @@
 import { FC, Fragment } from 'react';
 import { ArgType } from '../docs.interface';
-import { v4 as uuidv4 } from 'uuid';
 import TypeRef from '../TypeRef';
 import styles from './Args.module.scss';
 
@@ -11,7 +10,7 @@ interface ArgProps {
 
 const Arg: FC<ArgProps> = ({ arg, isLast }) => {
   return (
-    <div key={uuidv4()} className={styles.arg + ' ' + styles.symbols}>
+    <div className={styles.arg + ' ' + styles.symbols}>
       <span className="name">{arg.name}</span>:&nbsp;
       {isLast ? (
         <Fragment>
